@@ -9,7 +9,7 @@ import youtube from '../../Icons/youtube.png'
 const Footer = () => {
   return (
     <div className='shadow'>
-      <div  className='mb-2 flex flex-row justify-between px-4'>
+      <div  className='mb-2 flex flex-row justify-around px-4'>
         <div>
             <p className='border-b-4 border-purple-600'>Get in touch</p>
             <ul>
@@ -38,7 +38,7 @@ const Footer = () => {
       </div>
       <hr className='mx-10'/>
       <div>
-        <div className='flex justify-center'>
+        <div className='flex justify-center py-4'>
           <p className='border-b-4 border-purple-600 w-24'>Social Media</p>
         </div>
             <ul className='flex flex-row justify-center py-2'>
