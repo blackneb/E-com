@@ -49,6 +49,7 @@ const Footer = () => {
               <li className='py-1 hover:border-l-2 border-black text-left p-1'><button>Free Delivery</button></li>
               <li className='py-1 hover:border-l-2 border-black text-left p-1'><button>Book Your Favourites</button></li>
               <li className='py-1 hover:border-l-2 border-black text-left p-1'><button>Easy Cart</button></li>
+
             </ul>
           </div>
       </div>
