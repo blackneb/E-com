@@ -1,4 +1,5 @@
 import React,{useState} from 'react'
+import { Link } from 'react-router-dom';
 import menu from '../../Icons/menu.png';
 import close from '../../Icons/close.png';
 import search from '../../Icons/search.png';
@@ -15,16 +16,16 @@ import About from '../../Icons/about.png';
 
 
 const Navbar = () => {
-    let links:{name: string, link:string, icon:any}[] = [
-        {name:"Home",link:"#",icon:<img className='h-4 mt-2.5' src={Home}/>},
-        {name:"Laptops",link:"#",icon:<img className='h-4 mt-2.5' src={Laptop}/>},
-        {name:"Gaming",link:"#",icon:<img className='h-4 mt-2.5' src={Gaming}/>},
-        {name:"Accessories",link:"#",icon:<img className='h-4 mt-2.5' src={Accessories}/>},
-        {name:"Phone",link:"#",icon:<img className='h-4 mt-2.5' src={Phone}/>},
-        {name:"TV",link:"#",icon:<img className='h-4 mt-2.5' src={Tv}/>},
-        {name:"PS",link:"#",icon:<img className='h-4 mt-2.5' src={Ps}/>},
-        {name:"Contact",link:"#",icon:<img className='h-4 mt-2.5' src={Contact}/>},
-        {name:"About",link:"#",icon:<img className='h-4 mt-2.5' src={About}/>},
+    let links:{name: string, link:any, icon:any}[] = [
+        {name:"Home",link:"/",icon:<img className='h-4 mt-2.5' src={Home}/>},
+        {name:"Laptops",link:"/laptops",icon:<img className='h-4 mt-2.5' src={Laptop}/>},
+        {name:"Gaming",link:"/gaming",icon:<img className='h-4 mt-2.5' src={Gaming}/>},
+        {name:"Accessories",link:"/accessories",icon:<img className='h-4 mt-2.5' src={Accessories}/>},
+        {name:"Phone",link:"/phone",icon:<img className='h-4 mt-2.5' src={Phone}/>},
+        {name:"TV",link:"/tv",icon:<img className='h-4 mt-2.5' src={Tv}/>},
+        {name:"PS",link:"/ps",icon:<img className='h-4 mt-2.5' src={Ps}/>},
+        {name:"Contact",link:"/contact",icon:<img className='h-4 mt-2.5' src={Contact}/>},
+        {name:"About",link:"/about",icon:<img className='h-4 mt-2.5' src={About}/>},
     ];
     const [open, setOpen] = useState(false);
   return (
@@ -40,12 +41,14 @@ const Navbar = () => {
             <ul className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static bg-purple-600 md:bg-white md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-0 transition-all duration-500 ease-in ${open ? 'top-16 ':'top-[-490px]'}`}>
                 {
                     links.map((link) => (
-                        <li key={link.name} className='md:ml-8 text-sm md:my-0 my-1' >
-                            <div className='flex justify-center'>
-                                {link.icon}
-                                <p className='p-2'>{link.name}</p>
-                            </div>
-                        </li>
+                        <Link to={link.link}>
+                            <li key={link.name} className='md:ml-8 text-sm md:my-0 my-1' >
+                                <div className='flex justify-center'>
+                                    {link.icon}
+                                    <p className='p-2'>{link.name}</p>
+                                </div>
+                            </li>
+                        </Link>
                     ))
                 }
             </ul>

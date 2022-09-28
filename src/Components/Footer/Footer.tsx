@@ -8,7 +8,7 @@ import youtube from '../../Icons/youtube.png'
 
 const Footer = () => {
   return (
-    <div className='shadow'>
+    <div className='shadow bg-gradient-to-r from-violet-600 via-blue-600 to-purple-600'>
       <div  className='mb-2 flex flex-row justify-around px-4'>
         <div>
             <p className='border-b-4 border-purple-600'>Get in touch</p>
