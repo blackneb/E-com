@@ -2,8 +2,8 @@ import React from 'react'
 
 const Carditems = () => {
   return (
-    <div className='h-48 shadow w-48 rounded-md m-4'>
-      <div className='h-36'>
+    <div className='h-48 shadow w-48 rounded-md m-4 p-2'>
+      <div className='h-36 w-44'>
         <img src='' alt=''/>
       </div>
       <div>

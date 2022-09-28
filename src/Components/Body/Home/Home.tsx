@@ -4,12 +4,12 @@ import Carditems from '../../Cards/Carditems'
 const Home = () => {
   return (
     <div className=''>
-        <div className='shadow my-4'>
-          <h1>Trending Items</h1>
+        <div className='shadow border-b-2 border-gray-400 mx-32 mt-8'>
+          <h1>Blackneb</h1>
         </div>
         <div className='flex flex-row'>
-          <div className='w-96 shadow m-4 rounded-md border-black border-2'>
-            <h2>Filter</h2>
+          <div className='h-96 w-72 shadow m-4 rounded-md border-black border-2'>
+            <h2 className='border-b-2 border-gray-400 mx-14'>Filter</h2>
             <div className='flex justify-start'>
               <ul className='flex flex-col m-4'>
                 <li className='py-1 hover:border-l-2 border-black text-left p-1'><button className=''>PC</button></li>
@@ -35,6 +35,59 @@ const Home = () => {
             <Carditems/>
             <Carditems/>
             <Carditems/>
+            <Carditems/>
+          </div>
+        </div>
+        <div className='shadow border-b-2 border-gray-400 mx-32 mt-8'>
+          <h1>Shop By Class</h1>
+        </div>
+        <div className='flex flex-row flex-wrap justify-around p-4 mt-4'>
+          <div>
+            <h2 className='border-b-2 border-gray-400 mx-16'>Trending</h2>
+            <div className='overflow-x-scroll w-72'>
+              <div className='flex justify-around flex-row px-8'>
+                <Carditems/>
+                <Carditems/>
+                <Carditems/>
+                <Carditems/>
+              </div>
+            </div>
+          </div>
+          <div className='border-r-2 border-black h-72 border-gray-400'></div>
+          <div>
+          <h2 className='border-b-2 border-gray-400 mx-14'>New Arrivals</h2>
+          <div className='overflow-x-scroll w-72'>
+              <div className='flex justify-around flex-nowrap px-8'>
+                <Carditems/>
+                <Carditems/>
+                <Carditems/>
+                <Carditems/>
+              </div>
+            </div>
+          </div>
+          <div className='border-r-2 border-black h-72 border-gray-400'></div>
+          <div>
+            <h2 className='border-b-2 border-gray-400 mx-14'>Discounts</h2>
+            <div className='overflow-x-scroll w-72'>
+              <div className='flex justify-around flex-nowrap px-8'>
+                <Carditems/>
+                <Carditems/>
+                <Carditems/>
+                <Carditems/>
+              </div>
+            </div>
+          </div>
+          <div className='border-r-2 border-black h-72 border-gray-400'></div>
+          <div>
+            <h2 className='border-b-2 border-gray-400 mx-14'>Brand Products</h2>
+            <div className='overflow-x-scroll w-72'>
+              <div className='flex justify-around flex-nowrap px-8'>
+                <Carditems/>
+                <Carditems/>
+                <Carditems/>
+                <Carditems/>
+              </div>
+            </div>
           </div>
         </div>
     </div>

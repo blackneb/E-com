@@ -13,6 +13,7 @@ import Tv from '../../Icons/television.png';
 import Ps from '../../Icons/ps.png';
 import Contact from '../../Icons/contact.png';
 import About from '../../Icons/about.png';
+import Cart from '../../Icons/cart.png'
 
 
 const Navbar = () => {
@@ -26,6 +27,7 @@ const Navbar = () => {
         {name:"PS",link:"/ps",icon:<img className='h-4 mt-2.5' src={Ps}/>},
         {name:"Contact",link:"/contact",icon:<img className='h-4 mt-2.5' src={Contact}/>},
         {name:"About",link:"/about",icon:<img className='h-4 mt-2.5' src={About}/>},
+        {name:"Cart", link:"", icon:<img className='h-4 mt-2.5' src={Cart} alt=''/>}
     ];
     const [open, setOpen] = useState(false);
   return (
