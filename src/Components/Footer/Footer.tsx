@@ -12,7 +12,7 @@ const Footer = () => {
       <div  className='mb-2 flex flex-row justify-around px-4'>
         <div>
             <p className='border-b-4 border-purple-600'>Get in touch</p>
-            <ul>
+            <ul className='mt-2'>
               <li>Phone</li>
               <li>Fax</li>
               <li>E-mail</li>
@@ -21,7 +21,7 @@ const Footer = () => {
           </div>
           <div>
             <p className='border-b-4 border-purple-600'>Quick Links</p>
-            <ul>
+            <ul className='mt-2'>
               <li>Home</li>
               <li>Laptops</li>
               <li>gaming</li>
@@ -33,7 +33,23 @@ const Footer = () => {
             </ul>
           </div>
           <div>
+            <p className='border-b-4 border-purple-600'>Customer Service</p>
+            <ul className='mt-2'>
+              <li>Terms of use</li>
+              <li>Privacy Policy</li>
+              <li>Contact us</li>
+              <li>How to pay</li>
+              <li>FAQ?</li>
+            </ul>
+          </div>
+          <div>
             <p className='border-b-4 border-purple-600'>Services</p>
+            <ul className='mt-2'>
+              <li>Free Delivery</li>
+              <li>Book your favourites</li>
+              <li>Easy cart</li>
+              <li></li>
+            </ul>
           </div>
       </div>
       <hr className='mx-10'/>
