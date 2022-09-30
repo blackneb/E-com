@@ -10,15 +10,6 @@ const Footer = () => {
   return (
     <div className='shadow border-t-2 bg-slate-50 border-gray-400 p-8 mt-16'>
       <div  className='mb-2 grid grid-cols-2 md:flex md:flex-row flex-wrap md:justify-around md:px-4'>
-        <div className='md:mx-8 md:mt-4 mt-2'>
-            <p className='border-b-4 border-purple-600 w-28 text-lg'>Get in touch</p>
-            <ul className='mt-2 text-gray-600'>
-              <li className='py-1 hover:border-l-2 border-black text-left p-1'><button>Phone</button></li>
-              <li className='py-1 hover:border-l-2 border-black text-left p-1'><button>FAX</button></li>
-              <li className='py-1 hover:border-l-2 border-black text-left p-1'><button>E-mail</button></li>
-              <li className='py-1 hover:border-l-2 border-black text-left p-1'><button>Web</button></li>
-            </ul>
-          </div>
           <div className='md:mx-8 md:mt-4 mt-2'>
             <p className='border-b-4 border-purple-600 w-24 text-lg'>Quick Links</p>
             <ul className='mt-2 text-gray-600'>
@@ -77,6 +68,19 @@ const Footer = () => {
               <li className='px-4'>
                 <img className='w-6' src={youtube} alt=''/>
               </li>
+            </ul>
+          </div>     
+          <div>
+        <div className='flex justify-center py-4'>
+          <p className='border-b-4 border-purple-600 w-24'>Get in touch</p>
+        </div>
+            <ul className='flex flex-col justify-center py-2'>
+              <li className='px-4'>Phone +251911121314</li>
+              <li className='px-4'>E-mail: blackneb@gmail.com</li>
+              <li className='px-4'>Web: www.blackneb.com</li>
+              <li className='px-4'>Fax: 5261</li>
+              <li className='px-4'></li>
+              <li className='px-4'></li>
             </ul>
           </div>      
     </div>
