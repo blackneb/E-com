@@ -22,7 +22,7 @@ const Laptops = () => {
                   <li className='py-1 hover:border-l-2 border-black text-left p-1'><button>Generation</button></li>
                   <li className='py-1 hover:border-l-2 border-black text-left p-1'><button>Price</button></li>
                   <li className='py-1 hover:border-l-2 border-black text-left p-1'><button>Storage</button></li>
-                  <li className='py-1 hover:border-l-2 border-black text-left p-1'><button>Diaplay</button></li>
+                  <li className='py-1 hover:border-l-2 border-black text-left p-1'><button>Disaplay</button></li>
                 </ul>
               </div>
             </div>
