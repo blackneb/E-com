@@ -13,10 +13,10 @@ const Home = () => {
         </div>
         <div className='flex flex-row'>
           <div className='flex flex-col'>
-            <div onClick={()=>setOpen(!open)} className='mx-2 w-6 mb-2'>
+            <div onClick={()=>setOpen(!open)} className='mx-2 md:hidden w-6 mb-2'>
               {open? <img  className='h-4 mt-2'  src={close}/> : <img className='h-4 mt-2' src={Menu}/>}
             </div>
-            <div className={`${open? "block" : "hidden"} w-36 shadow mx-2 rounded-md border-2`}>
+            <div className={`${open? "block" : "hidden"} md:block md:mt-4 w-40 shadow mx-2 rounded-md border-2 md:ml-16`}>
               <h2 className='border-b-2 border-gray-400'>Filter</h2>
             <div className={`flex justify-start overflow-x-scroll h-96`}>
               <ul className='flex flex-col m-4 '>
@@ -40,7 +40,7 @@ const Home = () => {
             </div>
           </div>
           </div>
-          <div className='flex justify-around flex-wrap overflow-y-scroll h-[28rem] pr-8'>
+          <div className='flex justify-around flex-wrap overflow-y-scroll h-[28rem] pr-8 mt-2'>
             <Carditems/>
             <Carditems/>
             <Carditems/>
@@ -140,9 +140,6 @@ const Home = () => {
               </button>
             </div>
           </div>
-        </div>
-        <div className='shadow border-b-2 border-gray-400 mx-4 md:mx-16 mt-8'>
-          <h1>Contact Our Admins</h1>
         </div>
         <Contact/>
     </div>
