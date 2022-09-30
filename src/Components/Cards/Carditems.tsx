@@ -3,7 +3,7 @@ import iphone from '../../Images/iphone.jpg'
 
 const Carditems = () => {
   return (
-    <div className='h-52 bg-green-400 md:h-48 md:shadow md:w-48 rounded-md m-2 p-2'>
+    <div className='h-52 shadow md:h-48 md:shadow md:w-48 rounded-md m-2 p-2'>
       <div className='h-32 w-28 flex justify-center md:h-36 md:w-44'>
         <img className='h-32 md:mt-0' src={iphone} alt=''/>
       </div>

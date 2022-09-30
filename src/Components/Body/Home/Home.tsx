@@ -4,10 +4,10 @@ import Menu from '../../../Icons/menu.png';
 import close from '../../../Icons/close.png';
 
 const Home = () => {
-  const [open, setOpen]= useState(true);
+  const [open, setOpen]= useState(false);
   return (
     <div className=''>
-        <div className='shadow border-b-2 border-gray-400 mx-4 md:mx-32 mt-8'>
+        <div className='shadow border-b-2 border-gray-400 mx-4 md:mx-16 mt-8'>
           <h1>Shop every item You want</h1>
         </div>
         <div className='flex flex-row'>
@@ -15,20 +15,20 @@ const Home = () => {
             <div onClick={()=>setOpen(!open)} className='mx-2 w-6 mb-2'>
               {open? <img  className='h-4 mt-2'  src={close}/> : <img className='h-4 mt-2' src={Menu}/>}
             </div>
-            <div className={`${open? "block" : "hidden"} h-96 w-32 shadow mx-2 rounded-md border-2`}>
+            <div className={`${open? "block" : "hidden"} w-36 shadow mx-2 rounded-md border-2`}>
               <h2 className='border-b-2 border-gray-400'>Filter</h2>
-            <div className={`flex justify-start`}>
-              <ul className='flex flex-col m-4'>
-                <li className='py-1 hover:border-l-2 border-black text-left'><button>PC</button></li>
-                <li className='py-1 hover:border-l-2 border-black text-left'><button>Laptops</button></li>
-                <li className='py-1 hover:border-l-2 border-black text-left'><button>Phones</button></li>
-                <li className='py-1 hover:border-l-2 border-black text-left'><button>Joysticks</button></li>
-                <li className='py-1 hover:border-l-2 border-black text-left'><button>Tv</button></li>
-                <li className='py-1 hover:border-l-2 border-black text-left'><button>Charger</button></li>
-                <li className='py-1 hover:border-l-2 border-black text-left'><button>USB Cables</button></li>
-                <li className='py-1 hover:border-l-2 border-black text-left'><button>PlayStations</button></li>
-                <li className='py-1 hover:border-l-2 border-black text-left'><button>Power Bank</button></li>
-                <li className='py-1 hover:border-l-2 border-black text-left'><button>Hard Disk</button></li>
+            <div className={`flex justify-start overflow-x-scroll h-96`}>
+              <ul className='flex flex-col m-4 '>
+                <li className='py-1 hover:border-l-2 border-black text-left p-1'><button>PC</button></li>
+                <li className='py-1 hover:border-l-2 border-black text-left p-1'><button>Laptops</button></li>
+                <li className='py-1 hover:border-l-2 border-black text-left p-1'><button>Phones</button></li>
+                <li className='py-1 hover:border-l-2 border-black text-left p-1'><button>Joysticks</button></li>
+                <li className='py-1 hover:border-l-2 border-black text-left p-1'><button>Tv</button></li>
+                <li className='py-1 hover:border-l-2 border-black text-left p-1'><button>Charger</button></li>
+                <li className='py-1 hover:border-l-2 border-black text-left p-1'><button>USB Cables</button></li>
+                <li className='py-1 hover:border-l-2 border-black text-left p-1'><button>PlayStations</button></li>
+                <li className='py-1 hover:border-l-2 border-black text-left p-1'><button>Power Bank</button></li>
+                <li className='py-1 hover:border-l-2 border-black text-left p-1'><button>Hard Disk</button></li>
               </ul>
             </div>
           </div>
@@ -56,7 +56,7 @@ const Home = () => {
             <Carditems/>
           </div>
         </div>
-        <div className='shadow border-b-2 border-gray-400 mx-4 md:mx-32 mt-8'>
+        <div className='shadow border-b-2 border-gray-400 mx-4 md:mx-16 mt-8'>
           <h1>Shop By Class</h1>
         </div>
         <div className='grid grid-cols-1 md:grid-cols-2 justify-around p-4 mt-4'>
@@ -111,7 +111,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div className='shadow border-b-2 border-gray-400 mx-4 md:mx-32 mt-8'>
+        <div className='shadow border-b-2 border-gray-400 mx-4 md:mx-16 mt-8'>
           <h1>Be a member</h1>
         </div>
         <div className='h-48'>
