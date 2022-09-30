@@ -2,7 +2,7 @@ import React from 'react'
 
 const Contact = () => {
   return (
-    <div className='m-8 p-8 border-2 border-gray-200 md:mx-16 rounded-2xl flex flex-wrap flex-row justify-center'>
+    <div className='m-8 p-8 shadow md:mx-16 rounded-2xl flex flex-wrap flex-row justify-center'>
       <div>
         <div className='flex flex-wrap flex-row justify-center'>
           <div className='m-4'>
