@@ -30,6 +30,12 @@ const Home = () => {
                 <li className='py-1 hover:border-l-2 border-black text-left p-1'><button>PlayStations</button></li>
                 <li className='py-1 hover:border-l-2 border-black text-left p-1'><button>Power Bank</button></li>
                 <li className='py-1 hover:border-l-2 border-black text-left p-1'><button>Hard Disk</button></li>
+                <li className='py-1 hover:border-l-2 border-black text-left p-1'><button>Smartwatch</button></li>
+                <li className='py-1 hover:border-l-2 border-black text-left p-1'><button>X-Box</button></li>
+                <li className='py-1 hover:border-l-2 border-black text-left p-1'><button>Drones</button></li>
+                <li className='py-1 hover:border-l-2 border-black text-left p-1'><button>Speakers</button></li>
+                <li className='py-1 hover:border-l-2 border-black text-left p-1'><button>Cameras</button></li>
+                <li className='py-1 hover:border-l-2 border-black text-left p-1'><button>VR</button></li>
               </ul>
             </div>
           </div>
