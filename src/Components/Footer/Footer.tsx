@@ -8,20 +8,20 @@ import youtube from '../../Icons/youtube.png'
 
 const Footer = () => {
   return (
-    <div className='shadow border-t-2 border-gray-400 p-8 mt-16'>
-      <div  className='mb-2 flex flex-row flex-wrap justify-around px-4'>
-        <div className='mx-8 mt-4'>
-            <p className='border-b-4 border-purple-600'>Get in touch</p>
-            <ul className='mt-2'>
+    <div className='shadow border-t-2 bg-slate-50 border-gray-400 p-8 mt-16'>
+      <div  className='mb-2 grid grid-cols-2 md:flex md:flex-row flex-wrap md:justify-around md:px-4'>
+        <div className='md:mx-8 md:mt-4 mt-2'>
+            <p className='border-b-4 border-purple-600 w-28 text-lg'>Get in touch</p>
+            <ul className='mt-2 text-gray-600'>
               <li className='py-1 hover:border-l-2 border-black text-left p-1'><button>Phone</button></li>
               <li className='py-1 hover:border-l-2 border-black text-left p-1'><button>FAX</button></li>
               <li className='py-1 hover:border-l-2 border-black text-left p-1'><button>E-mail</button></li>
               <li className='py-1 hover:border-l-2 border-black text-left p-1'><button>Web</button></li>
             </ul>
           </div>
-          <div className='mx-8 mt-4'>
-            <p className='border-b-4 border-purple-600'>Quick Links</p>
-            <ul className='mt-2'>
+          <div className='md:mx-8 md:mt-4 mt-2'>
+            <p className='border-b-4 border-purple-600 w-24 text-lg'>Quick Links</p>
+            <ul className='mt-2 text-gray-600'>
               <li className='py-1 hover:border-l-2 border-black text-left p-1'><button>Home</button></li>
               <li className='py-1 hover:border-l-2 border-black text-left p-1'><button>Laptops</button></li>
               <li className='py-1 hover:border-l-2 border-black text-left p-1'><button>Gaming</button></li>
@@ -33,9 +33,9 @@ const Footer = () => {
               <li className='py-1 hover:border-l-2 border-black text-left p-1'><button>About</button></li>
             </ul>
           </div>
-          <div className='mx-8 mt-4'>
-            <p className='border-b-4 border-purple-600'>Customer Service</p>
-            <ul className='mt-2'>
+          <div className='md:mx-8 md:mt-4 mt-2'>
+            <p className='border-b-4 border-purple-600 w-36 text-lg'>Customer Service</p>
+            <ul className='mt-2 text-gray-600'>
               <li className='py-1 hover:border-l-2 border-black text-left p-1'><button>Terms Of Use</button></li>
               <li className='py-1 hover:border-l-2 border-black text-left p-1'><button>Privacy Policy</button></li>
               <li className='py-1 hover:border-l-2 border-black text-left p-1'><button>Contact Us</button></li>
@@ -43,9 +43,9 @@ const Footer = () => {
               <li className='py-1 hover:border-l-2 border-black text-left p-1'><button>FAQ?</button></li>
             </ul>
           </div>
-          <div className='mx-8 mt-4'>
-            <p className='border-b-4 border-purple-600'>Services</p>
-            <ul className='mt-2'>
+          <div className='md:mx-8 md:mt-4 mt-2'>
+            <p className='border-b-4 border-purple-600 w-20 text-lg'>Services</p>
+            <ul className='mt-2 text-gray-600'>
               <li className='py-1 hover:border-l-2 border-black text-left p-1'><button>Free Delivery</button></li>
               <li className='py-1 hover:border-l-2 border-black text-left p-1'><button>Book Your Favourites</button></li>
               <li className='py-1 hover:border-l-2 border-black text-left p-1'><button>Easy Cart</button></li>

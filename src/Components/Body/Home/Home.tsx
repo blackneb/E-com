@@ -62,7 +62,7 @@ const Home = () => {
         <div className='grid grid-cols-1 md:grid-cols-2 justify-around p-4 mt-4'>
           <div>
             <h2 className='border-b-2 border-gray-400 mx-32 md:mx-80'>Trending</h2>
-            <div className='overflow-x-scroll mx-20 my-8 h-48 md:h-72'>
+            <div className='overflow-x-scroll mx-20 my-8 h-64 md:h-72'>
               <div className='flex flex-row  p-4'>
                 <Carditems/>
                 <Carditems/>
@@ -76,7 +76,7 @@ const Home = () => {
           </div>
           <div>
           <h2 className='border-b-2 border-gray-400 mx-32 md:mx-80'>New Arrivals</h2>
-          <div className='overflow-x-scroll mx-20 my-8 h-48 md:h-72'>
+          <div className='overflow-x-scroll mx-20 my-8 h-64 md:h-72'>
             <div className='flex flex-row  p-4 '>
                   <Carditems/>
                   <Carditems/>
@@ -88,7 +88,7 @@ const Home = () => {
           </div>
           <div>
             <h2 className='border-b-2 border-gray-400 mx-32 md:mx-80'>Discounts</h2>
-            <div className='overflow-x-scroll mx-20 my-8 h-48 md:h-72'>
+            <div className='overflow-x-scroll mx-20 my-8 h-64 md:h-72'>
               <div className='flex flex-row  p-4 '>
                 <Carditems/>
                 <Carditems/>
@@ -100,7 +100,7 @@ const Home = () => {
           </div>
           <div>
             <h2 className='border-b-2 border-gray-400 mx-28 md:mx-72'>Popular Brands</h2>
-            <div className='overflow-x-scroll mx-20 my-8 h-48 md:h-72'>
+            <div className='overflow-x-scroll mx-20 my-8 h-64 md:h-48 md:h-72'>
               <div className='flex flex-row  p-4 '>
                 <Carditems/>
                 <Carditems/>
