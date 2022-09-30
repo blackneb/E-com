@@ -136,7 +136,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div className='shadow border-b-2 border-gray-400 mx-4 md:mx-32 mt-8'>
+        <div className='shadow border-b-2 border-gray-400 mx-4 md:mx-16 mt-8'>
           <h1>Contact Our Admins</h1>
         </div>
     </div>
