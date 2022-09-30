@@ -44,7 +44,7 @@ const Navbar = () => {
                 {
                     links.map((link) => (
                         <Link to={link.link}>
-                            <li key={link.name} className='md:ml-8 text-sm md:my-0 my-1' >
+                            <li key={link.name} className='md:ml-8 text-sm md:my-0 my-1' onClick={() => setOpen(false)} >
                                 <div className='flex justify-center'>
                                     {link.icon}
                                     <p className='p-2'>{link.name}</p>

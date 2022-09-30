@@ -25,7 +25,7 @@ const Home = () => {
               </ul>
             </div>
           </div>
-          <div className='flex justify-around flex-wrap overflow-y-scroll h-[32rem] pr-8'>
+          <div className='flex justify-around flex-wrap overflow-y-scroll h-[28rem] pr-8'>
             <Carditems/>
             <Carditems/>
             <Carditems/>
