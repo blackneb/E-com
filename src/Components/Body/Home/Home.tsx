@@ -2,6 +2,7 @@ import React,{useState} from 'react';
 import Carditems from '../../Cards/Carditems';
 import Menu from '../../../Icons/menu.png';
 import close from '../../../Icons/close.png';
+import Contact from '../Contact/Contact';
 
 const Home = () => {
   const [open, setOpen]= useState(false);
@@ -34,8 +35,6 @@ const Home = () => {
           </div>
           </div>
           <div className='flex justify-around flex-wrap overflow-y-scroll h-[28rem] pr-8'>
-            <Carditems/>
-            <Carditems/>
             <Carditems/>
             <Carditems/>
             <Carditems/>
@@ -118,19 +117,19 @@ const Home = () => {
           <div>
             <h2 className='m-8'>Create Account and Join our Hood</h2>
             <div className='flex justify-around'>
-              <button className='m-2 border-2 border-gray-400 shadow w-72 h-32 rounded-lg bg-gray-500 hover:bg-gradient-to-r from-cyan-500 to-blue-500'>
+              <button className='m-2 border-2 border-gray-400 shadow w-72 h-32 rounded-lg bg-slate-100 hover:bg-gradient-to-r from-cyan-500 to-blue-500'>
                 <div className='flex justify-center items-center'>
-                  <h1 className='text-white'>Sign Up</h1>
+                  <h1 className='text-gray-800'>Sign Up</h1>
                 </div>
               </button>
-              <button className='m-2 border-2 border-gray-400 shadow w-72 h-32 rounded-lg bg-gray-500 hover:bg-gradient-to-r from-cyan-500 to-blue-500'>
+              <button className='m-2 border-2 border-gray-400 shadow w-72 h-32 rounded-lg bg-slate-100 hover:bg-gradient-to-r from-cyan-500 to-blue-500'>
                 <div className='flex justify-center items-center'>
-                  <h1 className='text-white'>Sign in</h1>
+                  <h1 className='text-gray-800'>Sign in</h1>
                 </div>
               </button>
-              <button className='m-2 border-2 border-gray-400 shadow w-72 h-32 rounded-lg bg-gray-500 hover:bg-gradient-to-r from-cyan-500 to-blue-500'>
+              <button className='m-2 border-2 border-gray-400 shadow w-72 h-32 rounded-lg bg-slate-100 hover:bg-gradient-to-r from-cyan-500 to-blue-500'>
                 <div className='flex justify-center items-center'>
-                  <h1 className='text-white'>Contact Admins</h1>
+                  <h1 className='text-gray-800'>Contact Admins</h1>
                 </div>
               </button>
             </div>
@@ -139,6 +138,7 @@ const Home = () => {
         <div className='shadow border-b-2 border-gray-400 mx-4 md:mx-16 mt-8'>
           <h1>Contact Our Admins</h1>
         </div>
+        <Contact/>
     </div>
   )
 }
