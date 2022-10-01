@@ -2,6 +2,8 @@ import React,{useState} from 'react'
 import Menu from '../../../Icons/menu.png';
 import close from '../../../Icons/close.png';
 import Carditems from '../../Cards/Carditems';
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
 
 const Accessories = () => {
   const [open, setOpen]= useState(false);
@@ -49,6 +51,11 @@ const Accessories = () => {
             <Carditems/>
             <Carditems/>
           </div>
+        </div>
+        <div className='flex justify-center my-8'>
+          <Stack spacing={2}>
+            <Pagination count={10} variant="outlined" shape="rounded" />
+          </Stack>
         </div>
     </div>
   )
