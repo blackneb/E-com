@@ -35,7 +35,7 @@ const Contact = () => {
               <textarea className='border-2 rounded-lg h-28 md:w-72'/>
             </div>
           </div>
-          <button className='border-2 border-black rounded-md bg-white text-black px-2 py-4 hover:bg-black hover:text-white m-4 md:m-0'>Send Message</button>
+          <button className='border-2 shadow border-gray-200 rounded-md bg-white text-black px-2 py-4 hover:bg-gray-200 hover:text-black m-4 md:m-0'>Send Message</button>
         </div>
         <div className='w-96 flex justify-center items-center'>
           <img className='' src={logo} alt='' />
