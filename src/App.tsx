@@ -28,7 +28,7 @@ function App() {
         <Route path='/ps' element={<Ps/>}/>
         <Route path='/contact' element={<Contact/>}/>
         <Route path='/about' element={<About/>}/>
-        <Route path='/detailed' element={<Detailed/>}/>
+        <Route path='/detailed/:ID' element={<Detailed/>}/>
       </Routes>
       <Footer/>
       </BrowserRouter>

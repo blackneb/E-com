@@ -58,7 +58,7 @@ const Laptops = () => {
           </div>
           <div className='flex justify-around flex-wrap pr-8 mt-2'>
             {
-              post.map(({afor, description, gfor, id, name, photos, price, types}:propsitem) => (
+              [...post].slice((page-1)*6,6*page).map(({afor, description, gfor, id, name, photos, price, types}:propsitem) => (
                 <Carditems key={id} afor={afor} description={description} gfor={gfor} id={id} name={name} photos={photos} price={price} types={types}/>
                 ))
             }
