@@ -6,6 +6,12 @@ import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 const Phone = () => {
   const [open, setOpen]= useState(false);
+  const [page, SetPage] = useState(1);
+
+  const handleChange = (e:any, p:any) => {
+    console.log(p);
+    SetPage(p);
+  }
   return (
     <div>
           <div className='flex flex-row'>
@@ -48,7 +54,7 @@ const Phone = () => {
         </div>
         <div className='flex justify-center my-8'>
           <Stack spacing={2}>
-            <Pagination count={10} variant="outlined" shape="rounded" />
+            <Pagination count={10} variant="outlined" shape="rounded" onChange={handleChange} />
           </Stack>
         </div>
     </div>
