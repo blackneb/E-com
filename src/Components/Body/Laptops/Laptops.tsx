@@ -1,14 +1,35 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import Menu from '../../../Icons/menu.png';
 import close from '../../../Icons/close.png';
 import Carditems from '../../Cards/Carditems';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
+import axios from 'axios';
+import { Card } from '@mui/material';
+
+interface propsitem {
+  afor: string
+  description: string
+  gfor: string
+  id: string
+  name: string
+  photos: string
+  price: string
+  types: string
+}
 
 const Laptops = () => {
   const [open, setOpen] = useState(false);
   const [page, SetPage] = useState(1);
+  const [post,setpost] = useState<any[]>([]);
 
+  useEffect(()=>{
+    axios.get("http://blackneb.com/piyankiya/api/post/read.php").then((response) => {
+      setpost(response.data.data);
+      console.log(response.data.data);
+    });
+  },[]);
+  if(!post) return null;
   const handleChange = (e:any, p:any) => {
     console.log(p);
     SetPage(p);
@@ -36,24 +57,11 @@ const Laptops = () => {
             </div>
           </div>
           <div className='flex justify-around flex-wrap pr-8 mt-2'>
-            <Carditems/>
-            <Carditems/>
-            <Carditems/>
-            <Carditems/>
-            <Carditems/>
-            <Carditems/>
-            <Carditems/>
-            <Carditems/>
-            <Carditems/>
-            <Carditems/>
-            <Carditems/>
-            <Carditems/>
-            <Carditems/>
-            <Carditems/>
-            <Carditems/>
-            <Carditems/>
-            <Carditems/>
-            <Carditems/>
+            {
+              post.map(({afor, description, gfor, id, name, photos, price, types}:propsitem) => (
+                <Carditems key={id} afor={afor} description={description} gfor={gfor} id={id} name={name} photos={photos} price={price} types={types}/>
+                ))
+            }
           </div>
         </div>
         <div className='flex justify-center my-8'>

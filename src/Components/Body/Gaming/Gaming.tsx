@@ -38,24 +38,7 @@ const Gaming = () => {
             </div>
           </div>
           <div className='flex justify-around flex-wrap pr-8 mt-2'>
-            <Carditems/>
-            <Carditems/>
-            <Carditems/>
-            <Carditems/>
-            <Carditems/>
-            <Carditems/>
-            <Carditems/>
-            <Carditems/>
-            <Carditems/>
-            <Carditems/>
-            <Carditems/>
-            <Carditems/>
-            <Carditems/>
-            <Carditems/>
-            <Carditems/>
-            <Carditems/>
-            <Carditems/>
-            <Carditems/>
+            
           </div>
         </div>
         <div className='flex justify-center my-8'>
