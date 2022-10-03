@@ -15,6 +15,9 @@ import display from '../../../Icons/display.png'
 import graphics from '../../../Icons/graphics.png'
 import price from '../../../Icons/price.png'
 import storage from '../../../Icons/storage.png'
+import description from '../../../Icons/info.png'
+import battery from '../../../Icons/battery.png'
+
 
 
 
@@ -49,7 +52,7 @@ const Detailed = () => {
       <div className='shadow border-b-2 border-gray-400 mx-4 md:mx-16 mt-8'>
           <h1 className='text-2xl'>{post.name}</h1>
         </div>
-        <div className='flex flex-row'>
+        <div className='ml-8'>
           <div className='flex flex-row mt-4'>
             <div className='hover:border-b-2 mx-4' onClick={()=> setimageshown(ione)}>
               <img className='h-20 rounded-md p-2' src={ione} alt=''/>
@@ -76,7 +79,7 @@ const Detailed = () => {
           <img className='h-96 rounded-md' src={imageshown} alt=''/>
         </div>
         <div className='ml-8'>
-          <h1>Laptop Specs</h1>
+          <p className='font-bold font-2xl'>Laptop Specs</p>
           <div className='text-left'>
             <div className='flex flex-row my-2'>
               <img className='h-8' src={ram} alt=''/>
@@ -99,8 +102,19 @@ const Detailed = () => {
               <p className='ml-2'>Graphics card: </p>
             </div>
             <div className='flex flex-row my-2'>
+              <img className='h-8' src={battery} alt=''/>
+              <p className='ml-2'>Battery: </p>
+            </div>
+            <div className='flex flex-row my-2'>
               <img className='h-8' src={price} alt=''/>
               <p className='ml-2'>Price: </p>
+            </div>
+            <div className='flex flex-row my-2'>
+              <img className='h-8' src={description} alt=''/>
+              <p className='ml-2'>Description: </p>
+            </div>
+            <div className='flex justify-center'>
+              <button className='border-2 border-black rounded-2xl bg-white text-black px-2 hover:bg-black hover:text-white m-4 md:m-0'>Cart Item</button>
             </div>            
           </div>
         </div>
