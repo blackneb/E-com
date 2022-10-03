@@ -1,11 +1,32 @@
-import React,{useState} from 'react';
+import React,{useState, useEffect} from 'react';
 import Carditems from '../../Cards/Carditems';
 import Menu from '../../../Icons/menu.png';
 import close from '../../../Icons/close.png';
 import Contact from '../Contact/Contact';
+import axios from 'axios';
+
+interface propsitem {
+  afor: string
+  description: string
+  gfor: string
+  id: string
+  name: string
+  photos: string
+  price: string
+  types: string
+}
 
 const Home = () => {
   const [open, setOpen]= useState(false);
+  const [post,setpost] = useState<any[]>([]);
+
+  useEffect(()=>{
+    axios.get("http://blackneb.com/piyankiya/api/post/read.php").then((response) => {
+      setpost(response.data.data);
+      console.log(response.data.data);
+    });
+  },[]);
+  if(!post) return null;
   return (
     <div className=''>
         <div className='shadow border-b-2 border-gray-400 mx-4 md:mx-16 mt-8'>
@@ -41,7 +62,11 @@ const Home = () => {
           </div>
           </div>
           <div className='flex justify-around flex-wrap overflow-y-scroll h-[28rem] pr-8 mt-2'>
-            
+            {
+              [...post].map(({afor, description, gfor, id, name, photos, price, types}:propsitem) => (
+                <Carditems key={id} afor={afor} description={description} gfor={gfor} id={id} name={name} photos={photos} price={price} types={types}/>
+                ))
+            }
           </div>
         </div>
         <div className='shadow border-b-2 border-gray-400 mx-4 md:mx-16 mt-8'>
@@ -52,7 +77,11 @@ const Home = () => {
             <h2 className='border-b-2 border-gray-400 mx-32 md:mx-80'>Trending</h2>
             <div className='overflow-x-scroll mx-8 md:mx-16 my-8 h-64 md:h-72'>
               <div className='flex flex-row'>
-                
+                {
+                  [...post].map(({afor, description, gfor, id, name, photos, price, types}:propsitem) => (
+                    <Carditems key={id} afor={afor} description={description} gfor={gfor} id={id} name={name} photos={photos} price={price} types={types}/>
+                    ))
+                }
               </div>
             </div>
           </div>
@@ -60,7 +89,11 @@ const Home = () => {
             <h2 className='border-b-2 border-gray-400 mx-32 md:mx-80'>New Arrivals</h2>
             <div className='overflow-x-scroll mx-8 md:mx-16 my-8 h-64 md:h-72'>
               <div className='flex flex-row'>
-                
+                {
+                  [...post].map(({afor, description, gfor, id, name, photos, price, types}:propsitem) => (
+                    <Carditems key={id} afor={afor} description={description} gfor={gfor} id={id} name={name} photos={photos} price={price} types={types}/>
+                    ))
+                }
               </div>
             </div>
           </div>
@@ -68,7 +101,11 @@ const Home = () => {
             <h2 className='border-b-2 border-gray-400 mx-32 md:mx-80'>Discounts</h2>
             <div className='overflow-x-scroll mx-8 md:mx-16 my-8 h-64 md:h-72'>
               <div className='flex flex-row'>
-                
+                {
+                  [...post].map(({afor, description, gfor, id, name, photos, price, types}:propsitem) => (
+                    <Carditems key={id} afor={afor} description={description} gfor={gfor} id={id} name={name} photos={photos} price={price} types={types}/>
+                    ))
+                }
               </div>
             </div>
           </div>
@@ -76,7 +113,11 @@ const Home = () => {
             <h2 className='border-b-2 border-gray-400 mx-32 md:mx-80'>Popular Brands</h2>
             <div className='overflow-x-scroll mx-8 md:mx-16 my-8 h-64 md:h-72'>
               <div className='flex flex-row'>
-                
+                {
+                  [...post].map(({afor, description, gfor, id, name, photos, price, types}:propsitem) => (
+                    <Carditems key={id} afor={afor} description={description} gfor={gfor} id={id} name={name} photos={photos} price={price} types={types}/>
+                    ))
+                } 
               </div>
             </div>
           </div>
