@@ -9,6 +9,14 @@ import ifour from '../../../Images/imagefour.webp'
 import ifive from '../../../Images/imagefive.webp'
 import isix from '../../../Images/imagesix.webp'
 
+import ram from '../../../Icons/ram.png'
+import cpu from '../../../Icons/cpu.png'
+import display from '../../../Icons/display.png'
+import graphics from '../../../Icons/graphics.png'
+import price from '../../../Icons/price.png'
+import storage from '../../../Icons/storage.png'
+
+
 
 interface propsitem {
   afor: string
@@ -69,6 +77,32 @@ const Detailed = () => {
         </div>
         <div className='ml-8'>
           <h1>Laptop Specs</h1>
+          <div className='text-left'>
+            <div className='flex flex-row my-2'>
+              <img className='h-8' src={ram} alt=''/>
+              <p className='ml-2'>RAM: </p>
+            </div>
+            <div className='flex flex-row my-2'>
+              <img className='h-8' src={display} alt=''/>
+              <p className='ml-2'>Display: </p>
+            </div>
+            <div className='flex flex-row my-2'>
+              <img className='h-8' src={storage} alt=''/>
+              <p className='ml-2'>Storage: </p>
+            </div>
+            <div className='flex flex-row my-2'>
+              <img className='h-8' src={cpu} alt=''/>
+              <p className='ml-2'>CPU: </p>
+            </div>
+            <div className='flex flex-row my-2'>
+              <img className='h-8' src={graphics} alt=''/>
+              <p className='ml-2'>Graphics card: </p>
+            </div>
+            <div className='flex flex-row my-2'>
+              <img className='h-8' src={price} alt=''/>
+              <p className='ml-2'>Price: </p>
+            </div>            
+          </div>
         </div>
       </div>
     </div>
