@@ -1,18 +1,69 @@
 export interface Ilaptop{
+    ID:string;
+    brand:string;
+    name:string;
+    ram:string;
+    display:string;
+    storage:string;
+    cpu:string;
+    graphicscard:string;
+    battery:string;
+    screensize:string;
+    price:string;
+    description:string;
+    types:string;
+    isdeleted:string;
 
 }
 export interface Iphone{
-
+    ID:string;
+    brand:string;
+    ram:string;
+    storage:string;
+    operatingsystem:string;
+    connectivity:string;
+    color:string;
+    screensize:string;
+    wirlessnetwork:string;
+    price:string;
+    description:string;
+    types:string;
+    isdeleted:string;
 }
 export interface Itv{
-
+    ID:string;
+    brand:string;
+    screensize:string;
+    displaytechnology:string;
+    resolution:string;
+    refreshrate:string;
+    modelname:string;
+    connectivity:string;
+    price:string;
+    description:string;
+    types:string;
+    isdeleted:string;
 }
 export interface Iaccessories{
-
+    ID:string;
+    brand:string;
+    name:string;
+    price:string;
+    description:string;
+    types:string;
+    isdeleted:string;
 }
 export interface Ibook{
-
+    BID:string;
+    UID:string;
+    ID:string;
+    quantity:string;
 }
 export interface Iimages{
 
+}
+
+export interface ILaptopActionModel{
+    type:string;
+    payload:Ilaptop | any;
 }
