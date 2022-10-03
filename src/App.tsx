@@ -13,6 +13,8 @@ import Tv from './Components/Body/TV/Tv';
 import Phone from './Components/Body/Phone/Phone';
 import Detailed from './Components/Body/Detailed/Detailed';
 import About from './Components/Body/About/About';
+import Signin from './Components/Body/Account/Signin';
+import Signup from './Components/Body/Account/Signup';
 function App() {
   return (
     <div className="App">
@@ -29,6 +31,8 @@ function App() {
         <Route path='/contact' element={<Contact/>}/>
         <Route path='/about' element={<About/>}/>
         <Route path='/detailed/:ID' element={<Detailed/>}/>
+        <Route path="/signin" element={<Signin/>}/>
+        <Route path="/signup" element={<Signup/>}/>
       </Routes>
       <Footer/>
       </BrowserRouter>

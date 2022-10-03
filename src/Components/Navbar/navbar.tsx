@@ -52,6 +52,14 @@ const Navbar = () => {
                         </Link>
                     ))
                 }
+                <Link to="/signin">
+                    <li className='md:ml-8 text-sm md:my-0 my-1'>
+                        <div className='flex justify-center bg-purple-600 rounded-md px-2'>
+                            <img className='h-4 mt-2.5' src={Cart} alt=''/>
+                            <p className='p-2'>Login</p>
+                        </div>
+                    </li>
+                </Link>
                 <li className='md:ml-8 text-sm md:my-0 my-1'>
                     <div className='flex justify-center'>
                         <img className='h-4 mt-2.5' src={Cart} alt=''/>
