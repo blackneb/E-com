@@ -53,7 +53,7 @@ const Detailed = () => {
           <h1 className='text-2xl'>{post.name}</h1>
         </div>
         <div className='ml-8'>
-          <div className='flex flex-row mt-4'>
+          <div className='flex flex-row flex-wrap mt-4'>
             <div className='hover:border-b-2 mx-4' onClick={()=> setimageshown(ione)}>
               <img className='h-20 rounded-md p-2' src={ione} alt=''/>
             </div>
@@ -74,7 +74,7 @@ const Detailed = () => {
             </div>
           </div>
         </div>
-      <div className='flex justify-center pt-8'>
+      <div className='flex flex-wrap justify-center pt-8'>
         <div className='shadow rounded-md'>
           <img className='h-96 rounded-md' src={imageshown} alt=''/>
         </div>
