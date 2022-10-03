@@ -67,3 +67,20 @@ export interface ILaptopActionModel{
     type:string;
     payload:Ilaptop | any;
 }
+export interface IPhoneActionModel{
+    type:string;
+    payload:Iphone | any;
+}
+export interface ITvActionModel{
+    type:string;
+    payload:Itv | any;
+}
+export interface IAccessoriesActionModel{
+    type:string;
+    payload:Iaccessories | any;
+}
+export interface IBookActionModel{
+    type:string;
+    payload:Ibook | any;
+}
+
