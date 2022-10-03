@@ -27,7 +27,6 @@ const Navbar = () => {
         {name:"PS",link:"/ps",icon:<img className='h-4 mt-2.5' src={Ps}/>},
         {name:"Contact",link:"/contact",icon:<img className='h-4 mt-2.5' src={Contact}/>},
         {name:"About",link:"/about",icon:<img className='h-4 mt-2.5' src={About}/>},
-        {name:"Cart", link:"", icon:<img className='h-4 mt-2.5' src={Cart} alt=''/>}
     ];
     const [open, setOpen] = useState(false);
   return (
@@ -53,6 +52,12 @@ const Navbar = () => {
                         </Link>
                     ))
                 }
+                <li className='md:ml-8 text-sm md:my-0 my-1'>
+                    <div className='flex justify-center'>
+                        <img className='h-4 mt-2.5' src={Cart} alt=''/>
+                        <p className='p-2'>Cart</p>
+                    </div>
+                </li>
             </ul>
         </div>
     </nav>
