@@ -28,7 +28,7 @@ const Navbar = () => {
         {name:"PS",link:"/ps",icon:<img className='h-4 mt-2.5' src={Ps}/>},
         {name:"Contact",link:"/contact",icon:<img className='h-4 mt-2.5' src={Contact}/>},
         {name:"About",link:"/about",icon:<img className='h-4 mt-2.5' src={About}/>},
-        {name:"Management", link:"/management",icon:<img className='h-4 mt-2.5' src={Upload} alt=''/>}
+        {name:"Management", link:"/management/uploadlaptop",icon:<img className='h-4 mt-2.5' src={Upload} alt=''/>}
     ];
     const [open, setOpen] = useState(false);
   return (

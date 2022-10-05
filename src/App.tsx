@@ -34,7 +34,7 @@ function App() {
         <Route path='/detailed/:ID' element={<Detailed/>}/>
         <Route path="/signin" element={<Signin/>}/>
         <Route path="/signup" element={<Signup/>}/>
-        <Route path="management" element={<Management/>}/>
+        <Route path="management/:ID" element={<Management/>}/>
       </Routes>
       <Footer/>
       </BrowserRouter>
