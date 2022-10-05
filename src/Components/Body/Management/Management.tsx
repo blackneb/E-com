@@ -1,12 +1,15 @@
 import React,{useState} from 'react'
-
+import UploadLaptop from '../Upload pages/UploadLaptop'
+import UploadPhone from '../Upload pages/UploadPhone'
+import UploadTv from '../Upload pages/UploadTv'
+import UploadAccessories from '../Upload pages/UploadAccessories'
 const Management = () => {
-    const [currentcomponent, setcurrentcomponent] = useState<string>()
-    const components:{name:string,component:string}[] = [
-        {name:"Laptops",component:""},
-        {name:"Phones",component:""},
-        {name:"Tv",component:""},
-        {name:"Accessories",component:""},
+    const [currentcomponent, setcurrentcomponent] = useState<any>(<UploadLaptop/>)
+    const components:{name:string,component:any}[] = [
+        {name:"Laptops",component:<UploadLaptop/>},
+        {name:"Phones",component:<UploadPhone/>},
+        {name:"Tv",component:<UploadTv/>},
+        {name:"Accessories",component:<UploadAccessories/>},
     ]
   return (
     <div>
@@ -20,6 +23,9 @@ const Management = () => {
                     ))
                 }
             </ul>
+        </div>
+        <div>
+            {currentcomponent}
         </div>
     </div>
   )
