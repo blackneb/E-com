@@ -15,6 +15,7 @@ import Detailed from './Components/Body/Detailed/Detailed';
 import About from './Components/Body/About/About';
 import Signin from './Components/Body/Account/Signin';
 import Signup from './Components/Body/Account/Signup';
+import Management from './Components/Body/Management/Management';
 function App() {
   return (
     <div className="App">
@@ -33,6 +34,7 @@ function App() {
         <Route path='/detailed/:ID' element={<Detailed/>}/>
         <Route path="/signin" element={<Signin/>}/>
         <Route path="/signup" element={<Signup/>}/>
+        <Route path="management" element={<Management/>}/>
       </Routes>
       <Footer/>
       </BrowserRouter>
