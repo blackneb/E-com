@@ -55,7 +55,7 @@ const Management = () => {
             <ul className='flex flex-row justify-between'>
                 {
                     components.map((items) => (
-                        <li className='hover:border-b-4'>
+                        <li className={`${currentname === items.name? "border-b-2 border-gray-700 rounded-sm" : "border-0"} hover:border-b-2`}>
                             <p onClick={()=>setcurrentname(items.name)}>{items.name}</p>
                         </li>
                     ))

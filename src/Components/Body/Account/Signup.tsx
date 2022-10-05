@@ -20,8 +20,8 @@ const Signup = () => {
   return (
     <form onSubmit={onSubmit}>
         <div className='flex justify-center items-center'>
-            <div className='flex justify-center items-center flex-col border-2 rounded-xl w-96 mt-8 text-gray-700'>
-                <h1 className='border-b-2 mx-40'>Log in</h1>
+            <div className='flex shadow justify-center items-center flex-col border-0 rounded-xl w-96 mt-8 text-gray-700'>
+                <h1 className='border-b-2 mx-40 mt-4'>Sign Up</h1>
                 <div className='mt-4'>
                     <h3 className='text-left'>First Name</h3>
                     <input className='px-2 mt-2 border-b-2' type="text" {...register('firstname', {required: true})}/>
