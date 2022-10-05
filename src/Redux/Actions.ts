@@ -1,5 +1,5 @@
-import { Ilaptop, Iphone,Itv, Iaccessories, Ibook } from "../Models/Models";
-import { ADD_LAPTOP, ADD_PHONE, ADD_TV, ADD_ACCESSORIES, ADD_BOOK } from "./ActionTypes";
+import { Ilaptop, Iphone,Itv, Iaccessories, Ibook, Iuserautorization } from "../Models/Models";
+import { ADD_LAPTOP, ADD_PHONE, ADD_TV, ADD_ACCESSORIES, ADD_BOOK, ADD_USER_AUTORIZATION } from "./ActionTypes";
 
 export const addLaptop = (laptop: Ilaptop) => {
     return{
@@ -33,5 +33,11 @@ export const addbooks = (books:Ibook) => {
     return{
         type:ADD_BOOK,
         payload:books,
+    };
+};
+export const adduserautorization = (userautorization:Iuserautorization) => {
+    return{
+        type:ADD_USER_AUTORIZATION,
+        payload:userautorization,
     };
 };

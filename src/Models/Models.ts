@@ -59,6 +59,11 @@ export interface Ibook{
     ID:string;
     quantity:string;
 }
+export interface Iuserautorization{
+    usertype:string;
+    management:boolean;
+    cartoptions:boolean;
+}
 export interface Iimages{
 
 }
@@ -82,5 +87,9 @@ export interface IAccessoriesActionModel{
 export interface IBookActionModel{
     type:string;
     payload:Ibook | any;
+}
+export interface IUserAutorizationACtionModel{
+    type:string;
+    payload:Iuserautorization | any;
 }
 

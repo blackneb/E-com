@@ -6,6 +6,7 @@ import { tvReducers } from './Reducer';
 import { accessoriesReducers } from './Reducer';
 import { bookReducers } from './Reducer';
 import { phoneReducers } from './Reducer';
+import { userReducer } from './Reducer';
 const reducers = combineReducers(
     {
         laptop:laptopReducers, 
@@ -13,6 +14,7 @@ const reducers = combineReducers(
         tv:tvReducers,
         accessories:accessoriesReducers,
         books:bookReducers,
+        user:userReducer,
     });
 export const store = createStore(reducers,composeWithDevTools());
 
