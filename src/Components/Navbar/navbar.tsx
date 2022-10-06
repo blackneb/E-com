@@ -13,9 +13,13 @@ import Contact from '../../Icons/contact.png';
 import About from '../../Icons/about.png';
 import Cart from '../../Icons/cart.png';
 import Upload from '../../Icons/upload.png';
+import { useDispatch,useSelector } from 'react-redux';
 
 
 const Navbar = () => {
+    const dispatch = useDispatch();
+    const userinfo = useSelector((state:any) => state.user);
+    console.log(userinfo.usertype);
     let links:{name: string, link:any, icon:any}[] = [
         {name:"Home",link:"/",icon:<img className='h-4 mt-2.5' src={Home} alt=''/>},
         {name:"Laptops",link:"/laptops",icon:<img className='h-4 mt-2.5' src={Laptop} alt=''/>},
@@ -43,7 +47,7 @@ const Navbar = () => {
                 {
                     links.map((link) => (
                         <Link to={link.link}>
-                            <li key={link.name} className='md:ml-8 text-sm md:my-0 my-1' onClick={() => setOpen(false)} >
+                            <li key={link.name} className={`md:ml-8 text-sm md:my-0 my-1 ${(userinfo.usertype === "user" && link.name === "Management")? "hidden" : "block"}`} onClick={() => setOpen(false)} >
                                 <div className='flex justify-center'>
                                     {link.icon}
                                     <p className='p-2'>{link.name}</p>
@@ -52,20 +56,20 @@ const Navbar = () => {
                         </Link>
                     ))
                 }
+                <li className={`md:ml-8 text-sm md:my-0 my-1 ${(userinfo.usertype === "admin")? "hidden" : "block"}`}>
+                    <div className='flex justify-center'>
+                        <img className='h-4 mt-2.5' src={Cart} alt=''/>
+                        <p className='p-2'>Cart</p>
+                    </div>
+                </li>
                 <Link to="/signin">
-                    <li className='md:ml-8 text-sm md:my-0 my-1'>
+                    <li className={`md:ml-8 text-sm md:my-0 my-1 ${userinfo.userlogged? "hidden" : "block"}`}>
                         <div className='flex justify-center bg-purple-600 rounded-md px-2'>
                             <img className='h-4 mt-2.5' src={Cart} alt=''/>
                             <p className='p-2'>Login</p>
                         </div>
                     </li>
                 </Link>
-                <li className='md:ml-8 text-sm md:my-0 my-1'>
-                    <div className='flex justify-center'>
-                        <img className='h-4 mt-2.5' src={Cart} alt=''/>
-                        <p className='p-2'>Cart</p>
-                    </div>
-                </li>
             </ul>
         </div>
     </nav>

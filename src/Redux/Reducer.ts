@@ -71,12 +71,7 @@ export const userReducer = (state=initialStateuser, action:IUserAutorizationACti
     const {type,payload} = action;
     switch(type){
         case ADD_USER_AUTORIZATION:
-            return [
-                state.cartoptions=action.payload.cartoptions,
-                state.management=action.payload.management,
-                state.usertype=action.payload.usertype,
-                state.userlogged=action.payload.userlogged,
-            ];
+            return payload;
         default:
             return state;
     }
