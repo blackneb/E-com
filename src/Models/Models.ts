@@ -60,6 +60,7 @@ export interface Ibook{
     quantity:string;
 }
 export interface Iuserautorization{
+    userlogged:boolean;
     usertype:string;
     management:boolean;
     cartoptions:boolean;

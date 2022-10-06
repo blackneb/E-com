@@ -11,6 +11,7 @@ const initialStatess:Itv[]=[];
 const initialStatesss:Iaccessories[]=[];
 const initialStatebook:Ibook[]=[];
 const initialStateuser:Iuserautorization={
+    userlogged:false,
     usertype: "notlogged",
     management: false,
     cartoptions: false,
@@ -74,6 +75,7 @@ export const userReducer = (state=initialStateuser, action:IUserAutorizationACti
                 state.cartoptions=action.payload.cartoptions,
                 state.management=action.payload.management,
                 state.usertype=action.payload.usertype,
+                state.userlogged=action.payload.userlogged,
             ];
         default:
             return state;
