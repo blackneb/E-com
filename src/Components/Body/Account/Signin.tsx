@@ -1,8 +1,11 @@
 import React,{useState} from 'react'
 import { Link } from 'react-router-dom'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, } from 'react-router-dom';
 import axios from 'axios';
 import { useForm } from 'react-hook-form'
+import { useDispatch,useSelector } from 'react-redux';
+import { Iuserautorization } from '../../../Models/Models'
+import { adduserautorization } from '../../../Redux/Actions'
 interface loginprofile {
     username:string;
     password:string;
@@ -10,6 +13,7 @@ interface loginprofile {
 
 const Signin = () => {
     const {register, handleSubmit} = useForm<loginprofile>();
+    const dispatch = useDispatch();
     const [post,setpost] = useState<any[]>([]);
     const navigate = useNavigate()
     const url="http://localhost/blacknebecom/api/post/read_user.php";
@@ -18,6 +22,13 @@ const Signin = () => {
             setpost(response.data);
             console.log(response.data);
             if(response.data.message === "success"){
+                const statemessage:Iuserautorization = {
+                    userlogged:true,
+                    usertype:response.data.usertype,
+                    management:false,
+                    cartoptions:false,
+                }
+                dispatch(adduserautorization(statemessage));
                 navigate("/");
             }
          });

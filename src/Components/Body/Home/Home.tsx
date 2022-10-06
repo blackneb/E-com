@@ -1,11 +1,12 @@
 import React,{useState, useEffect} from 'react';
 import Carditems from '../../Cards/Carditems';
-import { useDispatch } from 'react-redux';
+import { useDispatch,useSelector } from 'react-redux';
 import Menu from '../../../Icons/menu.png';
 import close from '../../../Icons/close.png';
 import Contact from '../Contact/Contact';
 import axios from 'axios';
 import {Iuserautorization} from '../../../Models/Models'
+import { IRootStateUser } from '../../../Redux/Store'
 
 interface propsitem {
   afor: string
@@ -21,11 +22,11 @@ const Home = () => {
   const [open, setOpen]= useState(false);
   const [post,setpost] = useState<any[]>([]);
   const dispatch = useDispatch();
+  const userinfo = useSelector((state:any) => state.user);
 
   useEffect(()=>{
     axios.get("http://blackneb.com/piyankiya/api/post/read.php").then((response) => {
       setpost(response.data.data);
-      console.log(response.data.data);
     });
   },[]);
   if(!post) return null;

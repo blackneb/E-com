@@ -15,7 +15,6 @@ interface propsitem {
 
 const Carditems = (props: propsitem) => {
   const {afor, description, gfor, id, name, photos, price, types} = props;
-  console.log(name);
   return (
     <div className='h-52 hover:border-2 hover:border-gray-400 shadow md:h-48 md:shadow md:w-48 rounded-md m-2 p-2'>
       <Link  to={`/detailed/${props.id}`}>
