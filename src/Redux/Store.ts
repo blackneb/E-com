@@ -1,6 +1,6 @@
 import {combineReducers, createStore} from 'redux';
 import {composeWithDevTools} from '@redux-devtools/extension'
-import { Ilaptop } from '../Models/Models';
+import { Ilaptop, Iphone, Itv, Ibook, Iaccessories, Iuserautorization } from '../Models/Models';
 import laptopReducers from './Reducer';
 import { tvReducers } from './Reducer';
 import { accessoriesReducers } from './Reducer';
@@ -18,6 +18,21 @@ const reducers = combineReducers(
     });
 export const store = createStore(reducers,composeWithDevTools());
 
-export interface IRootState{
+export interface IRootStateLaptop{
     laptops:Ilaptop[];
+}
+export interface IRootStatePhone{
+    phone:Iphone[];
+}
+export interface IRootStateTv{
+    tv:Itv[];
+}
+export interface IRootStateAccessries{
+    accessories:Iaccessories[];
+}
+export interface IRootStateBooks{
+    books:Ibook[];
+}
+export interface IRootStateUser{
+    userautorization:Iuserautorization[];
 }
