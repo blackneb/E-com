@@ -1,9 +1,11 @@
 import React,{useState, useEffect} from 'react';
 import Carditems from '../../Cards/Carditems';
+import { useDispatch } from 'react-redux';
 import Menu from '../../../Icons/menu.png';
 import close from '../../../Icons/close.png';
 import Contact from '../Contact/Contact';
 import axios from 'axios';
+import {Iuserautorization} from '../../../Models/Models'
 
 interface propsitem {
   afor: string
@@ -15,10 +17,10 @@ interface propsitem {
   price: string
   types: string
 }
-
 const Home = () => {
   const [open, setOpen]= useState(false);
   const [post,setpost] = useState<any[]>([]);
+  const dispatch = useDispatch();
 
   useEffect(()=>{
     axios.get("http://blackneb.com/piyankiya/api/post/read.php").then((response) => {

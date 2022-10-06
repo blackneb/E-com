@@ -1,5 +1,7 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import { useForm } from 'react-hook-form'
 interface loginprofile {
     username:string;
@@ -8,8 +10,17 @@ interface loginprofile {
 
 const Signin = () => {
     const {register, handleSubmit} = useForm<loginprofile>();
-    const onSubmit = handleSubmit((data) => {
-        alert(JSON.stringify(data))
+    const [post,setpost] = useState<any[]>([]);
+    const navigate = useNavigate()
+    const url="http://localhost/blacknebecom/api/post/read_user.php";
+    const onSubmit = handleSubmit((data:loginprofile) => {
+        axios.post(url,{username:data.username, password:data.password}).then((response) => {
+            setpost(response.data);
+            console.log(response.data);
+            if(response.data.message === "success"){
+                navigate("/");
+            }
+         });
     })
   return (
     <form onSubmit={onSubmit}>
