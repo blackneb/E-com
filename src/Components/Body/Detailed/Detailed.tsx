@@ -52,7 +52,7 @@ const Detailed = () => {
       <div className='shadow border-b-2 border-gray-400 mx-4 md:mx-16 mt-8'>
           <h1 className='text-2xl'>{post.name}</h1>
         </div>
-        <div className='ml-8'>
+        <div className='ml-8 h-24'>
           <div className='flex flex-row flex-wrap mt-4'>
             <div className='hover:border-b-2 mx-4' onClick={()=> setimageshown(ione)}>
               <img className='h-20 rounded-md p-2' src={ione} alt=''/>
