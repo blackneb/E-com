@@ -2,12 +2,6 @@ import React,{useState, useEffect} from 'react'
 import iphone from '../../../Images/iphone.jpg'
 import { useLocation } from 'react-router-dom'
 import axios from 'axios'
-import ione from '../../../Images/imageone.webp'
-import itwo from '../../../Images/imagetwo.webp'
-import ithree from '../../../Images/imagethree.webp'
-import ifour from '../../../Images/imagefour.webp'
-import ifive from '../../../Images/imagefive.webp'
-import isix from '../../../Images/imagesix.webp'
 
 import ram from '../../../Icons/ram.png'
 import cpu from '../../../Icons/cpu.png'
@@ -17,33 +11,36 @@ import price from '../../../Icons/price.png'
 import storage from '../../../Icons/storage.png'
 import description from '../../../Icons/info.png'
 import battery from '../../../Icons/battery.png'
+import { Iaccessories } from '../../../Models/Models'
 
 
 
-
-interface propsitem {
-  afor: string
-  description: string
-  gfor: string
-  id: string
-  name: string
-  photos: string
-  price: string
-  types: string
+interface accessories {
+  id:string,
+  brand:string,
+  name:string,
+  catagory:string,
+  price:string,
+  description:string,
+  types:string,
+  isdeleted:string,
+  images:Array<string>
 }
 
 const Detailed = () => {
-  const [imageshown, setimageshown] = useState(ione);
+  const [imageshown, setimageshown] = useState<string>();
+  const [itemimages,setitemimages] = useState<string[]>([]);
   const location = useLocation();
   const loc = location.pathname;
   const path=loc.split("/")[2];
-  const [post,setpost] = useState<propsitem>();
+  const [post,setpost] = useState<any>();
+  const checker = path.split("");
+  const catagorygetter = (checker[0] + checker[1] + checker[2]);
   useEffect(() => {
-    axios.get("https://blackneb.com/piyankiya/api/post" + `/read_single.php?id=${path}`).then((response) => {
+    axios.get("http://localhost/blacknebecom/api/post" + `/read_single.php?id=${path}`).then((response) => {
       setpost(response.data);
       console.log(response.data);
-      if(response.data.message === "no posts found"){
-      }
+      setimageshown(response.data.images[0]);
     })
   }, []);
   if(!post) return null;
@@ -54,70 +51,207 @@ const Detailed = () => {
         </div>
         <div className='ml-8 h-24'>
           <div className='flex flex-row flex-wrap mt-4'>
-            <div className='hover:border-b-2 mx-4' onClick={()=> setimageshown(ione)}>
-              <img className='h-20 rounded-md p-2' src={ione} alt=''/>
-            </div>
-            <div className='hover:border-b-2 mx-4' onClick={()=> setimageshown(itwo)}>
-              <img className='h-20 rounded-md p-2' src={itwo} alt=''/>
-            </div>
-            <div className='hover:border-b-2 mx-4' onClick={()=> setimageshown(ithree)}>
-              <img className='h-20 rounded-md p-2' src={ithree} alt=''/>
-            </div>
-            <div className='hover:border-b-2 mx-4' onClick={()=> setimageshown(ifour)}>
-              <img className='h-20 rounded-md p-2' src={ifour} alt=''/>
-            </div>
-            <div className='hover:border-b-2 mx-4' onClick={()=> setimageshown(ifive)}>
-              <img className='h-20 rounded-md p-2' src={ifive} alt=''/>
-            </div>
-            <div className='hover:border-b-2 mx-4' onClick={()=> setimageshown(isix)}>
-              <img className='h-20 rounded-md p-2' src={isix} alt=''/>
-            </div>
+            {
+              post.images.map((items:string) => (
+                <div className='hover:border-b-2 mx-4' onClick={()=> setimageshown(items)}>
+                  <img className='h-20 rounded-md p-2' src={"http://localhost/blacknebecom/api/post/photos/" + items} alt=''/>
+                </div>  
+              ))
+            }
           </div>
         </div>
-      <div className='flex flex-wrap justify-center pt-8'>
-        <div className='shadow rounded-md'>
-          <img className='h-96 rounded-md' src={imageshown} alt=''/>
-        </div>
-        <div className='ml-8'>
-          <p className='font-bold font-2xl'>Laptop Specs</p>
-          <div className='text-left'>
-            <div className='flex flex-row my-2'>
-              <img className='h-8' src={ram} alt=''/>
-              <p className='ml-2'>RAM: </p>
-            </div>
-            <div className='flex flex-row my-2'>
-              <img className='h-8' src={display} alt=''/>
-              <p className='ml-2'>Display: </p>
-            </div>
-            <div className='flex flex-row my-2'>
-              <img className='h-8' src={storage} alt=''/>
-              <p className='ml-2'>Storage: </p>
-            </div>
-            <div className='flex flex-row my-2'>
-              <img className='h-8' src={cpu} alt=''/>
-              <p className='ml-2'>CPU: </p>
-            </div>
-            <div className='flex flex-row my-2'>
-              <img className='h-8' src={graphics} alt=''/>
-              <p className='ml-2'>Graphics card: </p>
-            </div>
-            <div className='flex flex-row my-2'>
-              <img className='h-8' src={battery} alt=''/>
-              <p className='ml-2'>Battery: </p>
-            </div>
-            <div className='flex flex-row my-2'>
-              <img className='h-8' src={price} alt=''/>
-              <p className='ml-2'>Price: </p>
-            </div>
-            <div className='flex flex-row my-2'>
-              <img className='h-8' src={description} alt=''/>
-              <p className='ml-2'>Description: </p>
-            </div>
-            <div className='flex justify-center'>
-              <button className='border-2 border-black rounded-2xl bg-white text-black px-2 hover:bg-black hover:text-white m-4 md:m-0'>Cart Item</button>
-            </div>            
+      <div className='flex flex-wrap justify-around  pt-8'>
+        <div className='w-[32rem] '>
+          <div className='shadow rounded-md'>
+            <img className='h-96 rounded-md' src={"http://localhost/blacknebecom/api/post/photos/" + imageshown} alt=''/>
           </div>
         </div>
+        
+        {(()=>{
+              if(post.catagory === "accessories"){
+                  return(
+                    <div className='ml-8'>
+                      <p className='font-bold font-2xl'>Laptop Specs</p>
+                      <div className='text-left'>
+                      <div className='flex flex-row my-2'>
+                          <img className='h-8' src={price} alt=''/>
+                          <p className='ml-2'>Brand: {post.brand} </p>
+                        </div>
+                        <div className='flex flex-row my-2'>
+                          <img className='h-8' src={price} alt=''/>
+                          <p className='ml-2'>Price: {post.price + " birr"} </p>
+                        </div>
+                        <div className='flex flex-row my-2'>
+                          <div className='flex flex-row'>
+                            <div className='flex flex-row'>
+                              <img className='h-8' src={description} alt=''/>
+                              <p className='ml-2'>Description:</p>
+                            </div>
+                          </div>
+                          <p className='ml-2 w-72'>{post.description} </p>
+                        </div>
+                        <div className='flex justify-center'>
+                          <button className='border-2 border-black rounded-2xl bg-white text-black px-2 hover:bg-black hover:text-white m-4 md:m-0'>Cart Item</button>
+                        </div>            
+                      </div>
+                    </div>
+                  )
+              }
+              else if(post.catagory === "laptop"){
+                  return(
+                    <div className='ml-8'>
+                      <p className='font-bold font-2xl'>Laptop Specs</p>
+                      <div className='text-left'>
+                        <div className='flex flex-row my-2'>
+                          <img className='h-8' src={ram} alt=''/>
+                          <p className='ml-2'>RAM: {post.ram}</p>
+                        </div>
+                        <div className='flex flex-row my-2'>
+                          <img className='h-8' src={display} alt=''/>
+                          <p className='ml-2'>Display: {post.display} </p>
+                        </div>
+                        <div className='flex flex-row my-2'>
+                          <img className='h-8' src={storage} alt=''/>
+                          <p className='ml-2'>Storage: {post.storagessd +" SSD " + post.storagehdd + " HDD"}</p>
+                        </div>
+                        <div className='flex flex-row my-2'>
+                          <img className='h-8' src={cpu} alt=''/>
+                          <p className='ml-2'>CPU: {post.cpuprocessor + " " + post.cpugeneration} </p>
+                        </div>
+                        <div className='flex flex-row my-2'>
+                          <img className='h-8' src={graphics} alt=''/>
+                          <p className='ml-2'>Graphics card: {post.graphicscardname + " " + post.graphicscardsize} </p>
+                        </div>
+                        <div className='flex flex-row my-2'>
+                          <img className='h-8' src={battery} alt=''/>
+                          <p className='ml-2'>Battery: {post.battery}</p>
+                        </div>
+                        <div className='flex flex-row my-2'>
+                          <img className='h-8' src={price} alt=''/>
+                          <p className='ml-2'>Price: {post.price + " birr"} </p>
+                        </div>
+                        <div className='flex flex-row my-2'>
+                          <div className='flex flex-row'>
+                            <div className='flex flex-row'>
+                              <img className='h-8' src={description} alt=''/>
+                              <p className='ml-2'>Description:</p>
+                            </div>
+                          </div>
+                          <p className='ml-2 w-72'>{post.description} </p>
+                        </div>
+                        <div className='flex justify-center'>
+                          <button className='border-2 border-black rounded-2xl bg-white text-black px-2 hover:bg-black hover:text-white m-4 md:m-0'>Cart Item</button>
+                        </div>            
+                      </div>
+                    </div>
+                    )
+              }
+              else if(post.catagory === "tv"){
+                return(
+                  <div className='ml-8'>
+                      <p className='font-bold font-2xl'>Laptop Specs</p>
+                      <div className='text-left'>
+                        <div className='flex flex-row my-2'>
+                          <img className='h-8' src={ram} alt=''/>
+                          <p className='ml-2'>Brand: {post.brand}</p>
+                        </div>
+                        <div className='flex flex-row my-2'>
+                          <img className='h-8' src={ram} alt=''/>
+                          <p className='ml-2'>Screensize: {post.screensize}</p>
+                        </div>
+                        <div className='flex flex-row my-2'>
+                          <img className='h-8' src={display} alt=''/>
+                          <p className='ml-2'>DisplayTechnology: {post.displaytechnology} </p>
+                        </div>
+                        <div className='flex flex-row my-2'>
+                          <img className='h-8' src={cpu} alt=''/>
+                          <p className='ml-2'>Resolution: {post.resolution} </p>
+                        </div>
+                        <div className='flex flex-row my-2'>
+                          <img className='h-8' src={cpu} alt=''/>
+                          <p className='ml-2'>Refreshrate: {post.refreshrate} </p>
+                        </div>
+                        <div className='flex flex-row my-2'>
+                          <img className='h-8' src={battery} alt=''/>
+                          <p className='ml-2'>Connectivity: {post.connectivity}</p>
+                        </div>
+                        <div className='flex flex-row my-2'>
+                          <img className='h-8' src={price} alt=''/>
+                          <p className='ml-2'>Price: {post.price + " birr"} </p>
+                        </div>
+                        <div className='flex flex-row my-2'>
+                          <div className='flex flex-row'>
+                            <div className='flex flex-row'>
+                              <img className='h-8' src={description} alt=''/>
+                              <p className='ml-2'>Description:</p>
+                            </div>
+                          </div>
+                          <p className='ml-2 w-72'>{post.description} </p>
+                        </div>
+                        <div className='flex justify-center'>
+                          <button className='border-2 border-black rounded-2xl bg-white text-black px-2 hover:bg-black hover:text-white m-4 md:m-0'>Cart Item</button>
+                        </div>            
+                      </div>
+                    </div>
+                )
+            }
+            else if(post.catagory === "phone"){
+              return(
+                <div>
+                  <div className='ml-8'>
+                      <p className='font-bold font-2xl'>Laptop Specs</p>
+                      <div className='text-left'>
+                      <div className='flex flex-row my-2'>
+                          <img className='h-8' src={ram} alt=''/>
+                          <p className='ml-2'>Brand: {post.brand}</p>
+                        </div>
+                        <div className='flex flex-row my-2'>
+                          <img className='h-8' src={ram} alt=''/>
+                          <p className='ml-2'>Name: {post.name}</p>
+                        </div>
+                        <div className='flex flex-row my-2'>
+                          <img className='h-8' src={ram} alt=''/>
+                          <p className='ml-2'>Color: {post.color}</p>
+                        </div>
+                        <div className='flex flex-row my-2'>
+                          <img className='h-8' src={ram} alt=''/>
+                          <p className='ml-2'>RAM: {post.ram}</p>
+                        </div>
+                        <div className='flex flex-row my-2'>
+                          <img className='h-8' src={ram} alt=''/>
+                          <p className='ml-2'>ScreenSize: {post.screensize}</p>
+                        </div>
+                        <div className='flex flex-row my-2'>
+                          <img className='h-8' src={ram} alt=''/>
+                          <p className='ml-2'>Camera: {post.camerafront + " front " + post.cameraback + " back"}</p>
+                        </div>
+                        <div className='flex flex-row my-2'>
+                          <img className='h-8' src={storage} alt=''/>
+                          <p className='ml-2'>Storage: {post.storage} </p>
+                        </div>
+                        <div className='flex flex-row my-2'>
+                          <img className='h-8' src={price} alt=''/>
+                          <p className='ml-2'>Price: {post.price + " birr"}</p>
+                        </div>
+                        <div className='flex flex-row my-2'>
+                          <div className='flex flex-row'>
+                            <div className='flex flex-row'>
+                              <img className='h-8' src={description} alt=''/>
+                              <p className='ml-2'>Description:</p>
+                            </div>
+                          </div>
+                          <p className='ml-2 w-72'>{post.description} </p>
+                        </div>
+                        <div className='flex justify-center'>
+                          <button className='border-2 border-black rounded-2xl bg-white text-black px-2 hover:bg-black hover:text-white m-4 md:m-0'>Cart Item</button>
+                        </div>            
+                      </div>
+                    </div>
+                </div>
+                )
+          }
+          })()}
+        
       </div>
     </div>
   )
