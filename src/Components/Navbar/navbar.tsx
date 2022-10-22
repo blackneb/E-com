@@ -56,12 +56,6 @@ const Navbar = () => {
                         </Link>
                     ))
                 }
-                <li className={`md:ml-8 text-sm md:my-0 my-1 ${(userinfo.usertype === "admin")? "hidden" : "block"}`}>
-                    <div className='flex justify-center'>
-                        <img className='h-4 mt-2.5' src={Cart} alt=''/>
-                        <p className='p-2'>Cart</p>
-                    </div>
-                </li>
                 <Link to="/signin">
                     <li className={`md:ml-8 text-sm md:my-0 my-1 ${userinfo.userlogged? "hidden" : "block"}`}>
                         <div className='flex justify-center bg-purple-600 rounded-md px-2'>
