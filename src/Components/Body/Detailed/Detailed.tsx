@@ -2,6 +2,12 @@ import React,{useState, useEffect} from 'react'
 import iphone from '../../../Images/iphone.jpg'
 import { useLocation } from 'react-router-dom'
 import axios from 'axios'
+import { useSelector, useDispatch } from 'react-redux';
+import { Carditems } from '../../Cards/Carditems'
+import { addall } from '../../../Redux/Actions';
+import arrayShuffle from 'array-shuffle';
+
+
 
 import ram from '../../../Icons/ram.png'
 import cpu from '../../../Icons/cpu.png'
@@ -36,18 +42,31 @@ const Detailed = () => {
   const [post,setpost] = useState<any>();
   const checker = path.split("");
   const catagorygetter = (checker[0] + checker[1] + checker[2]);
+  const dispatch = useDispatch();
+  const allitems = useSelector((state:any) => state.allitems.allitems);
   useEffect(() => {
     axios.get("http://localhost/blacknebecom/api/post" + `/read_single.php?id=${path}`).then((response) => {
       setpost(response.data);
       console.log(response.data);
       setimageshown(response.data.images[0]);
     })
+    if(allitems.length === 0){
+      axios.get("http://localhost/blacknebecom/api/post/read.php").then((response) => {
+          setpost(response.data.data);
+          dispatch(addall(response.data.data));     
+          if(response.data.data === "no posts found"){
+          }
+      });
+    }
+
   }, []);
   if(!post) return null;
+  const similaritems = allitems.filter((items:any) => items.type === post.type && items.catagory === post.catagory);
+
   return (
     <div>
-      <div className='shadow border-b-2 border-gray-400 mx-4 md:mx-16 mt-8'>
-          <h1 className='text-2xl'>{post.name}</h1>
+      <div className='shadow border-b-2 border-gray-400 mx-4 md:mx-16 mt-8 mt-10'>
+          <h1 className='text-md'>{post.name}</h1>
         </div>
         <div className='ml-8 h-24'>
           <div className='flex flex-row flex-wrap mt-4'>
@@ -60,10 +79,10 @@ const Detailed = () => {
             }
           </div>
         </div>
-      <div className='flex flex-wrap justify-around  pt-8'>
-        <div className='w-[32rem] '>
-          <div className='shadow rounded-md'>
-            <img className='h-96 rounded-md' src={"http://localhost/blacknebecom/api/post/photos/" + imageshown} alt=''/>
+      <div className='flex flex-wrap justify-start  pt-8'>
+        <div className='w-[32rem] ml-20 '>
+          <div className=''>
+            <img className='h-96 shadow rounded-md' src={"http://localhost/blacknebecom/api/post/photos/" + imageshown} alt=''/>
           </div>
         </div>
         
@@ -251,8 +270,20 @@ const Detailed = () => {
                 )
           }
           })()}
-        
       </div>
+        <div className='pt-10'>
+          <h2 className='border-b-2 border-gray-400 mx-32 md:mx-72'>you may also like</h2>
+            <div className='overflow-x-scroll mx-8 md:mx-16 my-8 h-64 md:h-72'>
+              <div className='flex flex-row'>
+            {
+              [...similaritems].map(({id,brand,name,catagory,price,description,types,images}:any) => (
+                <Carditems key={id} id={id} brand={brand} catagory={catagory} name={name} price={price} description={description} types={types} images={images}/>
+                ))
+            }
+
+                </div>
+              </div>         
+          </div>
     </div>
   )
 }
