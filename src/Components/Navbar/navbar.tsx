@@ -27,10 +27,9 @@ const Navbar = () => {
         {name:"Accessories",link:"/accessories",icon:<img className='h-4 mt-2.5' src={Accessories} alt=''/>},
         {name:"Phone",link:"/phone",icon:<img className='h-4 mt-2.5' src={Phone} alt=''/>},
         {name:"TV",link:"/tv",icon:<img className='h-4 mt-2.5' src={Tv} alt=''/>},
-        {name:"PS",link:"/ps",icon:<img className='h-4 mt-2.5' src={Ps} alt=''/>},
+        //{name:"PS",link:"/ps",icon:<img className='h-4 mt-2.5' src={Ps} alt=''/>},
         {name:"Contact",link:"/contact",icon:<img className='h-4 mt-2.5' src={Contact} alt=''/>},
         {name:"About",link:"/about",icon:<img className='h-4 mt-2.5' src={About} alt=''/>},
-        {name:"Management", link:"/management/uploadlaptop",icon:<img className='h-4 mt-2.5' src={Upload} alt=''/>}
     ];
     const [open, setOpen] = useState(false);
   return (
@@ -47,7 +46,7 @@ const Navbar = () => {
                 {
                     links.map((link) => (
                         <Link to={link.link}>
-                            <li key={link.name} className={`md:ml-8 text-sm md:my-0 my-1 ${(userinfo.usertype === "user" && link.name === "Management")? "hidden" : "block"}`} onClick={() => setOpen(false)} >
+                            <li key={link.name} className={`md:ml-8 text-sm md:my-0 my-1`} onClick={() => setOpen(false)} >
                                 <div className='flex justify-center'>
                                     {link.icon}
                                     <p className='p-2'>{link.name}</p>
