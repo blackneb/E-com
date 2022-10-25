@@ -67,6 +67,17 @@ export const bookReducers = (state=initialStatebook, action:IBookActionModel) =>
     };
 };
 
+export const allitems = (state=initialStateall, action:any) => {
+    const {type,payload} = action;
+    switch(type){
+        case ADD_ALL:
+            return {...state, allitems:action.payload};
+        default:
+            return state;
+    }
+}
+
+
 export const userReducer = (state=initialStateuser, action:IUserAutorizationACtionModel) => {
     const {type,payload} = action;
     switch(type){
