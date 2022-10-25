@@ -4,7 +4,7 @@ import { Iphone,IPhoneActionModel } from "../Models/Models";
 import { Iaccessories,IAccessoriesActionModel } from "../Models/Models";
 import { Ibook,IBookActionModel } from "../Models/Models";
 import { Iuserautorization,IUserAutorizationACtionModel } from "../Models/Models";
-import { ADD_LAPTOP,ADD_ACCESSORIES, ADD_BOOK, ADD_IMAGES, ADD_PHONE, ADD_TV, ADD_USER_AUTORIZATION } from "./ActionTypes";
+import { ADD_LAPTOP,ADD_ACCESSORIES, ADD_BOOK, ADD_IMAGES, ADD_PHONE, ADD_TV, ADD_USER_AUTORIZATION, ADD_ALL } from "./ActionTypes";
 const initialState:Ilaptop[]=[];
 const initialStates:Iphone[]=[];
 const initialStatess:Itv[]=[];
