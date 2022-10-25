@@ -1,5 +1,5 @@
 import { Ilaptop, Iphone,Itv, Iaccessories, Ibook, Iuserautorization } from "../Models/Models";
-import { ADD_LAPTOP, ADD_PHONE, ADD_TV, ADD_ACCESSORIES, ADD_BOOK, ADD_USER_AUTORIZATION } from "./ActionTypes";
+import { ADD_LAPTOP, ADD_PHONE, ADD_TV, ADD_ACCESSORIES, ADD_BOOK, ADD_USER_AUTORIZATION,ADD_ALL } from "./ActionTypes";
 
 export const addLaptop = (laptop: Ilaptop) => {
     return{
@@ -41,3 +41,10 @@ export const adduserautorization = (userautorization:Iuserautorization) => {
         payload:userautorization,
     };
 };
+
+export const addall = (addall:any) => {
+    return{
+        type:ADD_ALL,
+        payload:addall,
+    }
+}
