@@ -10,6 +10,9 @@ const initialStates:Iphone[]=[];
 const initialStatess:Itv[]=[];
 const initialStatesss:Iaccessories[]=[];
 const initialStatebook:Ibook[]=[];
+const initialStateall = {
+    allitems:[],
+}
 const initialStateuser:Iuserautorization={
     userlogged:false,
     usertype: "notlogged",
