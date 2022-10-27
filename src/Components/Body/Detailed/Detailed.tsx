@@ -8,7 +8,6 @@ import { addall } from '../../../Redux/Actions';
 import arrayShuffle from 'array-shuffle';
 
 
-
 import ram from '../../../Icons/ram.png'
 import cpu from '../../../Icons/cpu.png'
 import display from '../../../Icons/display.png'
@@ -45,6 +44,7 @@ const Detailed = () => {
   const dispatch = useDispatch();
   const allitems = useSelector((state:any) => state.allitems.allitems);
   useEffect(() => {
+    console.log(path);
     axios.get("http://localhost/blacknebecom/api/post" + `/read_single.php?id=${path}`).then((response) => {
       setpost(response.data);
       console.log(response.data);
@@ -52,7 +52,6 @@ const Detailed = () => {
     })
     if(allitems.length === 0){
       axios.get("http://localhost/blacknebecom/api/post/read.php").then((response) => {
-          setpost(response.data.data);
           dispatch(addall(response.data.data));     
           if(response.data.data === "no posts found"){
           }
@@ -61,6 +60,9 @@ const Detailed = () => {
 
   }, []);
   if(!post) return null;
+  function refreshPage() {
+    window.location.reload();
+  }
   const similaritems = allitems.filter((items:any) => items.type === post.type && items.catagory === post.catagory);
 
   return (
@@ -72,7 +74,7 @@ const Detailed = () => {
           <div className='flex flex-row flex-wrap mt-4'>
             {
               post.images.map((items:string) => (
-                <div className='hover:border-b-2 mx-4' onClick={()=> setimageshown(items)}>
+                <div key={items} className='hover:border-b-2 mx-4' onClick={()=> setimageshown(items)}>
                   <img className='h-20 rounded-md p-2' src={"http://localhost/blacknebecom/api/post/photos/" + items} alt=''/>
                 </div>  
               ))
@@ -274,7 +276,7 @@ const Detailed = () => {
         <div className='pt-10'>
           <h2 className='border-b-2 border-gray-400 mx-32 md:mx-72'>you may also like</h2>
             <div className='overflow-x-scroll mx-8 md:mx-16 my-8 h-64 md:h-72'>
-              <div className='flex flex-row'>
+              <div className='flex flex-row' onClick={refreshPage}>
             {
               [...similaritems].map(({id,brand,name,catagory,price,description,types,images}:any) => (
                 <Carditems key={id} id={id} brand={brand} catagory={catagory} name={name} price={price} description={description} types={types} images={images}/>
