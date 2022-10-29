@@ -4,12 +4,13 @@ import { Iphone,IPhoneActionModel } from "../Models/Models";
 import { Iaccessories,IAccessoriesActionModel } from "../Models/Models";
 import { Ibook,IBookActionModel } from "../Models/Models";
 import { Iuserautorization,IUserAutorizationACtionModel } from "../Models/Models";
-import { ADD_LAPTOP,ADD_ACCESSORIES, ADD_BOOK, ADD_IMAGES, ADD_PHONE, ADD_TV, ADD_USER_AUTORIZATION, ADD_ALL, ADD_TO_CART } from "./ActionTypes";
+import { ADD_LAPTOP,ADD_ACCESSORIES, ADD_BOOK, ADD_IMAGES, ADD_PHONE, ADD_TV, ADD_USER_AUTORIZATION, ADD_ALL, ADD_TO_CART, CURRENT_ITEM } from "./ActionTypes";
 const initialState:Ilaptop[]=[];
 const initialStates:Iphone[]=[];
 const initialStatess:Itv[]=[];
 const initialStatesss:Iaccessories[]=[];
 const initialStatebook:Ibook[]=[];
+const initialStatecurrent:any[]=[];
 const initialStateall = {
     allitems:[],
 }
@@ -102,6 +103,16 @@ export const addtocart = (state=initialStatecart,action:any) => {
     switch(type){
         case ADD_TO_CART:
             return {...state,itemsid:[...state.itemsid,payload]}
+        default:
+            return state;
+    }
+}
+
+export const currentitem = (state=initialStatecurrent,action:any) => {
+    const {type,payload} =action;
+    switch(type){
+        case CURRENT_ITEM:
+            return [payload];
         default:
             return state;
     }

@@ -7,4 +7,5 @@ export const ADD_IMAGES = 'ADD_IMAGES';
 export const ADD_ALL = 'ADD_ALL';
 export const ADD_TO_CART = 'ADD_TO_CART';
 export const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
+export const CURRENT_ITEM = 'CURRENT_ITEM';
 export const ADD_USER_AUTORIZATION = 'ADD_USER_AUTORIZATION';
