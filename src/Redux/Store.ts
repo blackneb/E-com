@@ -8,6 +8,7 @@ import { bookReducers } from './Reducer';
 import { phoneReducers } from './Reducer';
 import { userReducer } from './Reducer';
 import { allitems } from './Reducer';
+import { addtocart } from './Reducer';
 
 const reducers = combineReducers(
     {
@@ -18,6 +19,7 @@ const reducers = combineReducers(
         books:bookReducers,
         user:userReducer,
         allitems:allitems,
+        addtocart:addtocart,
     });
 export const store = createStore(reducers,composeWithDevTools());
 
