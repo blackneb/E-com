@@ -15,8 +15,24 @@ import Cart from '../../Icons/cart.png';
 import Upload from '../../Icons/upload.png';
 import { useDispatch,useSelector } from 'react-redux';
 
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+
 
 const Navbar = () => {
+    const [opens, setOpens] = React.useState(false);
+
+    const handleClickOpen = () => {
+        setOpens(true);
+    };
+
+    const handleClose = () => {
+        setOpens(false);
+    };
     const dispatch = useDispatch();
     const userinfo = useSelector((state:any) => state.user);
     console.log(userinfo.usertype);
@@ -34,6 +50,27 @@ const Navbar = () => {
     const [open, setOpen] = useState(false);
   return (
     <>
+    <Dialog
+        open={opens}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          {"Cart"}
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            Cart Options
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Close</Button>
+          <Button onClick={handleClose} autoFocus>
+            Cart
+          </Button>
+        </DialogActions>
+      </Dialog>
     <nav className='shadow-md w-full sticky top-0 left-0'>
         <div className='md:flex items-center justify-between bg-white py-4 md:px-10 px-7'>
             <div className='font-bold text-xl cursor-pointer flex items-center font-[Poppins] text-gray-800'>
@@ -55,6 +92,12 @@ const Navbar = () => {
                         </Link>
                     ))
                 }
+                <li className='md:ml-8 text-sm md:my-0 my-1' onClick={handleClickOpen}>
+                    <div className='flex justify-center' >
+                        <img className='h-4 mt-3' src={Cart} alt='' ></img>
+                        <p className='p-2'>Cart</p>
+                    </div>
+                </li>
                 <Link to="/signin">
                     <li className={`md:ml-8 text-sm md:my-0 my-1 ${userinfo.userlogged? "hidden" : "block"}`}>
                         <div className='flex justify-center bg-purple-600 rounded-md px-2'>
