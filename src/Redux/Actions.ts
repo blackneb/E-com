@@ -54,3 +54,10 @@ export const addtocart = (addtocart:any) => {
         payload:addtocart,
     }
 }
+
+export const currentitem = (currentitem:any) => {
+    return{
+        type:CURRENT_ITEM,
+        payload:currentitem,
+    }
+}

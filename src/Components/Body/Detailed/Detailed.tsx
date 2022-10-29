@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom'
 import axios from 'axios'
 import { useSelector, useDispatch } from 'react-redux';
 import { Carditems } from '../../Cards/Carditems'
-import { addall,addtocart } from '../../../Redux/Actions';
+import { addall,addtocart, currentitem } from '../../../Redux/Actions';
 import arrayShuffle from 'array-shuffle';
 
 
@@ -18,6 +18,7 @@ import description from '../../../Icons/info.png'
 import battery from '../../../Icons/battery.png'
 import { Iaccessories } from '../../../Models/Models'
 import { current } from '@reduxjs/toolkit';
+
 
 
 
@@ -36,17 +37,17 @@ interface accessories {
 const Detailed = () => {
   const [imageshown, setimageshown] = useState<string>();
   const location = useLocation();
+  const [loading, setloading] = useState(true);
   const loc = location.pathname;
   const path=loc.split("/")[2];
-  const [post,setpost] = useState<any>();
   const dispatch = useDispatch();
   const allitems = useSelector((state:any) => state.allitems.allitems);
   function reloadingitem(){
+    setloading(true);
     axios.get("http://localhost/blacknebecom/api/post" + `/read_single.php?id=${path}`).then((response) => {
-      setpost(response.data);
       setimageshown(response.data.images[0]);
-      console.log(post);
-      console.log(response.data);
+      dispatch(currentitem(response.data));
+      setloading(false);
     })
     if(allitems.length === 0){
       axios.get("http://localhost/blacknebecom/api/post/read.php").then((response) => {
@@ -56,10 +57,10 @@ const Detailed = () => {
       });
     }
   }
+  const post = useSelector((state:any) => state.currentitem);
   useEffect(() => {
     reloadingitem();
   }, []);
-  if(!post) return null;
    function refreshPage() {
      reloadingitem();
      //window.location.reload();
@@ -70,8 +71,8 @@ const Detailed = () => {
   }
   const similaritems = allitems.filter((items:any) => items.type === post.type && items.catagory === post.catagory);
 
-  return (
-    <div>
+  return loading? <p>Loading...</p>  : 
+  <div>
       <div className='shadow border-b-2 border-gray-400 mx-4 md:mx-16 mt-8 mt-10'>
           <h1 className='text-md'>{post.name}</h1>
         </div>
@@ -292,7 +293,6 @@ const Detailed = () => {
               </div>         
           </div>
     </div>
-  )
 }
 
 export default Detailed

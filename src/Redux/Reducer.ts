@@ -112,7 +112,7 @@ export const currentitem = (state=initialStatecurrent,action:any) => {
     const {type,payload} =action;
     switch(type){
         case CURRENT_ITEM:
-            return [payload];
+            return payload;
         default:
             return state;
     }
