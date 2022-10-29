@@ -35,20 +35,18 @@ interface accessories {
 
 const Detailed = () => {
   const [imageshown, setimageshown] = useState<string>();
-  const [itemimages,setitemimages] = useState<string[]>([]);
   const location = useLocation();
   const loc = location.pathname;
   const path=loc.split("/")[2];
   const [post,setpost] = useState<any>();
-  const checker = path.split("");
-  const catagorygetter = (checker[0] + checker[1] + checker[2]);
   const dispatch = useDispatch();
   const allitems = useSelector((state:any) => state.allitems.allitems);
-  useEffect(() => {
+  function reloadingitem(){
     axios.get("http://localhost/blacknebecom/api/post" + `/read_single.php?id=${path}`).then((response) => {
       setpost(response.data);
-      console.log(response.data);
       setimageshown(response.data.images[0]);
+      console.log(post);
+      console.log(response.data);
     })
     if(allitems.length === 0){
       axios.get("http://localhost/blacknebecom/api/post/read.php").then((response) => {
@@ -57,12 +55,15 @@ const Detailed = () => {
           }
       });
     }
-
+  }
+  useEffect(() => {
+    reloadingitem();
   }, []);
   if(!post) return null;
-  function refreshPage() {
-    window.location.reload();
-  }
+   function refreshPage() {
+     reloadingitem();
+     //window.location.reload();
+   }
   function cartitem(){
     dispatch(addtocart(path));
     alert(path);
@@ -280,7 +281,7 @@ const Detailed = () => {
         <div className='pt-10'>
           <h2 className='border-b-2 border-gray-400 mx-32 md:mx-72'>you may also like</h2>
             <div className='overflow-x-scroll mx-8 md:mx-16 my-8 h-64 md:h-72'>
-              <div className='flex flex-row' onClick={refreshPage}>
+              <div className='flex flex-row' onClick={reloadingitem} >
             {
               [...similaritems].map(({id,brand,name,catagory,price,description,types,images}:any) => (
                 <Carditems key={id} id={id} brand={brand} catagory={catagory} name={name} price={price} description={description} types={types} images={images}/>

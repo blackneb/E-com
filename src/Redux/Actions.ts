@@ -1,5 +1,5 @@
 import { Ilaptop, Iphone,Itv, Iaccessories, Ibook, Iuserautorization } from "../Models/Models";
-import { ADD_LAPTOP, ADD_PHONE, ADD_TV, ADD_ACCESSORIES, ADD_BOOK, ADD_USER_AUTORIZATION,ADD_ALL,ADD_TO_CART } from "./ActionTypes";
+import { ADD_LAPTOP, ADD_PHONE, ADD_TV, ADD_ACCESSORIES, ADD_BOOK, ADD_USER_AUTORIZATION,ADD_ALL,ADD_TO_CART,CURRENT_ITEM } from "./ActionTypes";
 
 export const addLaptop = (laptop: Ilaptop) => {
     return{

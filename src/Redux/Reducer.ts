@@ -23,7 +23,7 @@ const initialStatecart = {
     itemsid:[],
 }
 
-const laptopReducers = (state=initialState, action:ILaptopActionModel) => {
+export const laptopReducers = (state=initialState, action:ILaptopActionModel) => {
     const {type, payload} = action;
     switch(type){
         case ADD_LAPTOP:
@@ -95,6 +95,8 @@ export const userReducer = (state=initialStateuser, action:IUserAutorizationACti
 }
 
 export default laptopReducers;
+
+
 export const addtocart = (state=initialStatecart,action:any) => {
     const{type,payload} = action;
     switch(type){
