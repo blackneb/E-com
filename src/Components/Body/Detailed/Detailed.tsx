@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom'
 import axios from 'axios'
 import { useSelector, useDispatch } from 'react-redux';
 import { Carditems } from '../../Cards/Carditems'
-import { addall } from '../../../Redux/Actions';
+import { addall,addtocart } from '../../../Redux/Actions';
 import arrayShuffle from 'array-shuffle';
 
 
@@ -17,6 +17,7 @@ import storage from '../../../Icons/storage.png'
 import description from '../../../Icons/info.png'
 import battery from '../../../Icons/battery.png'
 import { Iaccessories } from '../../../Models/Models'
+import { current } from '@reduxjs/toolkit';
 
 
 
@@ -44,7 +45,6 @@ const Detailed = () => {
   const dispatch = useDispatch();
   const allitems = useSelector((state:any) => state.allitems.allitems);
   useEffect(() => {
-    console.log(path);
     axios.get("http://localhost/blacknebecom/api/post" + `/read_single.php?id=${path}`).then((response) => {
       setpost(response.data);
       console.log(response.data);
@@ -62,6 +62,10 @@ const Detailed = () => {
   if(!post) return null;
   function refreshPage() {
     window.location.reload();
+  }
+  function cartitem(){
+    dispatch(addtocart(path));
+    alert(path);
   }
   const similaritems = allitems.filter((items:any) => items.type === post.type && items.catagory === post.catagory);
 
@@ -112,7 +116,7 @@ const Detailed = () => {
                           <p className='ml-2 w-72'>{post.description} </p>
                         </div>
                         <div className='flex justify-center'>
-                          <button className='border-2 border-black rounded-2xl bg-white text-black px-2 hover:bg-black hover:text-white m-4 md:m-0'>Cart Item</button>
+                          <button onClick={cartitem} className='border-2 border-black rounded-2xl bg-white text-black px-2 hover:bg-black hover:text-white m-4 md:m-0'>Cart Item</button>
                         </div>            
                       </div>
                     </div>
@@ -161,7 +165,7 @@ const Detailed = () => {
                           <p className='ml-2 w-72'>{post.description} </p>
                         </div>
                         <div className='flex justify-center'>
-                          <button className='border-2 border-black rounded-2xl bg-white text-black px-2 hover:bg-black hover:text-white m-4 md:m-0'>Cart Item</button>
+                          <button onClick={cartitem} className='border-2 border-black rounded-2xl bg-white text-black px-2 hover:bg-black hover:text-white m-4 md:m-0'>Cart Item</button>
                         </div>            
                       </div>
                     </div>
@@ -210,7 +214,7 @@ const Detailed = () => {
                           <p className='ml-2 w-72'>{post.description} </p>
                         </div>
                         <div className='flex justify-center'>
-                          <button className='border-2 border-black rounded-2xl bg-white text-black px-2 hover:bg-black hover:text-white m-4 md:m-0'>Cart Item</button>
+                          <button onClick={cartitem} className='border-2 border-black rounded-2xl bg-white text-black px-2 hover:bg-black hover:text-white m-4 md:m-0'>Cart Item</button>
                         </div>            
                       </div>
                     </div>
@@ -264,7 +268,7 @@ const Detailed = () => {
                           <p className='ml-2 w-72'>{post.description} </p>
                         </div>
                         <div className='flex justify-center'>
-                          <button className='border-2 border-black rounded-2xl bg-white text-black px-2 hover:bg-black hover:text-white m-4 md:m-0'>Cart Item</button>
+                          <button onClick={cartitem} className='border-2 border-black rounded-2xl bg-white text-black px-2 hover:bg-black hover:text-white m-4 md:m-0'>Cart Item</button>
                         </div>            
                       </div>
                     </div>

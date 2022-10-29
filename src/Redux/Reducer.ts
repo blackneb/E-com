@@ -99,7 +99,7 @@ export const addtocart = (state=initialStatecart,action:any) => {
     const{type,payload} = action;
     switch(type){
         case ADD_TO_CART:
-            return {...state, itemsid:action.payload}
+            return {...state,itemsid:[...state.itemsid,payload]}
         default:
             return state;
     }
