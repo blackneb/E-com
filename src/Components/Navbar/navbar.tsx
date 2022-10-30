@@ -34,6 +34,7 @@ const Navbar = () => {
         setOpens(false);
     };
     const dispatch = useDispatch();
+    const carteditems = useSelector((state:any) => state.addtocart.itemsid);
     const userinfo = useSelector((state:any) => state.user);
     console.log(userinfo.usertype);
     let links:{name: string, link:any, icon:any}[] = [
@@ -61,14 +62,20 @@ const Navbar = () => {
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            Cart Options
+            <ul>
+              {
+                carteditems.map((items:any) => (
+                  <div className='w-96'>
+                    <li>{items}</li>
+                  </div>
+                ))
+              }
+            </ul>
           </DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Close</Button>
-          <Button onClick={handleClose} autoFocus>
-            Cart
-          </Button>
+          <Button autoFocus>Cart</Button>
         </DialogActions>
       </Dialog>
     <nav className='shadow-md w-full sticky top-0 left-0'>

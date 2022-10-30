@@ -48,6 +48,8 @@ const Detailed = () => {
       setimageshown(response.data.images[0]);
       dispatch(currentitem(response.data));
       setloading(false);
+      console.log()
+      
     })
     if(allitems.length === 0){
       axios.get("http://localhost/blacknebecom/api/post/read.php").then((response) => {
