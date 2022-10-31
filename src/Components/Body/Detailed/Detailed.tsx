@@ -15,6 +15,7 @@ import graphics from '../../../Icons/graphics.png'
 import price from '../../../Icons/price.png'
 import storage from '../../../Icons/storage.png'
 import description from '../../../Icons/info.png'
+import Cart from '../../../Icons/cart.png';
 import battery from '../../../Icons/battery.png'
 import DetailedAccessories from './DetailedAccessories';
 import DetailedLaptop from './DetailedLaptop';
@@ -78,6 +79,12 @@ const Detailed = () => {
               ))
             }
           </div>
+          <div className='flex justify-center'>
+            <div className='flex justify-center w-36 border-2 border-gray-400 bg-white text-black px-2 hover:bg-gray-400 hover:text-white m-4 md:m-0'>
+              <img className='h-5 pt-1' src={Cart} alt="" />
+              <button onClick={Cartitem} className=''>Add To Cart</button>
+            </div>
+          </div>
         </div>
       <div className='flex flex-wrap justify-start  pt-8'>
         <div className='w-[32rem] ml-20 '>
@@ -110,12 +117,10 @@ const Detailed = () => {
           })()}
           <div className='pt-4'>
           <div className='flex flex-row my-2'>
-            <div className='flex flex-row'>
-              <div className='flex flex-row'>
+          <div className='flex flex-row'>
                 <img className='h-8' src={description} alt=''/>
                 <p className='ml-2'>Description:</p>
               </div>
-            </div>
             <div className=''>
               <p className='ml-2 w-96 text-justify'>{more? short : post.description} </p>
               <p onClick={()=>{setmore(!more)}} >{more? "show more" : "show less"}</p>
