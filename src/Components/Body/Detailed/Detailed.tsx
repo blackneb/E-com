@@ -19,6 +19,7 @@ import battery from '../../../Icons/battery.png'
 import DetailedAccessories from './DetailedAccessories';
 import DetailedLaptop from './DetailedLaptop';
 import DetailedTv from './DetailedTv';
+import DetailedPhone from './DetailedPhone';
 
 const Detailed = () => {
   const [imageshown, setimageshown] = useState<string>();
@@ -103,52 +104,11 @@ const Detailed = () => {
             }
             else if(post.catagory === "phone"){
               return(
-                <div>
-                  <div className='ml-8'>
-                      <p className='font-bold font-2xl'>Laptop Specs</p>
-                      <div className='text-left'>
-                      <div className='flex flex-row my-2'>
-                          <img className='h-8' src={ram} alt=''/>
-                          <p className='ml-2'>Brand: {post.brand}</p>
-                        </div>
-                        <div className='flex flex-row my-2'>
-                          <img className='h-8' src={ram} alt=''/>
-                          <p className='ml-2'>Name: {post.name}</p>
-                        </div>
-                        <div className='flex flex-row my-2'>
-                          <img className='h-8' src={ram} alt=''/>
-                          <p className='ml-2'>Color: {post.color}</p>
-                        </div>
-                        <div className='flex flex-row my-2'>
-                          <img className='h-8' src={ram} alt=''/>
-                          <p className='ml-2'>RAM: {post.ram}</p>
-                        </div>
-                        <div className='flex flex-row my-2'>
-                          <img className='h-8' src={ram} alt=''/>
-                          <p className='ml-2'>ScreenSize: {post.screensize}</p>
-                        </div>
-                        <div className='flex flex-row my-2'>
-                          <img className='h-8' src={ram} alt=''/>
-                          <p className='ml-2'>Camera: {post.camerafront + " front " + post.cameraback + " back"}</p>
-                        </div>
-                        <div className='flex flex-row my-2'>
-                          <img className='h-8' src={storage} alt=''/>
-                          <p className='ml-2'>Storage: {post.storage} </p>
-                        </div>
-                        <div className='flex flex-row my-2'>
-                          <img className='h-8' src={price} alt=''/>
-                          <p className='ml-2'>Price: {post.price + " birr"}</p>
-                        </div>
-                        <div className='flex justify-center'>
-                          <button onClick={Cartitem} className='border-2 border-black rounded-2xl bg-white text-black px-2 hover:bg-black hover:text-white m-4 md:m-0'>Cart Item</button>
-                        </div>            
-                      </div>
-                    </div>
-                </div>
+                <DetailedPhone post={post} />
                 )
           }
           })()}
-          <div className='pl-24 pt-4'>
+          <div className='pt-4'>
           <div className='flex flex-row my-2'>
             <div className='flex flex-row'>
               <div className='flex flex-row'>
@@ -163,7 +123,7 @@ const Detailed = () => {
           </div>
           </div>
       </div>
-        <div className='text-right pt-10'>
+        <div className='pt-10'>
           <h2 className='border-b-2 border-gray-400 mx-32 md:mx-72'>you may also like</h2>
             <div className='overflow-x-scroll mx-8 md:mx-16 my-8 h-64 md:h-72'>
               <div className='flex flex-row'>

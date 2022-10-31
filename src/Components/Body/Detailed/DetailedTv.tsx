@@ -11,7 +11,7 @@ import battery from '../../../Icons/battery.png'
 
 const DetailedTv = (props:any) => {
   return (
-    <div className='ml-8'>
+    <div className='ml-8 w-64'>
         <p className='font-bold font-2xl'>TV Specs</p>
         <div className='text-left'>
         <div className='flex flex-row my-2'>
