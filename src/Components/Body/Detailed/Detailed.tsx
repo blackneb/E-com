@@ -59,7 +59,8 @@ const Detailed = () => {
   }
 
   function Cartitem(){
-    dispatch(addtocart(path));
+    const itemtocart = allitems.filter((item:any) => item.id === path);
+    dispatch(addtocart(itemtocart));
     alert(path);
   }
   const similaritems = allitems.filter((items:any) => items.type === post.type && items.catagory === post.catagory);

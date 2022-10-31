@@ -21,6 +21,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import CartCards from '../Cards/CartCards';
 
 
 const Navbar = () => {
@@ -63,13 +64,7 @@ const Navbar = () => {
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
             <ul>
-              {
-                carteditems.map((items:any) => (
-                  <div className='w-96'>
-                    <li>{items}</li>
-                  </div>
-                ))
-              }
+              <CartCards items={carteditems} />
             </ul>
           </DialogContentText>
         </DialogContent>
