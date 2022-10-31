@@ -16,23 +16,6 @@ import price from '../../../Icons/price.png'
 import storage from '../../../Icons/storage.png'
 import description from '../../../Icons/info.png'
 import battery from '../../../Icons/battery.png'
-import { Iaccessories } from '../../../Models/Models'
-import { current } from '@reduxjs/toolkit';
-
-
-
-
-interface accessories {
-  id:string,
-  brand:string,
-  name:string,
-  catagory:string,
-  price:string,
-  description:string,
-  types:string,
-  isdeleted:string,
-  images:Array<string>
-}
 
 const Detailed = () => {
   const [imageshown, setimageshown] = useState<string>();
@@ -42,15 +25,19 @@ const Detailed = () => {
   const path=loc.split("/")[2];
   const dispatch = useDispatch();
   const allitems = useSelector((state:any) => state.allitems.allitems);
-  function reloadingitem(){
+  const post = useSelector((state:any) => state.currentitem);
+  function reloadingitem(id:any){
     setloading(true);
-    axios.get("http://localhost/blacknebecom/api/post" + `/read_single.php?id=${path}`).then((response) => {
+    axios.get("http://localhost/blacknebecom/api/post" + `/read_single.php?id=${id}`).then((response) => {
+      console.log("path: " + path);
+      console.log("id: " + id);
       setimageshown(response.data.images[0]);
       dispatch(currentitem(response.data));
       setloading(false);
-      console.log()
-      
     })
+  }
+  useEffect(() => {
+    reloadingitem(path);
     if(allitems.length === 0){
       axios.get("http://localhost/blacknebecom/api/post/read.php").then((response) => {
           dispatch(addall(response.data.data));     
@@ -58,16 +45,13 @@ const Detailed = () => {
           }
       });
     }
-  }
-  const post = useSelector((state:any) => state.currentitem);
-  useEffect(() => {
-    reloadingitem();
   }, []);
-   function refreshPage() {
-     reloadingitem();
-     //window.location.reload();
-   }
-  function cartitem(){
+  function refreshPage(e:any){
+    reloadingitem(e);
+    //window.location.reload();
+  }
+
+  function Cartitem(){
     dispatch(addtocart(path));
     alert(path);
   }
@@ -120,7 +104,7 @@ const Detailed = () => {
                           <p className='ml-2 w-72'>{post.description} </p>
                         </div>
                         <div className='flex justify-center'>
-                          <button onClick={cartitem} className='border-2 border-black rounded-2xl bg-white text-black px-2 hover:bg-black hover:text-white m-4 md:m-0'>Cart Item</button>
+                          <button onClick={Cartitem} className='border-2 border-black rounded-2xl bg-white text-black px-2 hover:bg-black hover:text-white m-4 md:m-0'>Cart Item</button>
                         </div>            
                       </div>
                     </div>
@@ -169,7 +153,7 @@ const Detailed = () => {
                           <p className='ml-2 w-72'>{post.description} </p>
                         </div>
                         <div className='flex justify-center'>
-                          <button onClick={cartitem} className='border-2 border-black rounded-2xl bg-white text-black px-2 hover:bg-black hover:text-white m-4 md:m-0'>Cart Item</button>
+                          <button onClick={Cartitem} className='border-2 border-black rounded-2xl bg-white text-black px-2 hover:bg-black hover:text-white m-4 md:m-0'>Cart Item</button>
                         </div>            
                       </div>
                     </div>
@@ -218,7 +202,7 @@ const Detailed = () => {
                           <p className='ml-2 w-72'>{post.description} </p>
                         </div>
                         <div className='flex justify-center'>
-                          <button onClick={cartitem} className='border-2 border-black rounded-2xl bg-white text-black px-2 hover:bg-black hover:text-white m-4 md:m-0'>Cart Item</button>
+                          <button onClick={Cartitem} className='border-2 border-black rounded-2xl bg-white text-black px-2 hover:bg-black hover:text-white m-4 md:m-0'>Cart Item</button>
                         </div>            
                       </div>
                     </div>
@@ -272,7 +256,7 @@ const Detailed = () => {
                           <p className='ml-2 w-72'>{post.description} </p>
                         </div>
                         <div className='flex justify-center'>
-                          <button onClick={cartitem} className='border-2 border-black rounded-2xl bg-white text-black px-2 hover:bg-black hover:text-white m-4 md:m-0'>Cart Item</button>
+                          <button onClick={Cartitem} className='border-2 border-black rounded-2xl bg-white text-black px-2 hover:bg-black hover:text-white m-4 md:m-0'>Cart Item</button>
                         </div>            
                       </div>
                     </div>
@@ -284,10 +268,12 @@ const Detailed = () => {
         <div className='pt-10'>
           <h2 className='border-b-2 border-gray-400 mx-32 md:mx-72'>you may also like</h2>
             <div className='overflow-x-scroll mx-8 md:mx-16 my-8 h-64 md:h-72'>
-              <div className='flex flex-row' onClick={reloadingitem} >
+              <div className='flex flex-row'>
             {
               [...similaritems].map(({id,brand,name,catagory,price,description,types,images}:any) => (
-                <Carditems key={id} id={id} brand={brand} catagory={catagory} name={name} price={price} description={description} types={types} images={images}/>
+                <div onClick={()=>{reloadingitem(id)}}>
+                  <Carditems key={id} id={id} brand={brand} catagory={catagory} name={name} price={price} description={description} types={types} images={images}/>
+                </div>
                 ))
             }
 

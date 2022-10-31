@@ -2,7 +2,7 @@ import React from 'react'
 import iphone from '../../Images/iphone.jpg'
 import {Link} from 'react-router-dom'
 
-interface Catagories {
+export interface Catagories {
   id:string,
   brand:string,
   catagory:string,
