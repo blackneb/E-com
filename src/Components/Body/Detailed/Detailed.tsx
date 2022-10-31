@@ -18,6 +18,7 @@ import description from '../../../Icons/info.png'
 import battery from '../../../Icons/battery.png'
 import DetailedAccessories from './DetailedAccessories';
 import DetailedLaptop from './DetailedLaptop';
+import DetailedTv from './DetailedTv';
 
 const Detailed = () => {
   const [imageshown, setimageshown] = useState<string>();
@@ -97,42 +98,7 @@ const Detailed = () => {
               }
               else if(post.catagory === "tv"){
                 return(
-                  <div className='ml-8'>
-                      <p className='font-bold font-2xl'>Laptop Specs</p>
-                      <div className='text-left'>
-                        <div className='flex flex-row my-2'>
-                          <img className='h-8' src={ram} alt=''/>
-                          <p className='ml-2'>Brand: {post.brand}</p>
-                        </div>
-                        <div className='flex flex-row my-2'>
-                          <img className='h-8' src={ram} alt=''/>
-                          <p className='ml-2'>Screensize: {post.screensize}</p>
-                        </div>
-                        <div className='flex flex-row my-2'>
-                          <img className='h-8' src={display} alt=''/>
-                          <p className='ml-2'>DisplayTechnology: {post.displaytechnology} </p>
-                        </div>
-                        <div className='flex flex-row my-2'>
-                          <img className='h-8' src={cpu} alt=''/>
-                          <p className='ml-2'>Resolution: {post.resolution} </p>
-                        </div>
-                        <div className='flex flex-row my-2'>
-                          <img className='h-8' src={cpu} alt=''/>
-                          <p className='ml-2'>Refreshrate: {post.refreshrate} </p>
-                        </div>
-                        <div className='flex flex-row my-2'>
-                          <img className='h-8' src={battery} alt=''/>
-                          <p className='ml-2'>Connectivity: {post.connectivity}</p>
-                        </div>
-                        <div className='flex flex-row my-2'>
-                          <img className='h-8' src={price} alt=''/>
-                          <p className='ml-2'>Price: {post.price + " birr"} </p>
-                        </div>
-                        <div className='flex justify-center'>
-                          <button onClick={Cartitem} className='border-2 border-black rounded-2xl bg-white text-black px-2 hover:bg-black hover:text-white m-4 md:m-0'>Cart Item</button>
-                        </div>            
-                      </div>
-                    </div>
+                  <DetailedTv post={post} />
                 )
             }
             else if(post.catagory === "phone"){
