@@ -16,6 +16,7 @@ import price from '../../../Icons/price.png'
 import storage from '../../../Icons/storage.png'
 import description from '../../../Icons/info.png'
 import battery from '../../../Icons/battery.png'
+import DetailedAccessories from './DetailedAccessories';
 
 const Detailed = () => {
   const [imageshown, setimageshown] = useState<string>();
@@ -84,24 +85,9 @@ const Detailed = () => {
         
         {(()=>{
               if(post.catagory === "accessories"){
-                  return(
-                    <div className='ml-8'>
-                      <p className='font-bold font-2xl'>Laptop Specs</p>
-                      <div className='text-left'>
-                      <div className='flex flex-row my-2'>
-                          <img className='h-8' src={price} alt=''/>
-                          <p className='ml-2'>Brand: {post.brand} </p>
-                        </div>
-                        <div className='flex flex-row my-2'>
-                          <img className='h-8' src={price} alt=''/>
-                          <p className='ml-2'>Price: {post.price + " birr"} </p>
-                        </div>
-                        <div className='flex justify-center'>
-                          <button onClick={Cartitem} className='border-2 border-black rounded-2xl bg-white text-black px-2 hover:bg-black hover:text-white m-4 md:m-0'>Cart Item</button>
-                        </div>            
-                      </div>
-                    </div>
-                  )
+                return(
+                  <DetailedAccessories post={post} />
+                )
               }
               else if(post.catagory === "laptop"){
                   return(
