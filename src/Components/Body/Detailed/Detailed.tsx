@@ -20,19 +20,21 @@ import battery from '../../../Icons/battery.png'
 const Detailed = () => {
   const [imageshown, setimageshown] = useState<string>();
   const location = useLocation();
+  const [more, setmore] = useState(true);
   const [loading, setloading] = useState(true);
   const loc = location.pathname;
   const path=loc.split("/")[2];
   const dispatch = useDispatch();
   const allitems = useSelector((state:any) => state.allitems.allitems);
   const post = useSelector((state:any) => state.currentitem);
+  const [short,setshort] = useState<string>();
   function reloadingitem(id:any){
     setloading(true);
+    setmore(true);
     axios.get("http://localhost/blacknebecom/api/post" + `/read_single.php?id=${id}`).then((response) => {
-      console.log("path: " + path);
-      console.log("id: " + id);
       setimageshown(response.data.images[0]);
       dispatch(currentitem(response.data));
+      setshort(response.data.description.slice(0,150) + " ...");
       setloading(false);
     })
   }
@@ -94,15 +96,6 @@ const Detailed = () => {
                           <img className='h-8' src={price} alt=''/>
                           <p className='ml-2'>Price: {post.price + " birr"} </p>
                         </div>
-                        <div className='flex flex-row my-2'>
-                          <div className='flex flex-row'>
-                            <div className='flex flex-row'>
-                              <img className='h-8' src={description} alt=''/>
-                              <p className='ml-2'>Description:</p>
-                            </div>
-                          </div>
-                          <p className='ml-2 w-72'>{post.description} </p>
-                        </div>
                         <div className='flex justify-center'>
                           <button onClick={Cartitem} className='border-2 border-black rounded-2xl bg-white text-black px-2 hover:bg-black hover:text-white m-4 md:m-0'>Cart Item</button>
                         </div>            
@@ -112,7 +105,7 @@ const Detailed = () => {
               }
               else if(post.catagory === "laptop"){
                   return(
-                    <div className='ml-8'>
+                    <div className='ml-8 w-64'>
                       <p className='font-bold font-2xl'>Laptop Specs</p>
                       <div className='text-left'>
                         <div className='flex flex-row my-2'>
@@ -142,15 +135,6 @@ const Detailed = () => {
                         <div className='flex flex-row my-2'>
                           <img className='h-8' src={price} alt=''/>
                           <p className='ml-2'>Price: {post.price + " birr"} </p>
-                        </div>
-                        <div className='flex flex-row my-2'>
-                          <div className='flex flex-row'>
-                            <div className='flex flex-row'>
-                              <img className='h-8' src={description} alt=''/>
-                              <p className='ml-2'>Description:</p>
-                            </div>
-                          </div>
-                          <p className='ml-2 w-72'>{post.description} </p>
                         </div>
                         <div className='flex justify-center'>
                           <button onClick={Cartitem} className='border-2 border-black rounded-2xl bg-white text-black px-2 hover:bg-black hover:text-white m-4 md:m-0'>Cart Item</button>
@@ -191,15 +175,6 @@ const Detailed = () => {
                         <div className='flex flex-row my-2'>
                           <img className='h-8' src={price} alt=''/>
                           <p className='ml-2'>Price: {post.price + " birr"} </p>
-                        </div>
-                        <div className='flex flex-row my-2'>
-                          <div className='flex flex-row'>
-                            <div className='flex flex-row'>
-                              <img className='h-8' src={description} alt=''/>
-                              <p className='ml-2'>Description:</p>
-                            </div>
-                          </div>
-                          <p className='ml-2 w-72'>{post.description} </p>
                         </div>
                         <div className='flex justify-center'>
                           <button onClick={Cartitem} className='border-2 border-black rounded-2xl bg-white text-black px-2 hover:bg-black hover:text-white m-4 md:m-0'>Cart Item</button>
@@ -246,15 +221,6 @@ const Detailed = () => {
                           <img className='h-8' src={price} alt=''/>
                           <p className='ml-2'>Price: {post.price + " birr"}</p>
                         </div>
-                        <div className='flex flex-row my-2'>
-                          <div className='flex flex-row'>
-                            <div className='flex flex-row'>
-                              <img className='h-8' src={description} alt=''/>
-                              <p className='ml-2'>Description:</p>
-                            </div>
-                          </div>
-                          <p className='ml-2 w-72'>{post.description} </p>
-                        </div>
                         <div className='flex justify-center'>
                           <button onClick={Cartitem} className='border-2 border-black rounded-2xl bg-white text-black px-2 hover:bg-black hover:text-white m-4 md:m-0'>Cart Item</button>
                         </div>            
@@ -264,8 +230,22 @@ const Detailed = () => {
                 )
           }
           })()}
+          <div className='pl-24 pt-4'>
+          <div className='flex flex-row my-2'>
+            <div className='flex flex-row'>
+              <div className='flex flex-row'>
+                <img className='h-8' src={description} alt=''/>
+                <p className='ml-2'>Description:</p>
+              </div>
+            </div>
+            <div className=''>
+              <p className='ml-2 w-96 text-justify'>{more? short : post.description} </p>
+              <p onClick={()=>{setmore(!more)}} >{more? "show more" : "show less"}</p>
+            </div>
+          </div>
+          </div>
       </div>
-        <div className='pt-10'>
+        <div className='text-right pt-10'>
           <h2 className='border-b-2 border-gray-400 mx-32 md:mx-72'>you may also like</h2>
             <div className='overflow-x-scroll mx-8 md:mx-16 my-8 h-64 md:h-72'>
               <div className='flex flex-row'>
@@ -276,7 +256,6 @@ const Detailed = () => {
                 </div>
                 ))
             }
-
                 </div>
               </div>         
           </div>
