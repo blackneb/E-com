@@ -1,5 +1,5 @@
-import React,{useState,useEffect} from 'react'
-import { useSelector,useDispatch } from 'react-redux'
+import React,{useState,useEffect} from 'react';
+import { useSelector,useDispatch } from 'react-redux';
 
 const CartCards = (props:any) => {
   const carteditems = useSelector((state:any) => state.addtocart.items);
@@ -15,7 +15,8 @@ const CartCards = (props:any) => {
                 <img className='h-8' src={"http://localhost/blacknebecom/api/post/photos/" + items[0].images[0]} alt="" />
               </div>
               <p className='ml-2 w-48'>{items[0].name}</p>
-              <input className='w-20 ml-8 border-2' type="number" placeholder='1'></input>
+                <input className='w-20 ml-8 border-2' type="number" defaultValue='1' placeholder='1'></input>
+
             </div>
           </div>     
         ))

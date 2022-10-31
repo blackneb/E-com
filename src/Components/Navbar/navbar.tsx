@@ -1,5 +1,9 @@
 import React,{useState} from 'react'
 import { Link } from 'react-router-dom';
+import Badge, { BadgeProps } from '@mui/material/Badge';
+import { styled } from '@mui/material/styles';
+import IconButton from '@mui/material/IconButton';
+
 import menu from '../../Icons/menu.png';
 import close from '../../Icons/close.png';
 import Home from '../../Icons/home.png';
@@ -23,6 +27,14 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import CartCards from '../Cards/CartCards';
 
+const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
+  '& .MuiBadge-badge': {
+    right: -3,
+    top: 13,
+    border: `2px solid ${theme.palette.background.paper}`,
+    padding: '0 4px',
+  },
+}));
 
 const Navbar = () => {
     const [opens, setOpens] = React.useState(false);
@@ -35,7 +47,7 @@ const Navbar = () => {
         setOpens(false);
     };
     const dispatch = useDispatch();
-    const carteditems = useSelector((state:any) => state.addtocart.itemsid);
+    const carteditems = useSelector((state:any) => state.addtocart.items);
     const userinfo = useSelector((state:any) => state.user);
     console.log(userinfo.usertype);
     let links:{name: string, link:any, icon:any}[] = [
@@ -95,10 +107,12 @@ const Navbar = () => {
                     ))
                 }
                 <li className='md:ml-8 text-sm md:my-0 my-1' onClick={handleClickOpen}>
-                    <div className='flex justify-center' >
+                    <IconButton aria-label="cart">
+                      <StyledBadge badgeContent={carteditems.length} color="secondary">
                         <img className='h-4 mt-3' src={Cart} alt='' ></img>
-                        <p className='p-2'>Cart</p>
-                    </div>
+                        <p className='p-2 text-sm'>Cart</p>
+                      </StyledBadge>
+                    </IconButton>
                 </li>
                 <Link to="/signin">
                     <li className={`md:ml-8 text-sm md:my-0 my-1 ${userinfo.userlogged? "hidden" : "block"}`}>
