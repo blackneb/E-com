@@ -22,6 +22,7 @@ const initialStateuser:Iuserautorization={
 };
 const initialStatecart ={
     items:[],
+    numberofitems:[],
 }
 
 export const laptopReducers = (state=initialState, action:ILaptopActionModel) => {
@@ -102,7 +103,7 @@ export const addtocart = (state=initialStatecart,action:any) => {
     const{type,payload} = action;
     switch(type){
         case ADD_TO_CART:
-            return {...state,items:[...state.items,payload]}
+            return {...state,items:[...state.items,payload],numberofitems:[...state.numberofitems,1]}
         default:
             return state;
     }
