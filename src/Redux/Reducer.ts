@@ -104,7 +104,7 @@ export const addtocart = (state=initialStatecart,action:any) => {
         case ADD_TO_CART:
             return {...state,items:[...state.items,payload]}
         case ADD_QUANTITY:
-            return
+            return {...state,items:state.items.map((item:any) => item.id === payload.id ? {...item, quantity:payload.value } : item) }
         case DECREASE_QUANTITY:
             return
         case REMOVE_ITEM:

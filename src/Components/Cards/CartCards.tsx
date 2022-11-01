@@ -1,9 +1,11 @@
 import React,{useState,useEffect} from 'react';
 import { useSelector,useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
+import { addquantity } from '../../Redux/Actions';
 
 const CartCards = (props:any) => {
   const carteditems = useSelector((state:any) => state.addtocart.items);
+  const dispatch = useDispatch();
   const [price, setprice] = useState(0);
   let prices:any = 0;
   const { register, handleSubmit, watch, formState: { errors } } = useForm<any>();
@@ -20,7 +22,12 @@ const CartCards = (props:any) => {
   }, [])
   const onChange = (e:any) => {
     e.preventDefault();
-
+    const onchanging = {
+      id:e.target.name,
+      value:e.target.value,
+    }
+    console.log(JSON.stringify(onchanging));
+    dispatch(addquantity(onchanging));
   }
   
   return (
