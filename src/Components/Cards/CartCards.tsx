@@ -20,6 +20,7 @@ const CartCards = (props:any) => {
   }, [])
   const onChange = (e:any) => {
     e.preventDefault();
+
   }
   
   return (
@@ -30,11 +31,11 @@ const CartCards = (props:any) => {
           <div className='w-96'>
             <div className='flex flex-row border-2 m-2 p-2'>
               <div className='w-14'>
-                <img className='h-8' src={"http://localhost/blacknebecom/api/post/photos/" + items[0].images[0]} alt="" />
+                <img className='h-8' src={"http://localhost/blacknebecom/api/post/photos/" + items.images} alt="" />
               </div>
-              <p className='ml-2 w-48'>{items[0].name}</p>
-              <p>{items[0].price + "ETB"}</p>
-                <input className='w-20 h-8 ml-8 border-2' type="number" {...register(items[0].name)} defaultValue='1' placeholder='1'></input>
+              <p className='ml-2 w-48'>{items.name}</p>
+              <p>{items.price + "ETB"}</p>
+                <input className='w-20 h-8 ml-8 border-2' type="number" name={items.id} onChange={onChange} defaultValue='1' placeholder='1'></input>
             </div>
           </div>
         ))

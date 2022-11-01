@@ -4,7 +4,7 @@ import { Iphone,IPhoneActionModel } from "../Models/Models";
 import { Iaccessories,IAccessoriesActionModel } from "../Models/Models";
 import { Ibook,IBookActionModel } from "../Models/Models";
 import { Iuserautorization,IUserAutorizationACtionModel } from "../Models/Models";
-import { ADD_LAPTOP,ADD_ACCESSORIES, ADD_BOOK, ADD_IMAGES, ADD_PHONE, ADD_TV, ADD_USER_AUTORIZATION, ADD_ALL, ADD_TO_CART, CURRENT_ITEM } from "./ActionTypes";
+import { ADD_LAPTOP,ADD_ACCESSORIES, ADD_BOOK, ADD_IMAGES, ADD_PHONE, ADD_TV, ADD_USER_AUTORIZATION, ADD_ALL, ADD_TO_CART, CURRENT_ITEM, ADD_QUANTITY,DECREASE_QUANTITY,REMOVE_ITEM } from "./ActionTypes";
 const initialState:Ilaptop[]=[];
 const initialStates:Iphone[]=[];
 const initialStatess:Itv[]=[];
@@ -103,6 +103,12 @@ export const addtocart = (state=initialStatecart,action:any) => {
     switch(type){
         case ADD_TO_CART:
             return {...state,items:[...state.items,payload]}
+        case ADD_QUANTITY:
+            return
+        case DECREASE_QUANTITY:
+            return
+        case REMOVE_ITEM:
+            return   
         default:
             return state;
     }

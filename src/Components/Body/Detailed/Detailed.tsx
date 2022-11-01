@@ -26,6 +26,7 @@ type itemtocartproperties = {
   id:string;
   name:string;
   price:string;
+  images:string;
   quantity:number;
 }
 
@@ -71,6 +72,7 @@ const Detailed = () => {
       id:itemtocart[0].id,
       name: itemtocart[0].name,
       price:itemtocart[0].price,
+      images:itemtocart[0].images[0],
       quantity: 1,
     }
 
