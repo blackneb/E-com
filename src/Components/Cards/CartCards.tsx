@@ -4,7 +4,6 @@ import { useForm } from 'react-hook-form';
 
 const CartCards = (props:any) => {
   const carteditems = useSelector((state:any) => state.addtocart.items);
-  const numberofitems = useSelector((state:any) => state.addtocart.numberofitems);
   const [price, setprice] = useState(0);
   let prices:any = 0;
   const { register, handleSubmit, watch, formState: { errors } } = useForm<any>();
@@ -13,8 +12,8 @@ const CartCards = (props:any) => {
   });
   useEffect(() => {
     for(let i=0;i<carteditems.length;i++){
-      let valueone = carteditems[i][0].price;
-      let valuetwo = numberofitems[i];
+      let valueone = carteditems[i].price;
+      let valuetwo = carteditems[i].quantity;
       prices += valueone * valuetwo;
     }
     setprice(prices);
