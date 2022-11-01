@@ -22,6 +22,13 @@ import DetailedLaptop from './DetailedLaptop';
 import DetailedTv from './DetailedTv';
 import DetailedPhone from './DetailedPhone';
 
+type itemtocartproperties = {
+  id:string;
+  name:string;
+  price:string;
+  quantity:number;
+}
+
 const Detailed = () => {
   const [imageshown, setimageshown] = useState<string>();
   const location = useLocation();
@@ -60,8 +67,14 @@ const Detailed = () => {
 
   function Cartitem(){
     const itemtocart = allitems.filter((item:any) => item.id === path);
-    dispatch(addtocart(itemtocart));
-    alert(path);
+    const tocartitem:itemtocartproperties = {
+      id:itemtocart[0].id,
+      name: itemtocart[0].name,
+      price:itemtocart[0].price,
+      quantity: 1,
+    }
+
+    dispatch(addtocart(tocartitem));
   }
   const similaritems = allitems.filter((items:any) => items.type === post.type && items.catagory === post.catagory);
 
