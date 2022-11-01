@@ -1,5 +1,5 @@
 import { Ilaptop, Iphone,Itv, Iaccessories, Ibook, Iuserautorization } from "../Models/Models";
-import { ADD_LAPTOP, ADD_PHONE, ADD_TV, ADD_ACCESSORIES, ADD_BOOK, ADD_USER_AUTORIZATION,ADD_ALL,ADD_TO_CART,CURRENT_ITEM } from "./ActionTypes";
+import { ADD_LAPTOP, ADD_PHONE, ADD_TV, ADD_ACCESSORIES, ADD_BOOK, ADD_USER_AUTORIZATION,ADD_ALL,ADD_TO_CART,CURRENT_ITEM,ADD_QUANTITY,DECREASE_QUANTITY,REMOVE_ITEM } from "./ActionTypes";
 
 export const addLaptop = (laptop: Ilaptop) => {
     return{
@@ -52,6 +52,24 @@ export const addtocart = (addtocart:any) => {
     return{
         type:ADD_TO_CART,
         payload:addtocart,
+    }
+}
+export const addquantity = (addquantity:any) => {
+    return{
+        type:ADD_QUANTITY,
+        payload:addquantity,
+    }
+}
+export const decreasequantity = (decreasequantity:any) => {
+    return {
+        type:DECREASE_QUANTITY,
+        payload:decreasequantity,
+    }
+}
+export const removeitem = (removeitem:any) => {
+    return{
+        type:REMOVE_ITEM,
+        payload:removeitem,
     }
 }
 
