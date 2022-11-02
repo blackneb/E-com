@@ -48,7 +48,7 @@ const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
 }));
 
 const Navbar = () => {
-  const dispatch = useDispatch();
+    const dispatch = useDispatch();
     const carteditems = useSelector((state:any) => state.addtocart.items);
     const userinfo = useSelector((state:any) => state.user);
     console.log(userinfo.usertype);
@@ -66,77 +66,80 @@ const Navbar = () => {
     const [open, setOpen] = useState(false);
     const [fullWidth, setFullWidth] = React.useState(true);
     const [maxWidth, setMaxWidth] = React.useState<DialogProps['maxWidth']>('md');
-  const [opening, setOpening] = React.useState(false);
-  const navigate = useNavigate();
-  const anchorRef = React.useRef<HTMLButtonElement>(null);
+    const [opening, setOpening] = React.useState(false);
+    const navigate = useNavigate();
+    const anchorRef = React.useRef<HTMLButtonElement>(null);
 
-  const handleToggle = () => {
-    setOpening((prevOpen) => !prevOpen);
-  };
-
-  const handleLogging = () => {
-    console.log(userinfo.logged);
-    if(userinfo.userlogged === false) {
-      navigate("/signin"); 
-    }
-    else if(userinfo.userlogged === true){
-      const statemessage:Iuserautorization = {
-        userlogged:false,
-        usertype:"",
-        firstname:"",
-        lastname:"",
-        username:"",
-        email:"",
-        phone:"",
-    }
-    dispatch(adduserautorization(statemessage));
-    navigate("/");
-    }
-    setOpening(false);
-  }
-  const handleAccount = () => {
-    setOpening(false);
-  }
-
-  const handleCloseing = (event: Event | React.SyntheticEvent) => {
-    if (
-      anchorRef.current &&
-      anchorRef.current.contains(event.target as HTMLElement)
-    ) {
-      return;
-    }
-
-    setOpening(false);
-  };
-
-  function handleListKeyDown(event: React.KeyboardEvent) {
-    if (event.key === 'Tab') {
-      event.preventDefault();
-      setOpening(false);
-    } else if (event.key === 'Escape') {
-      setOpening(false);
-    }
-  }
-
-  // return focus to the button when we transitioned from !open -> open
-  const prevOpen = React.useRef(opening);
-  React.useEffect(() => {
-    if (prevOpen.current === true && opening === false) {
-      anchorRef.current!.focus();
-    }
-
-    prevOpen.current = opening;
-  }, [opening]);
-
-    const [opens, setOpens] = React.useState(false);
-
-    const handleClickOpen = () => {
-        setOpens(true);
+    const handleToggle = () => {
+      setOpening((prevOpen) => !prevOpen);
     };
 
-    const handleClose = () => {
-        setOpens(false);
+    const handleLogging = () => {
+      console.log(userinfo.logged);
+      if(userinfo.userlogged === false) {
+        navigate("/signin"); 
+      }
+      else if(userinfo.userlogged === true){
+        const statemessage:Iuserautorization = {
+          userlogged:false,
+          usertype:"",
+          firstname:"",
+          lastname:"",
+          username:"",
+          email:"",
+          phone:"",
+      }
+      dispatch(adduserautorization(statemessage));
+      navigate("/");
+      }
+      setOpening(false);
+    }
+    const handleAccount = () => {
+      if(userinfo.userlogged === false) {
+        alert("Please Login to access your account");
+      }
+      setOpening(false);
+    }
+
+    const handleCloseing = (event: Event | React.SyntheticEvent) => {
+      if (
+        anchorRef.current &&
+        anchorRef.current.contains(event.target as HTMLElement)
+      ) {
+        return;
+      }
+
+      setOpening(false);
     };
+
+    function handleListKeyDown(event: React.KeyboardEvent) {
+      if (event.key === 'Tab') {
+        event.preventDefault();
+        setOpening(false);
+      } else if (event.key === 'Escape') {
+        setOpening(false);
+      }
+    }
+
+    // return focus to the button when we transitioned from !open -> open
+    const prevOpen = React.useRef(opening);
+    React.useEffect(() => {
+      if (prevOpen.current === true && opening === false) {
+        anchorRef.current!.focus();
+      }
+
+      prevOpen.current = opening;
+    }, [opening]);
+
+      const [opens, setOpens] = React.useState(false);
+
+      const handleClickOpen = () => {
+          setOpens(true);
+      };
+
+      const handleClose = () => {
+          setOpens(false);
+      };
   return (
     <>
     <Dialog
@@ -199,7 +202,7 @@ const Navbar = () => {
                     </li>
                 </Link> */}
                 <Stack direction="row" spacing={2}>
-                  <div>
+                  <div className='ml-4'>
                     <Button
                       ref={anchorRef}
                       id="composition-button"

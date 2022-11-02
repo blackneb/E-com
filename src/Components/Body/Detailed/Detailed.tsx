@@ -40,6 +40,7 @@ const Detailed = () => {
   const dispatch = useDispatch();
   const allitems = useSelector((state:any) => state.allitems.allitems);
   const post = useSelector((state:any) => state.currentitem);
+  const carteditemslist = useSelector((state:any) => state.addtocart.items);
   const [short,setshort] = useState<string>();
   function reloadingitem(id:any){
     setloading(true);
@@ -68,6 +69,7 @@ const Detailed = () => {
 
   function Cartitem(){
     const itemtocart = allitems.filter((item:any) => item.id === path);
+    let isnotincart = true;
     const tocartitem:itemtocartproperties = {
       id:itemtocart[0].id,
       name: itemtocart[0].name,
@@ -75,8 +77,16 @@ const Detailed = () => {
       images:itemtocart[0].images[0],
       quantity: 1,
     }
-
-    dispatch(addtocart(tocartitem));
+    for(let i=0;i<carteditemslist.length;i++){
+      if(tocartitem.id === carteditemslist[i].id){
+        alert("item is already carted");
+        isnotincart = false;
+        return
+      }
+    }
+    if(isnotincart){
+      dispatch(addtocart(tocartitem));
+    }
   }
   const similaritems = allitems.filter((items:any) => items.type === post.type && items.catagory === post.catagory);
 
