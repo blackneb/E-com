@@ -43,17 +43,17 @@ const CartCards = (props:any) => {
   }
   
   return (
-    <div className='h-96'>
+    <div className=' w-[32rem] h-96'>
       <form onSubmit={handleSubmit(onSubmit)}>
       {
         carteditems.map((items:any,index:number) => (
-          <div className='w-96'>
-            <div className='flex flex-row border-2 m-2 p-2'>
+          <div className=''>
+            <div className='flex flex-row border-b-2 m-2 p-2'>
               <div className='w-14'>
                 <img className='h-8' src={"http://localhost/blacknebecom/api/post/photos/" + items.images} alt="" />
               </div>
-              <p className='ml-2 w-64'>{items.name}</p>
-              <p>{items.price + "ETB"}</p>
+              <p className='ml-8 w-64 text-left'>{items.name}</p>
+              <p className='text-center'>{items.price + "ETB"}</p>
                 <input className='w-20 h-8 ml-8 border-2' type="number" name={items.id} onChange={onChange} defaultValue={items.quantity}placeholder='1'></input>
             </div>
           </div>
