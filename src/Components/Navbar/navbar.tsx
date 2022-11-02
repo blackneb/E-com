@@ -20,7 +20,7 @@ import Upload from '../../Icons/upload.png';
 import { useDispatch,useSelector } from 'react-redux';
 
 import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
+import Dialog, { DialogProps } from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
@@ -62,9 +62,12 @@ const Navbar = () => {
         {name:"About",link:"/about",icon:<img className='h-4 mt-2.5' src={About} alt=''/>},
     ];
     const [open, setOpen] = useState(false);
+    const [fullWidth, setFullWidth] = React.useState(true);
+    const [maxWidth, setMaxWidth] = React.useState<DialogProps['maxWidth']>('md');
   return (
     <>
     <Dialog
+        fullWidth
         open={opens}
         onClose={handleClose}
         aria-labelledby="alert-dialog-title"

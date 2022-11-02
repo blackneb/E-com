@@ -6,10 +6,10 @@ module.exports = {
   theme: {
     extend: {
       height: {
-        '128': '28rem',
+        '128': '32rem',
       },
       width: {
-        '128': '32rem',
+        '128': '80rem',
       }
     }
   },
