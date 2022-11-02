@@ -1,8 +1,10 @@
 import React,{useState} from 'react'
 import {useNavigate, Link } from 'react-router-dom';
+import { adduserautorization } from '../../Redux/Actions';
 import Badge, { BadgeProps } from '@mui/material/Badge';
 import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
+import { Iuserautorization } from '../../Models/Models';
 
 import menu from '../../Icons/menu.png';
 import close from '../../Icons/close.png';
@@ -46,6 +48,24 @@ const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
 }));
 
 const Navbar = () => {
+  const dispatch = useDispatch();
+    const carteditems = useSelector((state:any) => state.addtocart.items);
+    const userinfo = useSelector((state:any) => state.user);
+    console.log(userinfo.usertype);
+    let links:{name: string, link:any, icon:any}[] = [
+        {name:"Home",link:"/",icon:<img className='h-4 mt-2.5' src={Home} alt=''/>},
+        {name:"Laptops",link:"/laptops",icon:<img className='h-4 mt-2.5' src={Laptop} alt=''/>},
+        {name:"Gaming",link:"/gaming",icon:<img className='h-4 mt-2.5' src={Gaming} alt=''/>},
+        {name:"Accessories",link:"/accessories",icon:<img className='h-4 mt-2.5' src={Accessories} alt=''/>},
+        {name:"Phone",link:"/phone",icon:<img className='h-4 mt-2.5' src={Phone} alt=''/>},
+        {name:"TV",link:"/tv",icon:<img className='h-4 mt-2.5' src={Tv} alt=''/>},
+        //{name:"PS",link:"/ps",icon:<img className='h-4 mt-2.5' src={Ps} alt=''/>},
+        {name:"Contact",link:"/contact",icon:<img className='h-4 mt-2.5' src={Contact} alt=''/>},
+        {name:"About",link:"/about",icon:<img className='h-4 mt-2.5' src={About} alt=''/>},
+    ];
+    const [open, setOpen] = useState(false);
+    const [fullWidth, setFullWidth] = React.useState(true);
+    const [maxWidth, setMaxWidth] = React.useState<DialogProps['maxWidth']>('md');
   const [opening, setOpening] = React.useState(false);
   const navigate = useNavigate();
   const anchorRef = React.useRef<HTMLButtonElement>(null);
@@ -55,8 +75,24 @@ const Navbar = () => {
   };
 
   const handleLogging = () => {
+    console.log(userinfo.logged);
+    if(userinfo.userlogged === false) {
+      navigate("/signin"); 
+    }
+    else if(userinfo.userlogged === true){
+      const statemessage:Iuserautorization = {
+        userlogged:false,
+        usertype:"",
+        firstname:"",
+        lastname:"",
+        username:"",
+        email:"",
+        phone:"",
+    }
+    dispatch(adduserautorization(statemessage));
+    navigate("/");
+    }
     setOpening(false);
-    navigate("/signin");
   }
   const handleAccount = () => {
     setOpening(false);
@@ -101,24 +137,6 @@ const Navbar = () => {
     const handleClose = () => {
         setOpens(false);
     };
-    const dispatch = useDispatch();
-    const carteditems = useSelector((state:any) => state.addtocart.items);
-    const userinfo = useSelector((state:any) => state.user);
-    console.log(userinfo.usertype);
-    let links:{name: string, link:any, icon:any}[] = [
-        {name:"Home",link:"/",icon:<img className='h-4 mt-2.5' src={Home} alt=''/>},
-        {name:"Laptops",link:"/laptops",icon:<img className='h-4 mt-2.5' src={Laptop} alt=''/>},
-        {name:"Gaming",link:"/gaming",icon:<img className='h-4 mt-2.5' src={Gaming} alt=''/>},
-        {name:"Accessories",link:"/accessories",icon:<img className='h-4 mt-2.5' src={Accessories} alt=''/>},
-        {name:"Phone",link:"/phone",icon:<img className='h-4 mt-2.5' src={Phone} alt=''/>},
-        {name:"TV",link:"/tv",icon:<img className='h-4 mt-2.5' src={Tv} alt=''/>},
-        //{name:"PS",link:"/ps",icon:<img className='h-4 mt-2.5' src={Ps} alt=''/>},
-        {name:"Contact",link:"/contact",icon:<img className='h-4 mt-2.5' src={Contact} alt=''/>},
-        {name:"About",link:"/about",icon:<img className='h-4 mt-2.5' src={About} alt=''/>},
-    ];
-    const [open, setOpen] = useState(false);
-    const [fullWidth, setFullWidth] = React.useState(true);
-    const [maxWidth, setMaxWidth] = React.useState<DialogProps['maxWidth']>('md');
   return (
     <>
     <Dialog
@@ -217,7 +235,7 @@ const Navbar = () => {
                                 onKeyDown={handleListKeyDown}
                               >
                                 <MenuItem onClick={handleAccount}>My account</MenuItem>
-                                <MenuItem onClick={handleLogging}> {userinfo.userlogged? "Logout" : "Log in"}</MenuItem>
+                                <MenuItem onClick={ handleLogging}> {userinfo.userlogged? "Logout" : "Log in"}</MenuItem>
                               </MenuList>
                             </ClickAwayListener>
                           </Paper>
