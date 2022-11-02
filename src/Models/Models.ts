@@ -62,8 +62,11 @@ export interface Ibook{
 export interface Iuserautorization{
     userlogged:boolean;
     usertype:string;
-    management:boolean;
-    cartoptions:boolean;
+    username:string;
+    firstname:string;
+    lastname:string;
+    email:string;
+    phone:string;
 }
 export interface Iimages{
 

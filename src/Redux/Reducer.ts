@@ -17,8 +17,11 @@ const initialStateall = {
 const initialStateuser:Iuserautorization={
     userlogged:false,
     usertype: "notlogged",
-    management: false,
-    cartoptions: false,
+    firstname:"",
+    lastname:"",
+    username:"",
+    email:"",
+    phone:"",
 };
 const initialStatecart ={
     items:[],

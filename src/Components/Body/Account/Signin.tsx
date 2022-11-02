@@ -25,8 +25,11 @@ const Signin = () => {
                 const statemessage:Iuserautorization = {
                     userlogged:true,
                     usertype:response.data.usertype,
-                    management:false,
-                    cartoptions:false,
+                    firstname:response.data.firstname,
+                    lastname:response.data.lastname,
+                    username:response.data.username,
+                    email:response.data.email,
+                    phone:response.data.phone,
                 }
                 dispatch(adduserautorization(statemessage));
                 navigate("/");
