@@ -47,7 +47,7 @@ const Home = () => {
               else{
                   return(
                     <div className='flex flex-row'>
-                      <div className='mx-10 w-full flex justify-around flex-wrap overflow-y-scroll h-[28rem] pr-8 mt-2'>
+                      <div className='mx-10 w-full flex justify-around flex-wrap overflow-y-scroll scrollbar-thin scrollbar-thumb-gray-200 scrollbar-thumb-rounded-full scrollbar-track-rounded-full h-[28rem] pr-8 mt-2'>
                         {
                           [...shuffled].slice(0,24).map(({id,brand,name,catagory,price,description,types,images}:Catagories) => (
                             <Carditems key={id} id={id} brand={brand} catagory={catagory} name={name} price={price} description={description} types={types} images={images}/>
@@ -73,7 +73,7 @@ const Home = () => {
                     }
                     else{
                         return(
-                          <div className='overflow-x-scroll mx-8 md:mx-16 my-8 h-64 md:h-72'>
+                          <div className='overflow-x-scroll scrollbar-thin scrollbar-thumb-gray-200 scrollbar-thumb-rounded-full scrollbar-track-rounded-full mx-8 md:mx-16 my-8 h-64 md:h-72'>
                             <div className='flex flex-row'>
                           {
                             [...post].map(({id,brand,name,catagory,price,description,types,images}:Catagories) => (
@@ -99,7 +99,7 @@ const Home = () => {
                     }
                     else{
                         return(
-                          <div className='overflow-x-scroll mx-8 md:mx-16 my-8 h-64 md:h-72'>
+                          <div className='overflow-x-scroll scrollbar-thin scrollbar-thumb-gray-200 scrollbar-thumb-rounded-full scrollbar-track-rounded-full mx-8 md:mx-16 my-8 h-64 md:h-72'>
                             <div className='flex flex-row'>
                           {
                             [...post].map(({id,brand,name,catagory,price,description,types,images}:Catagories) => (
@@ -124,7 +124,7 @@ const Home = () => {
                     }
                     else{
                         return(
-                          <div className='overflow-x-scroll mx-8 md:mx-16 my-8 h-64 md:h-72'>
+                          <div className='overflow-x-scroll scrollbar-thin scrollbar-thumb-gray-200 scrollbar-thumb-rounded-full scrollbar-track-rounded-full mx-8 md:mx-16 my-8 h-64 md:h-72'>
                             <div className='flex flex-row'>
                           {
                             [...post].map(({id,brand,name,catagory,price,description,types,images}:Catagories) => (
@@ -149,7 +149,7 @@ const Home = () => {
                     }
                     else{
                         return(
-                          <div className='overflow-x-scroll mx-8 md:mx-16 my-8 h-64 md:h-72'>
+                          <div className='overflow-x-scroll scrollbar-thin scrollbar-thumb-gray-200 scrollbar-thumb-rounded-full scrollbar-track-rounded-full mx-8 md:mx-16 my-8 h-64 md:h-72'>
                             <div className='flex flex-row'>
                           {
                             [...post].map(({id,brand,name,catagory,price,description,types,images}:Catagories) => (
