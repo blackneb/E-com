@@ -2,6 +2,7 @@ import React,{useState,useEffect} from 'react';
 import { useSelector,useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { addquantity, removeitem } from '../../Redux/Actions';
+import close from '../../Icons/close.png';
 
 
 const CartCards = (props:any) => {
@@ -25,6 +26,9 @@ const CartCards = (props:any) => {
   useEffect(() => {
     calculateitem();
   }, [])
+  const deletefromcart = (target:any) => {
+    dispatch(removeitem(target));
+  }
   const onChange = (e:any) => {
     e.preventDefault();
     const onchanging = {
@@ -37,7 +41,6 @@ const CartCards = (props:any) => {
       //calculateitem();
     }
     else{
-      dispatch(removeitem(e.target.name));
       console.log("negative value");
     }
   }
@@ -55,6 +58,9 @@ const CartCards = (props:any) => {
               <p className='ml-8 w-64 text-left'>{items.name}</p>
               <p className='text-center'>{items.price + "ETB"}</p>
                 <input className='w-20 h-8 ml-8 border-2' type="number" name={items.id} onChange={onChange} defaultValue={items.quantity}placeholder='1'></input>
+                <div onClick={()=>{deletefromcart(items.id)}} >
+                  <img  className='h-3 ml-4 mt-2'  src={close} alt=''/>
+                </div>
             </div>
           </div>
         ))
