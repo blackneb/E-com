@@ -7,12 +7,24 @@ import Stack from '@mui/material/Stack';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { Card } from '@mui/material';
+import { addall } from '../../../Redux/Actions';
+import { useDispatch } from 'react-redux';
 
 const Laptops = () => {
   const [open, setOpen] = useState(false);
   const [page, SetPage] = useState(1);
   const [itemsthere, setitemsthere] = useState(false);
+  const dispatch = useDispatch();
   const gaming = useSelector((state:any) => state.allitems.allitems);
+  useEffect(() => {
+    if(gaming.length === 0){
+      axios.get("http://localhost/blacknebecom/api/post/read.php").then((response) => {
+          dispatch(addall(response.data.data));     
+          if(response.data.data === "no posts found"){
+          }
+      });
+    }
+  }, []);
   let gameitems = gaming.filter((game:any) => game.types === 'gaming');
   const handleChange = (e:any, p:any) => {
     SetPage(p);
