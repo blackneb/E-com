@@ -51,7 +51,7 @@ const CartCards = (props:any) => {
     }
   }
   
-  return (
+  return carteditems.length <1 ? <div>There is no item in the Cart</div> : 
     <div className=''>
       <div className='flex justify-around flex-wrap overflow-y-scroll scrollbar-thin scrollbar-thumb-gray-200 scrollbar-thumb-rounded-full scrollbar-track-rounded-full h-96' >
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -82,7 +82,7 @@ const CartCards = (props:any) => {
         <p>Total Price: {price}</p>
       </div>
     </div>
-  )
+  
 }
 
 export default CartCards
