@@ -17,6 +17,12 @@ const CartCards = (props:any) => {
   function calculateitem(){
     prices = 0;
     for(let i=0;i<carteditems.length;i++){
+      if(carteditems[i].quantity <= 0){
+        alert("There is item With Value Zero");
+        return;
+      }
+    }
+    for(let i=0;i<carteditems.length;i++){
       let valueone = carteditems[i].price;
       let valuetwo = carteditems[i].quantity;
       prices += valueone * valuetwo;
@@ -35,9 +41,8 @@ const CartCards = (props:any) => {
       id:e.target.name,
       value:e.target.value,
     }
-    console.log(e.target.value);
+    dispatch(addquantity(onchanging));
     if(e.target.value > 0){
-      dispatch(addquantity(onchanging));
       //calculateitem();
     }
     else{
