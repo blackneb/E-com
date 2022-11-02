@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import { Link } from 'react-router-dom';
+import {useNavigate, Link } from 'react-router-dom';
 import Badge, { BadgeProps } from '@mui/material/Badge';
 import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
@@ -12,10 +12,10 @@ import Gaming from '../../Icons/games.png';
 import Accessories from '../../Icons/accessories.png';
 import Phone from '../../Icons/phone.png';
 import Tv from '../../Icons/television.png';
-import Ps from '../../Icons/ps.png';
 import Contact from '../../Icons/contact.png';
 import About from '../../Icons/about.png';
 import Cart from '../../Icons/cart.png';
+import Profile from '../../Icons/profile.png'
 import Upload from '../../Icons/upload.png';
 import { useDispatch,useSelector } from 'react-redux';
 
@@ -27,6 +27,15 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import CartCards from '../Cards/CartCards';
 
+import ClickAwayListener from '@mui/material/ClickAwayListener';
+import Grow from '@mui/material/Grow';
+import Paper from '@mui/material/Paper';
+import Popper from '@mui/material/Popper';
+import MenuItem from '@mui/material/MenuItem';
+import MenuList from '@mui/material/MenuList';
+import Stack from '@mui/material/Stack';
+
+
 const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
   '& .MuiBadge-badge': {
     right: -3,
@@ -37,6 +46,52 @@ const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
 }));
 
 const Navbar = () => {
+  const [opening, setOpening] = React.useState(false);
+  const navigate = useNavigate();
+  const anchorRef = React.useRef<HTMLButtonElement>(null);
+
+  const handleToggle = () => {
+    setOpening((prevOpen) => !prevOpen);
+  };
+
+  const handleLogging = () => {
+    setOpening(false);
+    navigate("/signin");
+  }
+  const handleAccount = () => {
+    setOpening(false);
+  }
+
+  const handleCloseing = (event: Event | React.SyntheticEvent) => {
+    if (
+      anchorRef.current &&
+      anchorRef.current.contains(event.target as HTMLElement)
+    ) {
+      return;
+    }
+
+    setOpening(false);
+  };
+
+  function handleListKeyDown(event: React.KeyboardEvent) {
+    if (event.key === 'Tab') {
+      event.preventDefault();
+      setOpening(false);
+    } else if (event.key === 'Escape') {
+      setOpening(false);
+    }
+  }
+
+  // return focus to the button when we transitioned from !open -> open
+  const prevOpen = React.useRef(opening);
+  React.useEffect(() => {
+    if (prevOpen.current === true && opening === false) {
+      anchorRef.current!.focus();
+    }
+
+    prevOpen.current = opening;
+  }, [opening]);
+
     const [opens, setOpens] = React.useState(false);
 
     const handleClickOpen = () => {
@@ -117,14 +172,60 @@ const Navbar = () => {
                       </StyledBadge>
                     </IconButton>
                 </li>
-                <Link to="/signin">
+                {/* <Link to="/signin">
                     <li className={`md:ml-8 text-sm md:my-0 my-1 ${userinfo.userlogged? "hidden" : "block"}`}>
                         <div className='flex justify-center bg-purple-600 rounded-md px-2'>
                             <img className='h-4 mt-2.5' src={Cart} alt=''/>
                             <p className='p-2'>Login</p>
                         </div>
                     </li>
-                </Link>
+                </Link> */}
+                <Stack direction="row" spacing={2}>
+                  <div>
+                    <Button
+                      ref={anchorRef}
+                      id="composition-button"
+                      aria-controls={open ? 'composition-menu' : undefined}
+                      aria-expanded={open ? 'true' : undefined}
+                      aria-haspopup="true"
+                      onClick={handleToggle}
+                    >
+                      <img className='h-6' src={Profile} alt='' />
+                    </Button>
+                    <Popper
+                      open={opening}
+                      anchorEl={anchorRef.current}
+                      role={undefined}
+                      placement="bottom-start"
+                      transition
+                      disablePortal
+                    >
+                      {({ TransitionProps, placement }) => (
+                        <Grow
+                          {...TransitionProps}
+                          style={{
+                            transformOrigin:
+                              placement === 'bottom-start' ? 'left top' : 'left bottom',
+                          }}
+                        >
+                          <Paper>
+                            <ClickAwayListener onClickAway={handleCloseing}>
+                              <MenuList
+                                autoFocusItem={opening}
+                                id="composition-menu"
+                                aria-labelledby="composition-button"
+                                onKeyDown={handleListKeyDown}
+                              >
+                                <MenuItem onClick={handleAccount}>My account</MenuItem>
+                                <MenuItem onClick={handleLogging}> {userinfo.userlogged? "Logout" : "Log in"}</MenuItem>
+                              </MenuList>
+                            </ClickAwayListener>
+                          </Paper>
+                        </Grow>
+                      )}
+                    </Popper>
+                  </div>
+                </Stack>
             </ul>
         </div>
     </nav>
