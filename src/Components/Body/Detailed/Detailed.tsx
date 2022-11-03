@@ -99,7 +99,7 @@ const Detailed = () => {
           <div className='flex flex-row flex-wrap mt-4'>
             {
               post.images.map((items:string) => (
-                <div key={items} className='hover:border-b-2 mx-4' onClick={()=> setimageshown(items)}>
+                <div key={items} className='hover:border-b-2 mx-8' onClick={()=> setimageshown(items)}>
                   <img className='h-20 rounded-md p-2' src={"http://localhost/blacknebecom/api/post/photos/" + items} alt=''/>
                 </div>  
               ))
@@ -113,9 +113,9 @@ const Detailed = () => {
           </div>
         </div>
       <div className='flex flex-wrap justify-start  pt-8'>
-        <div className='w-[32rem] ml-20 '>
-          <div className=''>
-            <img className='h-96 shadow rounded-md' src={"http://localhost/blacknebecom/api/post/photos/" + imageshown} alt=''/>
+        <div className='w-96 ml-20 '>
+          <div className='flex flex-wrap justify-center'>
+            <img className='h-64 shadow rounded-md' src={"http://localhost/blacknebecom/api/post/photos/" + imageshown} alt=''/>
           </div>
         </div>
         
