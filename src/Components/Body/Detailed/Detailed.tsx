@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Carditems } from '../../Cards/Carditems'
 import { addall,addtocart, currentitem } from '../../../Redux/Actions';
 import arrayShuffle from 'array-shuffle';
+import Notification from '../../Cards/Notification';
 
 
 import ram from '../../../Icons/ram.png'
@@ -81,7 +82,7 @@ const Detailed = () => {
       if(tocartitem.id === carteditemslist[i].id){
         alert("item is already carted");
         isnotincart = false;
-        return
+        return (<Notification opennotification={true} message="Item is Already Carted" type="error" />)
       }
     }
     if(isnotincart){

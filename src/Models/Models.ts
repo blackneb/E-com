@@ -68,6 +68,11 @@ export interface Iuserautorization{
     email:string;
     phone:string;
 }
+export interface Notifications{
+    opennotification:any;
+    message:string;
+    type:any;
+}
 export interface Iimages{
 
 }
