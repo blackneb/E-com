@@ -53,6 +53,16 @@ const CartCards = (props:any) => {
   
   return carteditems.length <1 ? <div>There is no item in the Cart</div> : 
     <div className=''>
+      <div className=''>
+              <div className='flex flex-row border-b-2 m-2 p-2'>
+                <div className='w-14'>
+                  <h4>Image</h4>
+                </div>
+                <p className='ml-8 w-52 text-left'>Name</p>
+                <p className='text-center w-28'>Price</p>
+                <p className='h-8 ml-8'>Quantity</p>
+              </div>
+            </div>
       <div className='flex justify-around flex-wrap overflow-y-scroll scrollbar-thin scrollbar-thumb-gray-200 scrollbar-thumb-rounded-full scrollbar-track-rounded-full h-96' >
         <form onSubmit={handleSubmit(onSubmit)}>
         {
