@@ -1,6 +1,7 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { useSelector } from 'react-redux'
+import ChangePassword from './ChangePassword'
 interface accounttoupdate{
     username:string;
     firstname:string;
@@ -8,7 +9,6 @@ interface accounttoupdate{
     email:string;
     phone:string;
 }
-
 const UserProfile = () => {
   const {register, handleSubmit} = useForm<accounttoupdate>();
   const userinfo = useSelector((state:any) => state.user);
@@ -50,6 +50,7 @@ const UserProfile = () => {
             </div>
         </div>
     </form>
+    <ChangePassword/>
     </div>
   )
 }
