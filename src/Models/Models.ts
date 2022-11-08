@@ -61,6 +61,7 @@ export interface Ibook{
 }
 export interface Iuserautorization{
     userlogged:boolean;
+    userid:string;
     usertype:string;
     username:string;
     firstname:string;

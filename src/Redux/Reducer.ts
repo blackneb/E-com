@@ -16,6 +16,7 @@ const initialStateall = {
 }
 const initialStateuser:Iuserautorization={
     userlogged:false,
+    userid:"",
     usertype: "notlogged",
     firstname:"",
     lastname:"",

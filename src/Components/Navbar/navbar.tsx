@@ -82,6 +82,7 @@ const Navbar = () => {
       else if(userinfo.userlogged === true){
         const statemessage:Iuserautorization = {
           userlogged:false,
+          userid:"",
           usertype:"",
           firstname:"",
           lastname:"",
