@@ -33,14 +33,14 @@ const ChangePassword = () => {
                 </div>
                 <div className='mt-2'>
                     <h3 className='text-left'>New Password</h3>
-                    <input className='px-2 mt-2 border-b-2' type="password" defaultValue={userinfo.lastname} {...register('newpassword', {required: true})}/>
+                    <input className='px-2 mt-2 border-b-2' type="password" {...register('newpassword', {required: true})}/>
                 </div>
                 <div className='mt-2'>
                     <h3 className='text-left'>Confirm New Password</h3>
-                    <input className='px-2 mt-2 border-b-2' type="password" defaultValue={userinfo.username} {...register('connewpassword', {required: true})}/>
+                    <input className='px-2 mt-2 border-b-2' type="password" {...register('connewpassword', {required: true})}/>
                 </div>
                 <div>
-                    <button className='my-8 border-2 px-2 rounded-md'>Update</button>
+                    <button className='my-8 border-2 px-2 rounded-md'>Change</button>
                 </div>
             </div>
         </div>
