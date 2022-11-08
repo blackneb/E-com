@@ -2,7 +2,7 @@ import React from 'react'
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom'
 
-interface signupproperties{
+export interface signupproperties{
     firstname:string;
     lastname:string;
     username:string;
