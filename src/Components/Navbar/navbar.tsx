@@ -98,6 +98,9 @@ const Navbar = () => {
       if(userinfo.userlogged === false) {
         alert("Please Login to access your account");
       }
+      else{
+        navigate("/userprofile");
+      }
       setOpening(false);
     }
 
