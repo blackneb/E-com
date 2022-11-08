@@ -24,6 +24,7 @@ const Home = () => {
   const [post,setpost] = useState<any[]>([]);
   const dispatch = useDispatch();
   const allitems = useSelector((state:any) => state.allitems.allitems);
+  const userinfo = useSelector((state:any) => state.user);
   useEffect(()=>{
     if(allitems.length === 0){
       axios.get("http://localhost/blacknebecom/api/post/read.php").then((response) => {
@@ -173,31 +174,36 @@ const Home = () => {
                 })()}
           </div>
         </div>
-        <div className='shadow border-b-2 border-gray-400 mx-4 md:mx-16 mt-8'>
-          <h1>Be a member</h1>
-        </div>
-        <div className='h-48'>
+        {
+          userinfo.userlogged? ( <div></div> ) : ( 
           <div>
-            <h2 className='m-8'>Create Account and Join our Hood</h2>
-            <div className='flex justify-around'>
-              <button className='m-2 border-2 border-gray-400 shadow w-72 h-32 rounded-lg bg-slate-100 hover:bg-gradient-to-r from-cyan-500 to-blue-500'>
-                <div className='flex justify-center items-center'>
-                  <h1 className='text-gray-800'>Sign Up</h1>
+            <div className='shadow border-b-2 border-gray-400 mx-4 md:mx-16 mt-8'>
+                  <h1>Be a member</h1>
                 </div>
-              </button>
-              <button className='m-2 border-2 border-gray-400 shadow w-72 h-32 rounded-lg bg-slate-100 hover:bg-gradient-to-r from-cyan-500 to-blue-500'>
-                <div className='flex justify-center items-center'>
-                  <h1 className='text-gray-800'>Sign in</h1>
+            <div className=''>
+              <div>
+                <h2 className='m-8'>Create Account and Join our Hood</h2>
+                <div className='flex justify-around'>
+                  <button className='m-2 border-2 border-gray-400 shadow w-72 h-32 rounded-lg bg-slate-100 hover:bg-gradient-to-r from-cyan-500 to-blue-500'>
+                    <div className='flex justify-center items-center'>
+                      <h1 className='text-gray-800'>Sign Up</h1>
+                    </div>
+                  </button>
+                  <button className='m-2 border-2 border-gray-400 shadow w-72 h-32 rounded-lg bg-slate-100 hover:bg-gradient-to-r from-cyan-500 to-blue-500'>
+                    <div className='flex justify-center items-center'>
+                      <h1 className='text-gray-800'>Sign in</h1>
+                    </div>
+                  </button>
+                  <button className='m-2 border-2 border-gray-400 shadow w-72 h-32 rounded-lg bg-slate-100 hover:bg-gradient-to-r from-cyan-500 to-blue-500'>
+                    <div className='flex justify-center items-center'>
+                      <h1 className='text-gray-800'>Contact Admins</h1>
+                    </div>
+                  </button>
                 </div>
-              </button>
-              <button className='m-2 border-2 border-gray-400 shadow w-72 h-32 rounded-lg bg-slate-100 hover:bg-gradient-to-r from-cyan-500 to-blue-500'>
-                <div className='flex justify-center items-center'>
-                  <h1 className='text-gray-800'>Contact Admins</h1>
-                </div>
-              </button>
+              </div>
             </div>
-          </div>
-        </div>
+          </div> )
+        }
         <Contact/>
      </div>
   )
