@@ -34,6 +34,10 @@ const Signin = () => {
                 dispatch(adduserautorization(statemessage));
                 navigate("/");
             }
+            else if( response.data.message === "error" ){
+                console.log(response.data);
+                alert("Login Failed")
+            }
          });
     })
   return (

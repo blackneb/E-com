@@ -1,9 +1,17 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import { signupproperties } from './Signup'
+import { useSelector } from 'react-redux'
+interface accounttoupdate{
+    username:string;
+    firstname:string;
+    lastname:string;
+    email:string;
+    phone:string;
+}
 
 const UserProfile = () => {
-  const {register, handleSubmit} = useForm<signupproperties>();
+  const {register, handleSubmit} = useForm<accounttoupdate>();
+  const userinfo = useSelector((state:any) => state.user);
   const onSubmit = handleSubmit((data) => {
     alert(JSON.stringify(data,null,2));
   })
@@ -18,34 +26,26 @@ const UserProfile = () => {
                 <h1 className='border-b-2 mx-40 mt-4'>Sign Up</h1>
                 <div className='mt-4'>
                     <h3 className='text-left'>First Name</h3>
-                    <input className='px-2 mt-2 border-b-2' type="text" {...register('firstname', {required: true})}/>
+                    <input className='px-2 mt-2 border-b-2' type="text" defaultValue={userinfo.firstname} {...register('firstname', {required: true})}/>
                 </div>
                 <div className='mt-2'>
                     <h3 className='text-left'>Last Name</h3>
-                    <input className='px-2 mt-2 border-b-2' type="text" {...register('lastname', {required: true})}/>
+                    <input className='px-2 mt-2 border-b-2' type="text" defaultValue={userinfo.lastname} {...register('lastname', {required: true})}/>
                 </div>
                 <div className='mt-2'>
                     <h3 className='text-left'>User Name</h3>
-                    <input className='px-2 mt-2 border-b-2' type="text" {...register('username', {required: true})}/>
+                    <input className='px-2 mt-2 border-b-2' type="text" defaultValue={userinfo.username} {...register('username', {required: true})}/>
                 </div>
                 <div className='mt-2'>
                     <h3 className='text-left'>E-mail</h3>
-                    <input className='px-2 mt-2 border-b-2' type="email" {...register('email', {required: true})}/>
+                    <input className='px-2 mt-2 border-b-2' type="email" defaultValue={userinfo.email} {...register('email', {required: true})}/>
                 </div>
                 <div className='mt-2'>
                     <h3 className='text-left'>Phone</h3>
-                    <input className='px-2 mt-2 border-b-2' type="tel" {...register('phone', {required: true})}/>
-                </div>
-                <div className='mt-2'>
-                    <h3 className='text-left'>Password</h3>
-                    <input className='px-2 mt-2 border-b-2' type="password" {...register('password', {required: true})}/>
-                </div>
-                <div className='mt-2'>
-                    <h3 className='text-left'>Confirm Password</h3>
-                    <input className='px-2 mt-2 border-b-2' type="password" {...register('conpassword', {required: true})}/>
+                    <input className='px-2 mt-2 border-b-2' type="tel" defaultValue={userinfo.phone} {...register('phone', {required: true})}/>
                 </div>
                 <div>
-                    <button className='my-8 border-2 px-2 rounded-md'>Create Account</button>
+                    <button className='my-8 border-2 px-2 rounded-md'>Update</button>
                 </div>
             </div>
         </div>
