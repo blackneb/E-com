@@ -96,8 +96,8 @@ const Detailed = () => {
       <div className='shadow border-b-2 border-gray-400 mx-4 md:mx-16 mt-8 mt-10'>
           <h1 className='text-md'>{post.name}</h1>
         </div>
-        <div className='ml-8 h-24'>
-          <div className='flex flex-row flex-wrap mt-4'>
+        <div className='ml-8 '>
+          <div className='flex flex-row flex-wrap mt-4 h-20'>
             {
               post.images.map((items:string) => (
                 <div key={items} className='hover:border-b-2 mx-8' onClick={()=> setimageshown(items)}>
@@ -106,7 +106,7 @@ const Detailed = () => {
               ))
             }
           </div>
-          <div className='flex justify-center'>
+          <div className='flex justify-center my-4'>
             <div className='flex justify-center w-36 border-2 border-gray-400 bg-white text-black px-2 hover:bg-gray-400 hover:text-white m-4 md:m-0'>
               <img className='h-5 pt-1' src={Cart} alt="" />
               <button onClick={Cartitem} className=''>Add To Cart</button>
