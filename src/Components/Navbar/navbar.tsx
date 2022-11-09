@@ -5,6 +5,8 @@ import Badge, { BadgeProps } from '@mui/material/Badge';
 import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import { Iuserautorization } from '../../Models/Models';
+import { getCookie, setCookie } from 'typescript-cookie'
+
 
 import menu from '../../Icons/menu.png';
 import close from '../../Icons/close.png';
@@ -80,6 +82,7 @@ const Navbar = () => {
         navigate("/signin"); 
       }
       else if(userinfo.userlogged === true){
+        setCookie("userid","false",{ expires: -1 });
         const statemessage:Iuserautorization = {
           userlogged:false,
           userid:"",
@@ -89,9 +92,11 @@ const Navbar = () => {
           username:"",
           email:"",
           phone:"",
+          
       }
       dispatch(adduserautorization(statemessage));
       navigate("/");
+      window.location.reload();
       }
       setOpening(false);
     }

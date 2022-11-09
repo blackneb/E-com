@@ -33,6 +33,7 @@ const Signin = () => {
                     email:response.data.email,
                     phone:response.data.phone,
                 }
+                setCookie("userid", response.data.userid,{ expires: 1/144 })
                 dispatch(adduserautorization(statemessage));
                 navigate("/");
             }
