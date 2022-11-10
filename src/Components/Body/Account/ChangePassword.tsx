@@ -1,22 +1,37 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { useSelector } from 'react-redux'
+import axios from 'axios'
 
 interface passwordhandler {
     oldpassword:string;
     newpassword:string;
     connewpassword:string;
 }
-
+interface datasend{
+    oldpassword:string;
+    newpassword:string;
+    userid:any;
+}
 const ChangePassword = () => {
     const {register, handleSubmit} = useForm<passwordhandler>();
     const userinfo = useSelector((state:any) => state.user);
+    const url=`http://localhost/blacknebecom/api/post/change_password.php`;
     const onSubmit = handleSubmit((data) => {
         if(data.newpassword !== data.connewpassword){
             alert("Password update Falied");
         }
         else{
-            alert(JSON.stringify(data,null,2));
+            const sendmessage:datasend={
+                oldpassword:data.oldpassword,
+                newpassword:data.newpassword,
+                userid:userinfo.userid
+            }
+            const axiosjson = (JSON.stringify(sendmessage,null,2));
+            alert(axiosjson);
+            axios.post(url,axiosjson).then((response) => {
+                console.log(response.data)
+            })
         }
     })
   return (
