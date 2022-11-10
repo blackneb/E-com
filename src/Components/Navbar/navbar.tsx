@@ -4,7 +4,9 @@ import { adduserautorization } from '../../Redux/Actions';
 import Badge, { BadgeProps } from '@mui/material/Badge';
 import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
-import { Iuserautorization } from '../../Models/Models';
+import { Iuserautorization, Notifications } from '../../Models/Models';
+import { notificationerror } from '../../Redux/Actions';
+import Notification from '../Cards/Notification';
 import { getCookie, setCookie } from 'typescript-cookie'
 
 
@@ -53,6 +55,7 @@ const Navbar = () => {
     const dispatch = useDispatch();
     const carteditems = useSelector((state:any) => state.addtocart.items);
     const userinfo = useSelector((state:any) => state.user);
+    const [ notify,setnotify ] = useState(false);
     console.log(userinfo.usertype);
     let links:{name: string, link:any, icon:any}[] = [
         {name:"Home",link:"/",icon:<img className='h-4 mt-2.5' src={Home} alt=''/>},
@@ -102,7 +105,12 @@ const Navbar = () => {
     }
     const handleAccount = () => {
       if(userinfo.userlogged === false) {
-        alert("Please Login to access your account");
+        const message:Notifications={
+          message:"Please Login to access your account",
+          color:"warning",
+        }
+        dispatch(notificationerror(message));
+        setnotify(true);
       }
       else{
         navigate("/userprofile");
@@ -151,6 +159,7 @@ const Navbar = () => {
       };
   return (
     <>
+    { notify? ( <div><Notification setnotify={setnotify}/></div> ) : ( <div></div> ) }
     <Dialog
         fullWidth
         open={opens}
