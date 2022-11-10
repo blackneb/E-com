@@ -82,7 +82,7 @@ const Detailed = () => {
       if(tocartitem.id === carteditemslist[i].id){
         alert("item is already carted");
         isnotincart = false;
-        return (<Notification opennotification={true} message="Item is Already Carted" type="error" />)
+        //return (<Notification opennotification={true} message="Item is Already Carted" type="error" />)
       }
     }
     if(isnotincart){

@@ -11,9 +11,9 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
   });
 
-const Notification = (props:Notifications,) => {
-    const{opennotification,message, type} = props;
-    const [open, setOpen] = React.useState(opennotification);
+const Notification = ({setnotify}:any) => {
+    //const{opennotification,message, type} = props;
+    const [open, setOpen] = React.useState(true);
 
     const handleClick = () => {
         setOpen(true);
@@ -24,14 +24,14 @@ const Notification = (props:Notifications,) => {
         return;
         }
         setOpen(false);
+        setnotify(false);
     };
   return (
     <div>
-      <h1>notification</h1>
         <Stack spacing={2} sx={{ width: '100%' }}>
             <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-                <Alert onClose={handleClose} severity={type} sx={{ width: '100%' }}>
-                  {message}
+                <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
+                  login failed
                 </Alert>
             </Snackbar>
         </Stack>

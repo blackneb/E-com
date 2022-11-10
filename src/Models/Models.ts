@@ -73,6 +73,7 @@ export interface Notifications{
     opennotification:any;
     message:string;
     type:any;
+    setnotify:any;
 }
 export interface Iimages{
 

@@ -7,6 +7,8 @@ import { useForm } from 'react-hook-form'
 import { useDispatch,useSelector } from 'react-redux';
 import { Iuserautorization } from '../../../Models/Models'
 import { adduserautorization } from '../../../Redux/Actions'
+import Notification from '../../Cards/Notification'
+import { Notifications } from '../../../Models/Models'
 interface loginprofile {
     username:string;
     password:string;
@@ -16,7 +18,8 @@ const Signin = () => {
     const {register, handleSubmit} = useForm<loginprofile>();
     const dispatch = useDispatch();
     const [post,setpost] = useState<any[]>([]);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const [notify, setnotify] = useState(false);
     const url="http://localhost/blacknebecom/api/post/read_user.php";
     const onSubmit = handleSubmit((data:loginprofile) => {
         axios.post(url,{username:data.username, password:data.password}).then((response) => {
@@ -38,37 +41,41 @@ const Signin = () => {
                 navigate("/");
             }
             else if( response.data.message === "error" ){
-                console.log(response.data);
-                alert("Login Failed")
+                console.log(notify);
+                setnotify(true);
+                return <><div></div></>
             }
          });
     })
   return (
-    <form onSubmit={onSubmit}>
-        <div className='flex justify-center items-center'>
-            <div className='flex shadow justify-center items-center flex-col border-0 rounded-xl h-80 w-96 mt-8'>
-                <h1 className='border-b-2 mx-40 mt-4'>Log in</h1>
-                <div className='mt-4'>
-                    <h3 className='text-left'>User name</h3>
-                    <input className='px-2 mt-2 border-b-2' type="text" {...register('username', {required: true})}/>
-                </div>
-                <div className='mt-4'>
-                    <h3 className='text-left'>Password</h3>
-                    <input className='px-2 mt-2 border-b-2' type="password" {...register('password',{required: true})}/>
-                </div>
-                <div>
-                    <button type='submit' className='mt-2 border-2 px-2 rounded-md'>Login</button>
-                </div>
-                <div className='border-b-2 m-2'></div>
-                <div>
-                    <Link to="/signup">
-                        <p>Don't have an account?</p>
-                    </Link>
-                    <p>forget password!</p>
+    <div>
+        { notify? ( <div><Notification setnotify={setnotify}/></div> ) : ( <div></div> ) }
+        <form onSubmit={onSubmit}>
+            <div className='flex justify-center items-center'>
+                <div className='flex shadow justify-center items-center flex-col border-0 rounded-xl h-80 w-96 mt-8'>
+                    <h1 className='border-b-2 mx-40 mt-4'>Log in</h1>
+                    <div className='mt-4'>
+                        <h3 className='text-left'>User name</h3>
+                        <input className='px-2 mt-2 border-b-2' type="text" {...register('username', {required: true})}/>
+                    </div>
+                    <div className='mt-4'>
+                        <h3 className='text-left'>Password</h3>
+                        <input className='px-2 mt-2 border-b-2' type="password" {...register('password',{required: true})}/>
+                    </div>
+                    <div>
+                        <button type='submit' className='mt-2 border-2 px-2 rounded-md'>Login</button>
+                    </div>
+                    <div className='border-b-2 m-2'></div>
+                    <div>
+                        <Link to="/signup">
+                            <p>Don't have an account?</p>
+                        </Link>
+                        <p>forget password!</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </form>
+        </form>
+    </div>
   )
 }
 
