@@ -1,5 +1,5 @@
-import { Ilaptop, Iphone,Itv, Iaccessories, Ibook, Iuserautorization } from "../Models/Models";
-import { ADD_LAPTOP, ADD_PHONE, ADD_TV, ADD_ACCESSORIES, ADD_BOOK, ADD_USER_AUTORIZATION,ADD_ALL,ADD_TO_CART,CURRENT_ITEM,ADD_QUANTITY,DECREASE_QUANTITY,REMOVE_ITEM } from "./ActionTypes";
+import { Ilaptop, Iphone,Itv, Iaccessories, Ibook, Iuserautorization, Notifications } from "../Models/Models";
+import { ADD_LAPTOP, ADD_PHONE, ADD_TV, ADD_ACCESSORIES, ADD_BOOK, ADD_USER_AUTORIZATION,ADD_ALL,ADD_TO_CART,CURRENT_ITEM,ADD_QUANTITY,DECREASE_QUANTITY,REMOVE_ITEM, NOTIFICATION_ERROR,NOTIFICATION_INFO,NOTIFICATION_SUCCESS,NOTIFICATION_WARNING } from "./ActionTypes";
 
 export const addLaptop = (laptop: Ilaptop) => {
     return{
@@ -77,5 +77,32 @@ export const currentitem = (currentitem:any) => {
     return{
         type:CURRENT_ITEM,
         payload:currentitem,
+    }
+}
+export const notificationsuccess = (notify:Notifications) => {
+    return{
+        type:NOTIFICATION_SUCCESS,
+        payload:notify,
+    }
+}
+
+export const notificationerror = (notify:Notifications) => {
+    return{
+        type:NOTIFICATION_ERROR,
+        payload:notify,
+    }
+}
+
+export const notificationinfo = (notify:Notifications) => {
+    return{
+        type:NOTIFICATION_INFO,
+        payload:notify,
+    }
+}
+
+export const notificationwarning =(notify:Notifications) => {
+    return{
+        type:NOTIFICATION_WARNING,
+        payload:notify,
     }
 }

@@ -70,10 +70,8 @@ export interface Iuserautorization{
     phone:string;
 }
 export interface Notifications{
-    opennotification:any;
     message:string;
-    type:any;
-    setnotify:any;
+    color:any;
 }
 export interface Iimages{
 
@@ -103,4 +101,3 @@ export interface IUserAutorizationACtionModel{
     type:string;
     payload:Iuserautorization | any;
 }
-
