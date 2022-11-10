@@ -4,7 +4,8 @@ import { Iphone,IPhoneActionModel } from "../Models/Models";
 import { Iaccessories,IAccessoriesActionModel } from "../Models/Models";
 import { Ibook,IBookActionModel } from "../Models/Models";
 import { Iuserautorization,IUserAutorizationACtionModel } from "../Models/Models";
-import { ADD_LAPTOP,ADD_ACCESSORIES, ADD_BOOK, ADD_IMAGES, ADD_PHONE, ADD_TV, ADD_USER_AUTORIZATION, ADD_ALL, ADD_TO_CART, CURRENT_ITEM, ADD_QUANTITY,DECREASE_QUANTITY,REMOVE_ITEM } from "./ActionTypes";
+import { Notifications } from "../Models/Models";
+import { ADD_LAPTOP,ADD_ACCESSORIES, ADD_BOOK, ADD_IMAGES, ADD_PHONE, ADD_TV, ADD_USER_AUTORIZATION, ADD_ALL, ADD_TO_CART, CURRENT_ITEM, ADD_QUANTITY,DECREASE_QUANTITY,REMOVE_ITEM,NOTIFICATION_ERROR,NOTIFICATION_INFO,NOTIFICATION_SUCCESS,NOTIFICATION_WARNING } from "./ActionTypes";
 const initialState:Ilaptop[]=[];
 const initialStates:Iphone[]=[];
 const initialStatess:Itv[]=[];
@@ -26,6 +27,10 @@ const initialStateuser:Iuserautorization={
 };
 const initialStatecart ={
     items:[],
+}
+const initialStateNotification:Notifications = {
+    message:"",
+    color:"",
 }
 
 export const laptopReducers = (state=initialState, action:ILaptopActionModel) => {
@@ -123,6 +128,22 @@ export const currentitem = (state=initialStatecurrent,action:any) => {
     const {type,payload} =action;
     switch(type){
         case CURRENT_ITEM:
+            return payload;
+        default:
+            return state;
+    }
+}
+
+export const notificationmessage = (state=initialStateNotification,action:any) => {
+    const {type,payload} = action;
+    switch(type){
+        case NOTIFICATION_SUCCESS:
+            return payload;
+        case NOTIFICATION_ERROR:
+            return payload;
+        case NOTIFICATION_INFO:
+            return payload;
+        case NOTIFICATION_WARNING:
             return payload;
         default:
             return state;
