@@ -118,6 +118,15 @@ const Navbar = () => {
       }
       setOpening(false);
     }
+    const handleCart = () => {
+      if(userinfo.userlogged === false){
+        setOpens(false);
+        navigate("/signin");
+      }
+      else{
+        alert("Processing...");
+      }
+    }
 
     const handleCloseing = (event: Event | React.SyntheticEvent) => {
       if (
@@ -180,7 +189,7 @@ const Navbar = () => {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Close</Button>
-          <Button autoFocus>Cart</Button>
+          <Button autoFocus onClick={handleCart}>Cart</Button>
         </DialogActions>
       </Dialog>
     <nav className='shadow-md w-full sticky top-0 left-0'>
