@@ -31,7 +31,7 @@ const ChangePassword = () => {
             alert(axiosjson);
             axios.post(url,axiosjson).then((response) => {
                 console.log(response.data)
-            })
+            });
         }
     })
   return (

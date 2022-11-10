@@ -1,7 +1,10 @@
+import axios from 'axios';
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { useSelector } from 'react-redux'
 import ChangePassword from './ChangePassword'
+import {NOTIFICATION_TYPES} from '../../../Redux/ActionTypes';
+import { notification } from '../../../Redux/Actions';
 interface accounttoupdate{
     username:string;
     firstname:string;
@@ -12,7 +15,20 @@ interface accounttoupdate{
 const UserProfile = () => {
   const {register, handleSubmit} = useForm<accounttoupdate>();
   const userinfo = useSelector((state:any) => state.user);
+  const url=`http://localhost/blacknebecom/api/post/edit_account.php`;
   const onSubmit = handleSubmit((data) => {
+    const submitteddata = {
+      userid:userinfo.userid,
+      username:data.username,
+      firstname:data.firstname,
+      lastname:data.lastname,
+      email:data.email,
+      phone:data.phone
+    }
+    const axiosjson = JSON.stringify(submitteddata,null,2);
+    axios.post(url,axiosjson).then((response) => {
+      console.log(response.data);
+    });
     alert(JSON.stringify(data,null,2));
   })
   return (
