@@ -6,6 +6,7 @@ import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import { Iuserautorization, Notifications } from '../../Models/Models';
 import { notificationerror } from '../../Redux/Actions';
+import {NOTIFICATION_TYPES} from '../../Redux/ActionTypes'
 import Notification from '../Cards/Notification';
 import { getCookie, setCookie } from 'typescript-cookie'
 
@@ -107,7 +108,7 @@ const Navbar = () => {
       if(userinfo.userlogged === false) {
         const message:Notifications={
           message:"Please Login to access your account",
-          color:"warning",
+          color: NOTIFICATION_TYPES.WARNING,
         }
         dispatch(notificationerror(message));
         setnotify(true);

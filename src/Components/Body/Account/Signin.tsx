@@ -10,6 +10,7 @@ import { adduserautorization } from '../../../Redux/Actions'
 import { notificationerror } from '../../../Redux/Actions';
 import Notification from '../../Cards/Notification'
 import { Notifications } from '../../../Models/Models'
+import {NOTIFICATION_TYPES} from '../../../Redux/ActionTypes'
 interface loginprofile {
     username:string;
     password:string;
@@ -45,7 +46,7 @@ const Signin = () => {
                 console.log(notify);
                 const message:Notifications = {
                     message:"Login failed",
-                    color:"error",
+                    color:NOTIFICATION_TYPES.ERROR,
                 }
                 dispatch(notificationerror(message));
                 setnotify(true);

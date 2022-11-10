@@ -16,3 +16,9 @@ export const NOTIFICATION_SUCCESS = 'NOTIFICATION_SUCCESS';
 export const NOTIFICATION_ERROR = 'NOTIFICAITON_ERROR';
 export const NOTIFICATION_INFO = 'NOTIFICAION_INFO';
 export const NOTIFICATION_WARNING = 'NOTIFICATION_WARNING';
+export const NOTIFICATION_TYPES = {
+    ERROR : 'error',
+    SUCCESS : 'success',
+    INFO : 'info',
+    WARNING : 'warning',
+}
