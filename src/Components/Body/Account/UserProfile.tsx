@@ -1,10 +1,14 @@
 import axios from 'axios';
-import React from 'react'
+import React, {useState} from 'react'
 import { useForm } from 'react-hook-form'
 import { useSelector } from 'react-redux'
 import ChangePassword from './ChangePassword'
 import {NOTIFICATION_TYPES} from '../../../Redux/ActionTypes';
 import { notification } from '../../../Redux/Actions';
+import { useDispatch } from 'react-redux'
+import Notification from '../../Cards/Notification';
+import { Notifications } from '../../../Models/Models';
+
 interface accounttoupdate{
     username:string;
     firstname:string;
@@ -14,7 +18,9 @@ interface accounttoupdate{
 }
 const UserProfile = () => {
   const {register, handleSubmit} = useForm<accounttoupdate>();
+  const dispatch = useDispatch();
   const userinfo = useSelector((state:any) => state.user);
+  const [notify,setnotify] = useState(false);
   const url=`http://localhost/blacknebecom/api/post/edit_account.php`;
   const onSubmit = handleSubmit((data) => {
     const submitteddata = {
@@ -28,11 +34,27 @@ const UserProfile = () => {
     const axiosjson = JSON.stringify(submitteddata,null,2);
     axios.post(url,axiosjson).then((response) => {
       console.log(response.data);
+      if(response.data.message === "account updated"){
+        const message:Notifications = {
+          message:"Account Updated Successfully!",
+          color: NOTIFICATION_TYPES.SUCCESS,
+        }
+        dispatch(notification(message));
+        setnotify(true);
+      }
+      else if(response.data.message === "account not updated"){
+        const message:Notifications = {
+          message:"Account Not Updated!",
+          color: NOTIFICATION_TYPES.WARNING,
+        }
+        dispatch(notification(message));
+        setnotify(true);
+      }
     });
-    alert(JSON.stringify(data,null,2));
   })
   return (
     <div>
+      { notify? ( <div><Notification setnotify={setnotify}/></div> ) : ( <div></div> ) }
       <div className='shadow border-b-2 border-gray-400 mx-4 md:mx-16 mt-8'>
           <h1>Manage your Account</h1>
         </div>
