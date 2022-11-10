@@ -5,6 +5,8 @@ import axios from 'axios'
 import { useSelector, useDispatch } from 'react-redux';
 import { Carditems } from '../../Cards/Carditems'
 import { addall,addtocart, currentitem } from '../../../Redux/Actions';
+import {NOTIFICATION_TYPES} from '../../../Redux/ActionTypes';
+import { notificationerror } from '../../../Redux/Actions';
 import arrayShuffle from 'array-shuffle';
 import Notification from '../../Cards/Notification';
 
@@ -22,6 +24,7 @@ import DetailedAccessories from './DetailedAccessories';
 import DetailedLaptop from './DetailedLaptop';
 import DetailedTv from './DetailedTv';
 import DetailedPhone from './DetailedPhone';
+import { Notifications } from '../../../Models/Models';
 
 type itemtocartproperties = {
   id:string;
@@ -43,6 +46,7 @@ const Detailed = () => {
   const post = useSelector((state:any) => state.currentitem);
   const carteditemslist = useSelector((state:any) => state.addtocart.items);
   const [short,setshort] = useState<string>();
+  const [notify,setnotify] = useState(false);
   function reloadingitem(id:any){
     setloading(true);
     setmore(true);
@@ -80,12 +84,22 @@ const Detailed = () => {
     }
     for(let i=0;i<carteditemslist.length;i++){
       if(tocartitem.id === carteditemslist[i].id){
-        alert("item is already carted");
+        const message:Notifications = {
+          message:"Item is Already Carted",
+          color: NOTIFICATION_TYPES.INFO,
+        }
+        dispatch(notificationerror(message));
+        setnotify(true);
         isnotincart = false;
-        //return (<Notification opennotification={true} message="Item is Already Carted" type="error" />)
       }
     }
     if(isnotincart){
+      const message:Notifications = {
+        message:"Item Added",
+        color: NOTIFICATION_TYPES.SUCCESS,
+      }
+      dispatch(notificationerror(message));
+      setnotify(true);
       dispatch(addtocart(tocartitem));
     }
   }
@@ -93,6 +107,7 @@ const Detailed = () => {
 
   return loading? <p>Loading...</p>  : 
   <div>
+    { notify? ( <div><Notification setnotify={setnotify}/></div> ) : ( <div></div> ) }
       <div className='shadow border-b-2 border-gray-400 mx-4 md:mx-16 mt-8 mt-10'>
           <h1 className='text-md'>{post.name}</h1>
         </div>

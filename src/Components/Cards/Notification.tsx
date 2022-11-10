@@ -31,7 +31,7 @@ const Notification = ({setnotify}:any) => {
   return (
     <div>
         <Stack spacing={2} sx={{ width: '100%' }}>
-            <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+            <Snackbar open={open} autoHideDuration={1500} onClose={handleClose}>
                 <Alert onClose={handleClose} severity={notificationMessageBox.color} sx={{ width: '100%' }}>
                   { notificationMessageBox.message }
                 </Alert>
