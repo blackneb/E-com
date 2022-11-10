@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import {useNavigate, Link } from 'react-router-dom';
 import { adduserautorization } from '../../Redux/Actions';
 import Badge, { BadgeProps } from '@mui/material/Badge';
@@ -41,6 +41,7 @@ import Popper from '@mui/material/Popper';
 import MenuItem from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
 import Stack from '@mui/material/Stack';
+import axios from 'axios';
 
 
 const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
@@ -75,6 +76,28 @@ const Navbar = () => {
     const [opening, setOpening] = React.useState(false);
     const navigate = useNavigate();
     const anchorRef = React.useRef<HTMLButtonElement>(null);
+
+    useEffect(() => {
+      const userid:any = getCookie("userid");
+      console.log(userid);
+      const url=`http://localhost/blacknebecom/api/post/user_info.php?id=${userid}`;
+      axios.get(url).then((response) => {
+        console.log(response.data);
+        if(response.data.message === "success"){
+          const statemessage:Iuserautorization = {
+              userlogged:true,
+              userid:response.data.userid,
+              usertype:response.data.usertype,
+              firstname:response.data.firstname,
+              lastname:response.data.lastname,
+              username:response.data.username,
+              email:response.data.email,
+              phone:response.data.phone,
+          }
+          dispatch(adduserautorization(statemessage));
+      }
+      });
+    }, [])
 
     const handleToggle = () => {
       setOpening((prevOpen) => !prevOpen);
