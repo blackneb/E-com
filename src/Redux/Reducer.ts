@@ -5,7 +5,7 @@ import { Iaccessories,IAccessoriesActionModel } from "../Models/Models";
 import { Ibook,IBookActionModel } from "../Models/Models";
 import { Iuserautorization,IUserAutorizationACtionModel } from "../Models/Models";
 import { Notifications } from "../Models/Models";
-import { ADD_LAPTOP,ADD_ACCESSORIES, ADD_BOOK, ADD_IMAGES, ADD_PHONE, ADD_TV, ADD_USER_AUTORIZATION, ADD_ALL, ADD_TO_CART, CURRENT_ITEM, ADD_QUANTITY,DECREASE_QUANTITY,REMOVE_ITEM,NOTIFICATION_ERROR,NOTIFICATION_INFO,NOTIFICATION_SUCCESS,NOTIFICATION_WARNING } from "./ActionTypes";
+import { ADD_LAPTOP,ADD_ACCESSORIES, ADD_BOOK, ADD_IMAGES, ADD_PHONE, ADD_TV, ADD_USER_AUTORIZATION, ADD_ALL, ADD_TO_CART, CURRENT_ITEM, ADD_QUANTITY,DECREASE_QUANTITY,REMOVE_ITEM,NOTIFICATION } from "./ActionTypes";
 const initialState:Ilaptop[]=[];
 const initialStates:Iphone[]=[];
 const initialStatess:Itv[]=[];
@@ -137,13 +137,7 @@ export const currentitem = (state=initialStatecurrent,action:any) => {
 export const notificationmessage = (state=initialStateNotification,action:any) => {
     const {type,payload} = action;
     switch(type){
-        case NOTIFICATION_SUCCESS:
-            return payload;
-        case NOTIFICATION_ERROR:
-            return payload;
-        case NOTIFICATION_INFO:
-            return payload;
-        case NOTIFICATION_WARNING:
+        case NOTIFICATION:
             return payload;
         default:
             return state;

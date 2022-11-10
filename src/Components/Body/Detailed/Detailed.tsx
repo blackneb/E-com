@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Carditems } from '../../Cards/Carditems'
 import { addall,addtocart, currentitem } from '../../../Redux/Actions';
 import {NOTIFICATION_TYPES} from '../../../Redux/ActionTypes';
-import { notificationerror } from '../../../Redux/Actions';
+import { notification } from '../../../Redux/Actions';
 import arrayShuffle from 'array-shuffle';
 import Notification from '../../Cards/Notification';
 
@@ -88,7 +88,7 @@ const Detailed = () => {
           message:"Item is Already Carted",
           color: NOTIFICATION_TYPES.INFO,
         }
-        dispatch(notificationerror(message));
+        dispatch(notification(message));
         setnotify(true);
         isnotincart = false;
       }
@@ -98,7 +98,7 @@ const Detailed = () => {
         message:"Item Added",
         color: NOTIFICATION_TYPES.SUCCESS,
       }
-      dispatch(notificationerror(message));
+      dispatch(notification(message));
       setnotify(true);
       dispatch(addtocart(tocartitem));
     }

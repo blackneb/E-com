@@ -7,7 +7,7 @@ import { useForm } from 'react-hook-form'
 import { useDispatch,useSelector } from 'react-redux';
 import { Iuserautorization } from '../../../Models/Models'
 import { adduserautorization } from '../../../Redux/Actions'
-import { notificationerror } from '../../../Redux/Actions';
+import { notification } from '../../../Redux/Actions';
 import Notification from '../../Cards/Notification'
 import { Notifications } from '../../../Models/Models'
 import {NOTIFICATION_TYPES} from '../../../Redux/ActionTypes'
@@ -48,7 +48,7 @@ const Signin = () => {
                     message:"Login failed",
                     color:NOTIFICATION_TYPES.ERROR,
                 }
-                dispatch(notificationerror(message));
+                dispatch(notification(message));
                 setnotify(true);
             }
          });

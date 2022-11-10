@@ -5,7 +5,7 @@ import Badge, { BadgeProps } from '@mui/material/Badge';
 import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import { Iuserautorization, Notifications } from '../../Models/Models';
-import { notificationerror } from '../../Redux/Actions';
+import { notification } from '../../Redux/Actions';
 import {NOTIFICATION_TYPES} from '../../Redux/ActionTypes'
 import Notification from '../Cards/Notification';
 import { getCookie, setCookie } from 'typescript-cookie'
@@ -110,7 +110,7 @@ const Navbar = () => {
           message:"Please Login to access your account",
           color: NOTIFICATION_TYPES.WARNING,
         }
-        dispatch(notificationerror(message));
+        dispatch(notification(message));
         setnotify(true);
       }
       else{
