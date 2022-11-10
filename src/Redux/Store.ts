@@ -10,6 +10,7 @@ import { userReducer } from './Reducer';
 import { allitems } from './Reducer';
 import { addtocart } from './Reducer';
 import { currentitem } from './Reducer';
+import { notificationmessage } from './Reducer';
 
 const reducers = combineReducers(
     {
@@ -22,6 +23,7 @@ const reducers = combineReducers(
         allitems:allitems,
         addtocart:addtocart,
         currentitem:currentitem,
+        notification:notificationmessage,
     });
 export const store = createStore(reducers,composeWithDevTools());
 

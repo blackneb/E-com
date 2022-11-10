@@ -4,6 +4,7 @@ import Button from '@mui/material/Button';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import { Notifications } from '../../Models/Models';
+import { useSelector } from 'react-redux';
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
     props,
     ref,
@@ -13,6 +14,7 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
 
 const Notification = ({setnotify}:any) => {
     //const{opennotification,message, type} = props;
+    const notificationMessageBox = useSelector((state:any) => state.notification);
     const [open, setOpen] = React.useState(true);
 
     const handleClick = () => {
@@ -30,8 +32,8 @@ const Notification = ({setnotify}:any) => {
     <div>
         <Stack spacing={2} sx={{ width: '100%' }}>
             <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-                <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
-                  login failed
+                <Alert onClose={handleClose} severity={notificationMessageBox.color} sx={{ width: '100%' }}>
+                  { notificationMessageBox.message }
                 </Alert>
             </Snackbar>
         </Stack>

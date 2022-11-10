@@ -7,6 +7,7 @@ import { useForm } from 'react-hook-form'
 import { useDispatch,useSelector } from 'react-redux';
 import { Iuserautorization } from '../../../Models/Models'
 import { adduserautorization } from '../../../Redux/Actions'
+import { notificationerror } from '../../../Redux/Actions';
 import Notification from '../../Cards/Notification'
 import { Notifications } from '../../../Models/Models'
 interface loginprofile {
@@ -42,8 +43,12 @@ const Signin = () => {
             }
             else if( response.data.message === "error" ){
                 console.log(notify);
+                const message:Notifications = {
+                    message:"Login failed",
+                    color:"error",
+                }
+                dispatch(notificationerror(message));
                 setnotify(true);
-                return <><div></div></>
             }
          });
     })
