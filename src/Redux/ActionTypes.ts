@@ -13,6 +13,7 @@ export const ADD_QUANTITY = 'ADD_QUANTITY';
 export const DECREASE_QUANTITY = 'DECREASE_QUANTITY';
 export const REMOVE_ITEM = 'REMOVE_ITEM';
 export const NOTIFICATION = 'NOTIFICATION';
+export const USER_NAMES = "UESR_NAMES";
 export const NOTIFICATION_TYPES = {
     ERROR : 'error',
     SUCCESS : 'success',
