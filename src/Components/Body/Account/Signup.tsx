@@ -1,9 +1,9 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom'
 import {NOTIFICATION_TYPES} from '../../../Redux/ActionTypes';
-import { notification } from '../../../Redux/Actions';
-import { useDispatch } from 'react-redux'
+import { notification, usernames } from '../../../Redux/Actions';
+import { useDispatch,useSelector } from 'react-redux'
 import Notification from '../../Cards/Notification';
 import { Notifications } from '../../../Models/Models';
 import axios from 'axios';
@@ -23,8 +23,27 @@ const Signup = () => {
     const [notify,setnotify] = useState(false);
     const navigate = useNavigate();
     const {register, handleSubmit} = useForm<signupproperties>();
+    const usernameslist = useSelector((state:any) => state.usernames);
     const url=`http://localhost/blacknebecom/api/post/create_account.php`;
+    const urlusernames = `http://localhost/blacknebecom/api/post/user_names.php`;
+    useEffect(() => {
+        axios.get(urlusernames).then((response) => {
+            dispatch(usernames(response.data.data));
+        });
+    }, [])
     const onSubmit = handleSubmit((data) => {
+        for(let i=0;i<usernameslist.length;i++){
+            console.log(usernameslist[i]);
+            if(data.username === usernameslist[i]){
+                const message:Notifications = {
+                    message:"username Is Taken!",
+                    color: NOTIFICATION_TYPES.WARNING,
+                  }
+                  dispatch(notification(message));
+                  setnotify(true);
+                  return
+            }
+        }
         if( data.password !== data.conpassword ){
             const message:Notifications = {
                 message:"Passwords Aren't Same!",
