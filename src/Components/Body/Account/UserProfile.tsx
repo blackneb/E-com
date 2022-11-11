@@ -1,6 +1,7 @@
 import axios from 'axios';
-import React, {useState} from 'react'
+import React, {useState,useEffect} from 'react'
 import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux'
 import ChangePassword from './ChangePassword'
 import {NOTIFICATION_TYPES} from '../../../Redux/ActionTypes';
@@ -19,9 +20,15 @@ interface accounttoupdate{
 const UserProfile = () => {
   const {register, handleSubmit} = useForm<accounttoupdate>();
   const dispatch = useDispatch();
+  const navigate = useNavigate()
   const userinfo = useSelector((state:any) => state.user);
   const [notify,setnotify] = useState(false);
   const url=`http://localhost/blacknebecom/api/post/edit_account.php`;
+  useEffect(() => {
+    if(userinfo.userlogged === false){
+      navigate("/");
+    }
+  }, [])
   const onSubmit = handleSubmit((data) => {
     const submitteddata = {
       userid:userinfo.userid,
