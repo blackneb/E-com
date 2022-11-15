@@ -103,8 +103,8 @@ const Detailed = () => {
       dispatch(addtocart(tocartitem));
     }
   }
-  const similaritems = allitems.filter((items:any) => items.type === post.type && items.catagory === post.catagory);
-
+  const similaritems = allitems.filter((items:any) => items.type === post.type && items.catagory === post.catagory && items.id !== path);
+  console.log(similaritems)
   return loading? <p>Loading...</p>  : 
   <div>
     { notify? ( <div><Notification setnotify={setnotify}/></div> ) : ( <div></div> ) }
