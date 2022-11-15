@@ -27,11 +27,12 @@ const Signup = () => {
     const url=`http://localhost/blacknebecom/api/post/create_account.php`;
     const urlusernames = `http://localhost/blacknebecom/api/post/user_names.php`;
     useEffect(() => {
+        
+    }, [])
+    const onSubmit = handleSubmit((data) => {
         axios.get(urlusernames).then((response) => {
             dispatch(usernames(response.data.data));
         });
-    }, [])
-    const onSubmit = handleSubmit((data) => {
         for(let i=0;i<usernameslist.length;i++){
             console.log(usernameslist[i]);
             if(data.username === usernameslist[i]){
