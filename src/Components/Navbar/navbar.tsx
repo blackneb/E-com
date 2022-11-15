@@ -43,6 +43,10 @@ import MenuList from '@mui/material/MenuList';
 import Stack from '@mui/material/Stack';
 import axios from 'axios';
 
+interface cartedidquantityinterface{
+  id:any;
+  quantity:any;
+}
 
 const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
   '& .MuiBadge-badge': {
@@ -147,7 +151,17 @@ const Navbar = () => {
         navigate("/signin");
       }
       else{
-        alert("Processing...");
+        let cartedjson = [];
+        for(let i=0;i<carteditems.length;i++){
+          let cartedidquantity:cartedidquantityinterface = {
+            id:carteditems[i].id,
+            quantity:carteditems[i].quantity
+          }
+          cartedjson.push(cartedidquantity)
+        }
+        console.log(JSON.stringify(cartedjson,null,2));
+        alert(JSON.stringify(cartedjson,null,2));
+        //alert("Processing...");
       }
     }
 
