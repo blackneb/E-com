@@ -65,10 +65,10 @@ const Tv = () => {
                           {open? <img  className='h-4 mt-2'  src={close}/> : <img className='h-4 mt-2' src={Menu}/>}
                         </div>
                       </div>
-                    <div className='flex flex-row'>
+                    <div className='flex flex-row '>
                       <div className='mx-16 flex justify-around flex-wrap pr-8 mt-2'>
                         {
-                          [...post].slice((page-1)*6,6*page).map(({id,brand,name,catagory,price,description,types,images}:tv) => (
+                          [...post].slice((page-1)*12,12*page).map(({id,brand,name,catagory,price,description,types,images}:tv) => (
                             <Carditems key={id} id={id} brand={brand} catagory={catagory} name={name} price={price} description={description} types={types} images={images}/>
                             ))
                         }
