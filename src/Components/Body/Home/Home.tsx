@@ -7,6 +7,8 @@ import close from '../../../Icons/close.png';
 import Contact from '../Contact/Contact';
 import axios from 'axios';
 import { addall } from '../../../Redux/Actions';
+import { URL } from '../../../Redux/ActionTypes';
+
 
 interface Catagories {
   id:string,
@@ -27,7 +29,7 @@ const Home = () => {
   const userinfo = useSelector((state:any) => state.user);
   useEffect(()=>{
     if(allitems.length === 0){
-      axios.get("http://localhost/blacknebecom/api/post/read.php").then((response) => {
+      axios.get(URL +"/read.php").then((response) => {
           setpost(response.data.data);
           dispatch(addall(response.data.data));     
           if(response.data.data === "no posts found"){

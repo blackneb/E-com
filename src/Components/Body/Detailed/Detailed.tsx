@@ -9,6 +9,8 @@ import {NOTIFICATION_TYPES} from '../../../Redux/ActionTypes';
 import { notification } from '../../../Redux/Actions';
 import arrayShuffle from 'array-shuffle';
 import Notification from '../../Cards/Notification';
+import { URL } from '../../../Redux/ActionTypes';
+
 
 
 import ram from '../../../Icons/ram.png'
@@ -50,7 +52,7 @@ const Detailed = () => {
   function reloadingitem(id:any){
     setloading(true);
     setmore(true);
-    axios.get("http://localhost/blacknebecom/api/post" + `/read_single.php?id=${id}`).then((response) => {
+    axios.get(URL + `/read_single.php?id=${id}`).then((response) => {
       setimageshown(response.data.images[0]);
       dispatch(currentitem(response.data));
       setshort(response.data.description.slice(0,150) + " ...");
@@ -60,7 +62,7 @@ const Detailed = () => {
   useEffect(() => {
     reloadingitem(path);
     if(allitems.length === 0){
-      axios.get("http://localhost/blacknebecom/api/post/read.php").then((response) => {
+      axios.get( URL+"/read.php").then((response) => {
           dispatch(addall(response.data.data));     
           if(response.data.data === "no posts found"){
           }

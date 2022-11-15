@@ -9,6 +9,8 @@ import { useSelector } from 'react-redux';
 import { Card } from '@mui/material';
 import { addall } from '../../../Redux/Actions';
 import { useDispatch } from 'react-redux';
+import { URL } from '../../../Redux/ActionTypes';
+
 
 const Laptops = () => {
   const [open, setOpen] = useState(false);
@@ -18,7 +20,7 @@ const Laptops = () => {
   const gaming = useSelector((state:any) => state.allitems.allitems);
   useEffect(() => {
     if(gaming.length === 0){
-      axios.get("http://localhost/blacknebecom/api/post/read.php").then((response) => {
+      axios.get(URL +"/read.php").then((response) => {
           dispatch(addall(response.data.data));     
           if(response.data.data === "no posts found"){
           }

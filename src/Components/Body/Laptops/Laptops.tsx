@@ -6,6 +6,8 @@ import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import axios from 'axios';
 import { Card } from '@mui/material';
+import { URL } from '../../../Redux/ActionTypes';
+
 
 interface laptops{
   id:string;
@@ -36,7 +38,7 @@ const Laptops = () => {
   const [post,setpost] = useState<any[]>([]);
 
   useEffect(()=>{
-    axios.get("http://localhost/blacknebecom/api/post/read_laptop.php").then((response) => {
+    axios.get(URL+"/read_laptop.php").then((response) => {
       console.log(response.data.data);
       if(response.data.data === "no posts found"){
         setitemsthere(true);

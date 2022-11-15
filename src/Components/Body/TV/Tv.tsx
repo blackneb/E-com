@@ -5,6 +5,8 @@ import { Carditems } from '../../Cards/Carditems';
 import close from '../../../Icons/close.png';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
+import { URL } from '../../../Redux/ActionTypes';
+
 interface tv {
   id:string;
   brand:string;
@@ -32,7 +34,7 @@ const Tv = () => {
     SetPage(p);
   }
   useEffect(()=>{
-    axios.get("http://localhost/blacknebecom/api/post/read_tv.php").then((response) => {
+    axios.get(URL+"/read_tv.php").then((response) => {
       console.log(response.data.data);
       if(response.data.data === "no posts found"){
         setitemsthere(true);
