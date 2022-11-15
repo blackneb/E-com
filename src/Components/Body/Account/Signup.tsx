@@ -7,6 +7,7 @@ import { useDispatch,useSelector } from 'react-redux'
 import Notification from '../../Cards/Notification';
 import { Notifications } from '../../../Models/Models';
 import axios from 'axios';
+import { URL } from '../../../Redux/ActionTypes';
 
 export interface signupproperties{
     firstname:string;
@@ -24,8 +25,8 @@ const Signup = () => {
     const navigate = useNavigate();
     const {register, handleSubmit} = useForm<signupproperties>();
     const usernameslist = useSelector((state:any) => state.usernames);
-    const url=`http://localhost/blacknebecom/api/post/create_account.php`;
-    const urlusernames = `http://localhost/blacknebecom/api/post/user_names.php`;
+    const url= URL+`/create_account.php`;
+    const urlusernames = URL + `/user_names.php`;
     useEffect(() => {
         
     }, [])

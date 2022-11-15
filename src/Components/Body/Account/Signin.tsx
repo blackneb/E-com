@@ -11,6 +11,8 @@ import { notification } from '../../../Redux/Actions';
 import Notification from '../../Cards/Notification'
 import { Notifications } from '../../../Models/Models'
 import {NOTIFICATION_TYPES} from '../../../Redux/ActionTypes'
+import { URL } from '../../../Redux/ActionTypes';
+
 interface loginprofile {
     username:string;
     password:string;
@@ -22,7 +24,7 @@ const Signin = () => {
     const [post,setpost] = useState<any[]>([]);
     const navigate = useNavigate();
     const [notify, setnotify] = useState(false);
-    const url="http://localhost/blacknebecom/api/post/read_user.php";
+    const url= URL + "/read_user.php";
     const onSubmit = handleSubmit((data:loginprofile) => {
         axios.post(url,{username:data.username, password:data.password}).then((response) => {
             setpost(response.data);

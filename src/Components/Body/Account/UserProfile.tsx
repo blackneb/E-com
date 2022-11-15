@@ -9,6 +9,8 @@ import { notification } from '../../../Redux/Actions';
 import { useDispatch } from 'react-redux'
 import Notification from '../../Cards/Notification';
 import { Notifications } from '../../../Models/Models';
+import { URL } from '../../../Redux/ActionTypes';
+
 
 interface accounttoupdate{
     username:string;
@@ -23,7 +25,7 @@ const UserProfile = () => {
   const navigate = useNavigate()
   const userinfo = useSelector((state:any) => state.user);
   const [notify,setnotify] = useState(false);
-  const url=`http://localhost/blacknebecom/api/post/edit_account.php`;
+  const url=URL + `/edit_account.php`;
   useEffect(() => {
     if(userinfo.userlogged === false){
       navigate("/");

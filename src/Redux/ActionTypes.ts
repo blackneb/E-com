@@ -1,3 +1,4 @@
+export const URL = "http://localhost/blacknebecom/api/post";
 export const ADD_LAPTOP = 'ADD_LAPTOP';
 export const ADD_PHONE = 'ADD_PHONE';
 export const ADD_TV = 'ADD_TV';

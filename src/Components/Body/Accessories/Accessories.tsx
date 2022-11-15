@@ -5,6 +5,7 @@ import { Carditems } from '../../Cards/Carditems';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import axios from 'axios';
+import { URL } from '../../../Redux/ActionTypes';
 
 interface accessories {
   id:string,
@@ -29,7 +30,7 @@ const Accessories = () => {
     SetPage(p);
   }
   useEffect(()=>{
-    axios.get("http://localhost/blacknebecom/api/post/read_accessories.php").then((response) => {
+    axios.get(URL + "/read_accessories.php").then((response) => {
       console.log(response.data.data);
       if(response.data.data === "no posts found"){
         setitemsthere(true);

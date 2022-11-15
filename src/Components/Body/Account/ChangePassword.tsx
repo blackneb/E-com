@@ -7,6 +7,7 @@ import { notification } from '../../../Redux/Actions';
 import { useDispatch } from 'react-redux'
 import Notification from '../../Cards/Notification';
 import { Notifications } from '../../../Models/Models';
+import { URL } from '../../../Redux/ActionTypes';
 
 interface passwordhandler {
     oldpassword:string;
@@ -23,7 +24,7 @@ const ChangePassword = () => {
     const userinfo = useSelector((state:any) => state.user);
     const dispatch = useDispatch();
     const [notify,setnotify] = useState(false);
-    const url=`http://localhost/blacknebecom/api/post/change_password.php`;
+    const url= URL+`/change_password.php`;
     const onSubmit = handleSubmit((data) => {
         if(data.newpassword !== data.connewpassword){
             const message:Notifications = {
