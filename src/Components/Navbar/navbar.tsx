@@ -5,6 +5,7 @@ import Badge, { BadgeProps } from '@mui/material/Badge';
 import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import { Iuserautorization, Notifications } from '../../Models/Models';
+import { URL } from '../../Redux/ActionTypes'; 
 import { notification } from '../../Redux/Actions';
 import {NOTIFICATION_TYPES} from '../../Redux/ActionTypes'
 import Notification from '../Cards/Notification';
@@ -62,7 +63,6 @@ const Navbar = () => {
     const carteditems = useSelector((state:any) => state.addtocart.items);
     const userinfo = useSelector((state:any) => state.user);
     const [ notify,setnotify ] = useState(false);
-    console.log(userinfo.usertype);
     let links:{name: string, link:any, icon:any}[] = [
         {name:"Home",link:"/",icon:<img className='h-4 mt-2.5' src={Home} alt=''/>},
         {name:"Laptops",link:"/laptops",icon:<img className='h-4 mt-2.5' src={Laptop} alt=''/>},
@@ -83,10 +83,8 @@ const Navbar = () => {
 
     useEffect(() => {
       const userid:any = getCookie("userid");
-      console.log(userid);
-      const url=`http://localhost/blacknebecom/api/post/user_info.php?id=${userid}`;
+      const url= URL +`/user_info.php?id=${userid}`;
       axios.get(url).then((response) => {
-        console.log(response.data);
         if(response.data.message === "success"){
           const statemessage:Iuserautorization = {
               userlogged:true,
@@ -108,7 +106,6 @@ const Navbar = () => {
     };
 
     const handleLogging = () => {
-      console.log(userinfo.logged);
       if(userinfo.userlogged === false) {
         navigate("/signin"); 
       }
@@ -160,8 +157,25 @@ const Navbar = () => {
           itemslist.push(cartedidquantity)
         }
         let axiosjson = [{"userid":userinfo.userid,itemslist}];
-        console.log(JSON.stringify(axiosjson,null,2));
         alert(JSON.stringify(axiosjson,null,2));
+        axios.post(URL + "//createbooking.php",axiosjson).then((response) => {
+          if(response.data.message === "Item Booked"){
+            const message:Notifications={
+              message:"Thanks For Booking!",
+              color: NOTIFICATION_TYPES.SUCCESS,
+            }
+            dispatch(notification(message));
+            setnotify(true);
+          }
+          else if(response.data.message === "Booking Failed"){
+            const message:Notifications={
+              message:"Booking Failed, please Try again!",
+              color: NOTIFICATION_TYPES.ERROR,
+            }
+            dispatch(notification(message));
+            setnotify(true);
+          }
+        })
         //alert("Processing...");
       }
     }
