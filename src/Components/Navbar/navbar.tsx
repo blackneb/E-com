@@ -151,16 +151,17 @@ const Navbar = () => {
         navigate("/signin");
       }
       else{
-        let cartedjson = [];
+        let itemslist = [];
         for(let i=0;i<carteditems.length;i++){
           let cartedidquantity:cartedidquantityinterface = {
             id:carteditems[i].id,
             quantity:carteditems[i].quantity
           }
-          cartedjson.push(cartedidquantity)
+          itemslist.push(cartedidquantity)
         }
-        console.log(JSON.stringify(cartedjson,null,2));
-        alert(JSON.stringify(cartedjson,null,2));
+        let axiosjson = [{"userid":userinfo.userid,itemslist}];
+        console.log(JSON.stringify(axiosjson,null,2));
+        alert(JSON.stringify(axiosjson,null,2));
         //alert("Processing...");
       }
     }
