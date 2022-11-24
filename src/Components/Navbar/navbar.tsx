@@ -157,7 +157,6 @@ const Navbar = () => {
           itemslist.push(cartedidquantity)
         }
         let axiosjson = [{"userid":userinfo.userid,itemslist}];
-        alert(JSON.stringify(axiosjson,null,2));
         axios.post(URL + "//createbooking.php",axiosjson).then((response) => {
           if(response.data.message === "Item Booked"){
             const message:Notifications={
@@ -176,7 +175,6 @@ const Navbar = () => {
             setnotify(true);
           }
         })
-        //alert("Processing...");
       }
     }
 
