@@ -25,6 +25,7 @@ import About from '../../Icons/about.png';
 import Cart from '../../Icons/cart.png';
 import Profile from '../../Icons/profile.png'
 import Upload from '../../Icons/upload.png';
+import Checked from '../../Icons/checked.png';
 import { useDispatch,useSelector } from 'react-redux';
 
 import Button from '@mui/material/Button';
@@ -159,6 +160,8 @@ const Navbar = () => {
         let axiosjson = [{"userid":userinfo.userid,itemslist}];
         axios.post(URL + "//createbooking.php",axiosjson).then((response) => {
           if(response.data.message === "Item Booked"){
+            console.log(response.data.id)
+            handleClickOpenSuccess();
             const message:Notifications={
               message:"Thanks For Booking!",
               color: NOTIFICATION_TYPES.SUCCESS,
@@ -217,6 +220,16 @@ const Navbar = () => {
       const handleClose = () => {
           setOpens(false);
       };
+
+      const [openssuccess, setOpensSuccess] = React.useState(false);
+
+      const handleClickOpenSuccess = () => {
+          setOpensSuccess(true);
+      };
+
+      const handleCloseSuccess = () => {
+          setOpensSuccess(false);
+      };
   return (
     <>
     { notify? ( <div><Notification setnotify={setnotify}/></div> ) : ( <div></div> ) }
@@ -240,6 +253,31 @@ const Navbar = () => {
         <DialogActions>
           <Button onClick={handleClose}>Close</Button>
           <Button autoFocus onClick={handleCart}>Cart</Button>
+        </DialogActions>
+      </Dialog>
+
+      
+      <Dialog
+        fullWidth
+        open={openssuccess}
+        onClose={handleCloseSuccess}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          {"Cart"}
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            <ul>
+              <div>
+                <img className='h-8' src={Checked} alt="checked icon" />
+              </div>
+            </ul>
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button autoFocus onClick={handleCloseSuccess}>OK</Button>
         </DialogActions>
       </Dialog>
     <nav className='shadow-md w-full sticky top-0 left-0'>
