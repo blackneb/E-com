@@ -64,6 +64,7 @@ const Navbar = () => {
     const carteditems = useSelector((state:any) => state.addtocart.items);
     const userinfo = useSelector((state:any) => state.user);
     const [ notify,setnotify ] = useState(false);
+    const [ bookId, setBookId] = useState();
     let links:{name: string, link:any, icon:any}[] = [
         {name:"Home",link:"/",icon:<img className='h-4 mt-2.5' src={Home} alt=''/>},
         {name:"Laptops",link:"/laptops",icon:<img className='h-4 mt-2.5' src={Laptop} alt=''/>},
@@ -144,6 +145,7 @@ const Navbar = () => {
       setOpening(false);
     }
     const handleCart = () => {
+      handleClose();
       if(userinfo.userlogged === false){
         setOpens(false);
         navigate("/signin");
@@ -161,6 +163,7 @@ const Navbar = () => {
         axios.post(URL + "//createbooking.php",axiosjson).then((response) => {
           if(response.data.message === "Item Booked"){
             console.log(response.data.id)
+            setBookId(response.data.id);
             handleClickOpenSuccess();
             const message:Notifications={
               message:"Thanks For Booking!",
@@ -258,7 +261,6 @@ const Navbar = () => {
 
       
       <Dialog
-        fullWidth
         open={openssuccess}
         onClose={handleCloseSuccess}
         aria-labelledby="alert-dialog-title"
@@ -270,8 +272,15 @@ const Navbar = () => {
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
             <ul>
-              <div>
-                <img className='h-8' src={Checked} alt="checked icon" />
+              <div className='w-72'>
+                <div className='flex justify-center align-center'>
+                  <div>
+                    <img className='h-32' src={Checked} alt="checked icon" />
+                  </div>
+                </div>
+                <div>
+                  <p>Thanks for Booking, Your Booking ID is: <p className='font-medium'>{bookId}</p></p>
+                </div>
               </div>
             </ul>
           </DialogContentText>
