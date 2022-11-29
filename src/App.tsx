@@ -18,6 +18,7 @@ import Signin from './Components/Body/Account/Signin';
 import Signup from './Components/Body/Account/Signup';
 import Management from './Components/Body/Management/Management';
 import UserProfile from './Components/Body/Account/UserProfile';
+import UserOrders from './Components/Body/Account/UserOrders';
 function App() {
   return (
     <div className="App">
@@ -38,6 +39,7 @@ function App() {
         <Route path="/signup" element={<Signup/>}/>
         <Route path="management/:ID" element={<Management/>}/>
         <Route path="userprofile" element={ <UserProfile/> } />
+        <Route path="userorders" element={<UserOrders/>} />
       </Routes>
       <Footer/>
       </BrowserRouter>

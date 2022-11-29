@@ -130,6 +130,9 @@ const Navbar = () => {
       }
       setOpening(false);
     }
+    const handleOrders = () => {
+      navigate("/userorders");
+    }
     const handleAccount = () => {
       if(userinfo.userlogged === false) {
         const message:Notifications={
@@ -363,6 +366,7 @@ const Navbar = () => {
                                 onKeyDown={handleListKeyDown}
                               >
                                 <MenuItem onClick={handleAccount}>My account</MenuItem>
+                                <MenuItem onClick={handleOrders} >Orders</MenuItem>
                                 <MenuItem onClick={ handleLogging}> {userinfo.userlogged? "Logout" : "Log in"}</MenuItem>
                               </MenuList>
                             </ClickAwayListener>
