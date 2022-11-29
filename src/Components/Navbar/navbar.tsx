@@ -49,6 +49,7 @@ interface cartedidquantityinterface{
   id:any;
   quantity:any;
   price:any;
+  name:any;
 }
 
 const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
@@ -66,6 +67,8 @@ const Navbar = () => {
     const userinfo = useSelector((state:any) => state.user);
     const [ notify,setnotify ] = useState(false);
     const [ bookId, setBookId] = useState();
+    const [price, setprice] = useState(0);
+    let prices:any = 0;
     let links:{name: string, link:any, icon:any}[] = [
         {name:"Home",link:"/",icon:<img className='h-4 mt-2.5' src={Home} alt=''/>},
         {name:"Laptops",link:"/laptops",icon:<img className='h-4 mt-2.5' src={Laptop} alt=''/>},
@@ -149,8 +152,25 @@ const Navbar = () => {
       }
       setOpening(false);
     }
+    function calculateitem(){
+      prices = 0;
+      for(let i=0;i<carteditems.length;i++){
+        if(carteditems[i].quantity <= 0){
+          alert("There is item With Value Zero");
+          return;
+        }
+      }
+      for(let i=0;i<carteditems.length;i++){
+        let valueone = carteditems[i].price;
+        let valuetwo = carteditems[i].quantity;
+        prices += valueone * valuetwo;
+      }
+      setprice(prices);
+      return prices;
+    }
     const handleCart = () => {
       handleClose();
+      let totalprice = calculateitem();
       if(userinfo.userlogged === false){
         setOpens(false);
         navigate("/signin");
@@ -161,11 +181,12 @@ const Navbar = () => {
           let cartedidquantity:cartedidquantityinterface = {
             id:carteditems[i].id,
             quantity:carteditems[i].quantity,
-            price:carteditems[i].price
+            price:carteditems[i].price,
+            name:carteditems[i].name
           }
           itemslist.push(cartedidquantity)
         }
-        let axiosjson = [{"userid":userinfo.userid,itemslist}];
+        let axiosjson = [{"userid":userinfo.userid,"totalprice":totalprice,itemslist}];
         axios.post(URL + "//createbooking.php",axiosjson).then((response) => {
           if(response.data.message === "Item Booked"){
             setBookId(response.data.id);

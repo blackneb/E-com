@@ -23,23 +23,15 @@ function createData(
     BID: string,
     date: number,
     totalPrice: number,
+    userid:any,
+    itemslist:any
   ) {
     return {
       BID,
       date,
       totalPrice,
-      history: [
-        {
-          date: '2020-01-05',
-          customerId: '11091700',
-          amount: 3,
-        },
-        {
-          date: '2020-01-02',
-          customerId: 'Anonymous',
-          amount: 1,
-        },
-      ],
+      userid,
+      history: itemslist
     };
   }
 
@@ -77,22 +69,21 @@ function createData(
                     <TableRow>
                       <TableCell>Date</TableCell>
                       <TableCell>CustomerID</TableCell>
+                      <TableCell align="right">Name</TableCell>
                       <TableCell align="right">Booking ID</TableCell>
                       <TableCell align="right">Quantity</TableCell>
                       <TableCell align="right">Price</TableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
-                    {row.history.map((historyRow) => (
-                      <TableRow key={historyRow.date}>
-                        <TableCell component="th" scope="row">
-                          {historyRow.date}
-                        </TableCell>
-                        <TableCell>{historyRow.customerId}</TableCell>
-                        <TableCell align="right">{historyRow.amount}</TableCell>
-                        <TableCell align="right">
-                          {}
-                        </TableCell>
+                    {row.history.map((itemsRow:any) => (
+                      <TableRow key={itemsRow.ID}>
+                        <TableCell component="th" scope="row">{row.date}</TableCell>
+                        <TableCell>{row.userid}</TableCell>
+                        <TableCell align="right">{itemsRow.name}</TableCell>
+                        <TableCell align="right">{row.BID}</TableCell>
+                        <TableCell align="right">{itemsRow.quantity}</TableCell>
+                        <TableCell align="right">{itemsRow.price}</TableCell>
                       </TableRow>
                     ))}
                   </TableBody>
@@ -105,13 +96,7 @@ function createData(
     );
   }
   
-  const rows = [
-    createData('Frozen yoghurt', 159, 6.0),
-    createData('Ice cream sandwich', 237, 9.0),
-    createData('Eclair', 262, 16.0),
-    createData('Cupcake', 305, 3.7),
-    createData('Gingerbread', 356, 16.0),
-  ];
+
 
 const UserOrders = () => {
   const [open, setOpen] = React.useState(false);
@@ -126,7 +111,9 @@ const UserOrders = () => {
     );
     try{
         let response = await axios.post(URL + "/read_booking.php", sendjson);
-        dispatch(addbooks(response.data.data));
+        if(response.data.data !== "no posts found"){
+            dispatch(addbooks(response.data.data));
+        }
         console.log(response.data.data);
     }
     catch(error){
@@ -134,12 +121,11 @@ const UserOrders = () => {
     }
 }
     useEffect(() => {
-        if(booked.length === 0){
-            getbookeddata();
-        }
+        getbookeddata();
     }, [])
 
   return (
+    booked.length === 0 ? <div>You have not ordered any items</div> :
     <div className=' '>
         <div className='shadow border-b-2 border-gray-400 mx-4 md:mx-16 mt-8'>
           <h1>Your Orders List</h1>
@@ -150,14 +136,14 @@ const UserOrders = () => {
                 <TableHead>
                 <TableRow>
                     <TableCell />
-                    <TableCell>BID</TableCell>
-                    <TableCell align="right">date</TableCell>
-                    <TableCell align="right">totalPrice</TableCell>
+                    <TableCell>Booking ID</TableCell>
+                    <TableCell align="right">Date</TableCell>
+                    <TableCell align="right">Total Price</TableCell>
                 </TableRow>
                 </TableHead>
                 <TableBody>
-                {rows.map((row) => (
-                    <Row key={row.BID} row={row} />
+                {booked[0].map((row:any) => (
+                    <Row key={row.BID} row={createData(row.BID, row.date, row.totalprice,row.userid,row.itemslist)} />
                 ))}
                 </TableBody>
             </Table>
