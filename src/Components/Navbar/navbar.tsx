@@ -48,6 +48,7 @@ import axios from 'axios';
 interface cartedidquantityinterface{
   id:any;
   quantity:any;
+  price:any;
 }
 
 const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
@@ -131,6 +132,7 @@ const Navbar = () => {
       setOpening(false);
     }
     const handleOrders = () => {
+      setOpening(false);
       navigate("/userorders");
     }
     const handleAccount = () => {
@@ -158,14 +160,14 @@ const Navbar = () => {
         for(let i=0;i<carteditems.length;i++){
           let cartedidquantity:cartedidquantityinterface = {
             id:carteditems[i].id,
-            quantity:carteditems[i].quantity
+            quantity:carteditems[i].quantity,
+            price:carteditems[i].price
           }
           itemslist.push(cartedidquantity)
         }
         let axiosjson = [{"userid":userinfo.userid,itemslist}];
         axios.post(URL + "//createbooking.php",axiosjson).then((response) => {
           if(response.data.message === "Item Booked"){
-            console.log(response.data.id)
             setBookId(response.data.id);
             handleClickOpenSuccess();
             const message:Notifications={
