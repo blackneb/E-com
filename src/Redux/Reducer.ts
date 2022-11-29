@@ -78,7 +78,7 @@ export const bookReducers = (state=initialStatebook, action:IBookActionModel) =>
     const {type,payload} = action;
     switch(type){
         case ADD_BOOK:
-            return [...state,payload];
+            return [payload];
         default:
             return state;
     };

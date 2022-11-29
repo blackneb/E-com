@@ -277,14 +277,16 @@ const Navbar = () => {
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
             <ul>
-              <div className='w-72'>
+              <div className='w-96'>
                 <div className='flex justify-center align-center'>
                   <div>
                     <img className='h-32' src={Checked} alt="checked icon" />
                   </div>
                 </div>
-                <div>
-                  <p>Thanks for Booking, Your Booking ID is: <p className='font-medium'>{bookId}</p></p>
+                <div className='mt-4'>
+                  <p>Thanks for Booking.</p>
+                  <p>Booking ID:{bookId}</p> 
+                  <p>User Name: { userinfo.firstname + " " + userinfo.lastname }</p>
                 </div>
               </div>
             </ul>
