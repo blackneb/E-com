@@ -27,15 +27,21 @@ const Home = () => {
   const dispatch = useDispatch();
   const allitems = useSelector((state:any) => state.allitems.allitems);
   const userinfo = useSelector((state:any) => state.user);
-  useEffect(()=>{
-    if(allitems.length === 0){
-      axios.get(URL +"/read.php").then((response) => {
-          setpost(response.data.data);
-          dispatch(addall(response.data.data));     
-          if(response.data.data === "no posts found"){
+  async function getitems (){
+    try{
+      let response = await axios.get(URL + "/read.php");
+      setpost(response.data.data);
+      dispatch(addall(response.data.data));     
+      if(response.data.data === "no posts found"){
             setitemsthere(true);
           }
-      });
+    }
+    catch(error){
+    }
+  }
+  useEffect(()=>{
+    if(allitems.length === 0){
+      getitems();
     }
   },[]);
   if(!post) return null;
