@@ -1,5 +1,6 @@
-import React from 'react'
-
+import React, {useEffect} from 'react'
+import axios from 'axios';
+import { URL } from '../../../Redux/ActionTypes';
 import Box from '@mui/material/Box';
 import Collapse from '@mui/material/Collapse';
 import IconButton from '@mui/material/IconButton';
@@ -109,8 +110,20 @@ function createData(
   ];
 
 const UserOrders = () => {
-    const [open, setOpen] = React.useState(false);
-   
+  const [open, setOpen] = React.useState(false);
+
+  async function getbookeddata(){
+    try{
+        let response = await axios.get(URL + "");
+    }
+    catch(error){
+        console.log(error);
+    }
+}
+    useEffect(() => {
+        
+    }, [])
+
   return (
     <div className=' '>
         <div className='shadow border-b-2 border-gray-400 mx-4 md:mx-16 mt-8'>
