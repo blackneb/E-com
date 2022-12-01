@@ -135,8 +135,19 @@ const Navbar = () => {
       setOpening(false);
     }
     const handleOrders = () => {
+      if(userinfo.userlogged === false){
+        const message:Notifications={
+          message:"Please Login to watch your orders",
+          color: NOTIFICATION_TYPES.WARNING,
+        }
+        dispatch(notification(message));
+        setnotify(true);
+      }
+      else{
+        navigate("/userorders");
+      }
       setOpening(false);
-      navigate("/userorders");
+      
     }
     const handleAccount = () => {
       if(userinfo.userlogged === false) {
