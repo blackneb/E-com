@@ -1,6 +1,7 @@
 import React from 'react'
 import logo from '../../../Icons/Logo.jpg'
 import { useForm } from 'react-hook-form'
+import { Button } from 'antd';
 
 interface contactform {
   firstname:string;
@@ -50,7 +51,7 @@ const Contact = () => {
                 <textarea className='border-2 rounded-lg h-28 md:w-72' {...register('message', {required:true})}/>
               </div>
             </div>
-            <button className='border-2 shadow border-gray-200 rounded-md bg-white text-black px-2 py-4 hover:bg-gray-200 hover:text-black m-4 md:m-0'>Send Message</button>
+            <Button onClick={onSubmit} >Send Message</Button>
           </div>
           </form>
           <div className='w-96 flex justify-center items-center'>
