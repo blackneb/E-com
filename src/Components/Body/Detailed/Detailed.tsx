@@ -9,7 +9,7 @@ import {NOTIFICATION_TYPES} from '../../../Redux/ActionTypes';
 import { notification } from '../../../Redux/Actions';
 import arrayShuffle from 'array-shuffle';
 import Notification from '../../Cards/Notification';
-import { URL } from '../../../Redux/ActionTypes';
+import { URL, URLPHOTO } from '../../../Redux/ActionTypes';
 
 
 
@@ -118,7 +118,7 @@ const Detailed = () => {
             {
               post.images.map((items:string) => (
                 <div key={items} className='hover:border-b-2 mx-8' onClick={()=> setimageshown(items)}>
-                  <img className='h-20 rounded-md p-2' src={"http://localhost/blacknebecom/api/post/photos/" + items} alt=''/>
+                  <img className='h-20 rounded-md p-2' src={URLPHOTO + items.toLocaleLowerCase()} alt=''/>
                 </div>  
               ))
             }
@@ -133,7 +133,7 @@ const Detailed = () => {
       <div className='flex flex-wrap justify-start  pt-8'>
         <div className='w-96 ml-20 '>
           <div className='flex flex-wrap justify-center'>
-            <img className='h-64 shadow rounded-md' src={"http://localhost/blacknebecom/api/post/photos/" + imageshown} alt=''/>
+            <img className='h-64 shadow rounded-md' src={URLPHOTO + imageshown?.toLocaleLowerCase()} alt=''/>
           </div>
         </div>
         

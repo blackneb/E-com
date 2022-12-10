@@ -1,6 +1,6 @@
 import React,{ useEffect,useState } from 'react';
 import './App.css';
-import { BrowserRouter, Route,Routes } from 'react-router-dom';
+import { BrowserRouter, Route,Routes, HashRouter } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import Navbar from './Components/Navbar/navbar';
 import Home from './Components/Body/Home/Home';
@@ -22,7 +22,7 @@ import UserOrders from './Components/Body/Account/UserOrders';
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
+      <HashRouter>
       <Navbar/>
       <Routes>
         <Route path='/' element={<Home/>}/>
@@ -42,7 +42,7 @@ function App() {
         <Route path="userorders" element={<UserOrders/>} />
       </Routes>
       <Footer/>
-      </BrowserRouter>
+      </HashRouter>
     </div>
   );
 }

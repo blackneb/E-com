@@ -1,6 +1,7 @@
 import React from 'react'
 import iphone from '../../Images/iphone.jpg'
 import {Link} from 'react-router-dom'
+import { URLPHOTO } from '../../Redux/ActionTypes'
 
 export interface Catagories {
   id:string,
@@ -19,7 +20,7 @@ export const Carditems = (props: Catagories) => {
     <div className='h-52 hover:border-2 hover:border-gray-400 shadow hover:shadow- md:h-52 md:shadow md:w-48 rounded-md m-2 p-2'>
       <Link  to={`/detailed/${props.id}`}>
         <div className='h-32 w-28 flex justify-center md:h-36 md:w-44'>
-          <img className='h-32 md:mt-0 rounded-md' src={"http://localhost/blacknebecom/api/post/photos/" + images[0]} alt=''/>
+          <img className='h-32 md:mt-0 rounded-md' src={URLPHOTO + images[0].toLocaleLowerCase()} alt=''/>
         </div>
       </Link>
       <div>

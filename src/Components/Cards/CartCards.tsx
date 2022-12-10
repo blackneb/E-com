@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { addquantity, removeitem } from '../../Redux/Actions';
 import close from '../../Icons/close.png';
 import reload from '../../Icons/reload.png';
+import { URLPHOTO } from '../../Redux/ActionTypes';
 
 
 const CartCards = (props:any) => {
@@ -70,7 +71,7 @@ const CartCards = (props:any) => {
             <div className=''>
               <div className='flex flex-row border-b-2 m-2 p-2'>
                 <div className='w-14'>
-                  <img className='h-8' src={"http://localhost/blacknebecom/api/post/photos/" + items.images} alt="" />
+                  <img className='h-8' src={URLPHOTO + items.images.toLocaleLowerCase()} alt="" />
                 </div>
                 <p className='ml-8 w-52 text-left'>{items.name}</p>
                 <p className='text-center w-28'>{items.price + " ETB"}</p>
