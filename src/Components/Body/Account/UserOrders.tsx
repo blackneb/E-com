@@ -5,6 +5,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addbooks } from '../../../Redux/Actions';
 
 
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+import Button, {ButtonProps} from '@mui/material/Button'
+import { purple, green } from '@mui/material/colors';
+import { styled } from '@mui/material/styles';
+import {createTheme } from '@mui/system';
+
+
+
+
 import Box from '@mui/material/Box';
 import Collapse from '@mui/material/Collapse';
 import IconButton from '@mui/material/IconButton';
@@ -35,9 +46,62 @@ function createData(
     };
   }
 
+  const options = [
+    'None',
+    'Atria',
+    'Callisto',
+    'Dione',
+    'Ganymede',
+    'Hangouts Call',
+    'Luna',
+    'Oberon',
+    'Phobos',
+    'Pyxis',
+    'Sedna',
+    'Titania',
+    'Triton',
+    'Umbriel',
+  ];
+  
+  const ITEM_HEIGHT = 48;
+  const theme = createTheme({
+    palette: {
+      background: {
+        paper: '#fff',
+      },
+      text: {
+        primary: '#173A5E',
+        secondary: '#46505A',
+      },
+      action: {
+        active: '#001E3C',
+      },
+      success: {
+        dark: '#009688',
+      },
+    },
+  });
+
+  const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
+    color: theme.palette.getContrastText(green[500]),
+    backgroundColor: green[500],
+    '&:hover': {
+      backgroundColor: green[700],
+    },
+  }));
+
   function Row(props: { row: ReturnType<typeof createData> }) {
     const { row } = props;
     const [open, setOpen] = React.useState(false);
+    const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+    const openan = Boolean(anchorEl);
+    const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+      setAnchorEl(event.currentTarget);
+    };
+    const handleClose = () => {
+      setAnchorEl(null);
+    };
+
   
     return (
       <React.Fragment>
@@ -56,6 +120,42 @@ function createData(
           </TableCell>
           <TableCell align="right">{row.date}</TableCell>
           <TableCell align="right">{row.totalPrice}</TableCell>
+          <IconButton
+        aria-label="more"
+        id="long-button"
+        aria-controls={open ? 'long-menu' : undefined}
+        aria-expanded={open ? 'true' : undefined}
+        aria-haspopup="true"
+        onClick={handleClick}
+      >
+        <MoreVertIcon />
+      </IconButton>
+      <div>
+        <Menu
+          id="long-menu"
+          MenuListProps={{
+            'aria-labelledby': 'long-button',
+          }}
+          anchorEl={anchorEl}
+          open={openan}
+          onClose={handleClose}
+          PaperProps={{
+            style: {
+              maxHeight: 300,
+              width: '40ch',
+            },
+          }}
+        >
+          <div className='p-4'>
+            user { row.BID } will be deleted. Do you want to proceed?
+            <div className='flex justify-around'>
+              <Button variant="outlined" sx={{ color: 'black', backgroundColor: 'white', borderColor: 'green' }}>Cancel</Button>
+              <Button variant="contained" sx={{ color: 'white', backgroundColor: 'green', borderColor: 'green' }}>Proceed</Button>
+            </div>
+          </div>
+        </Menu>
+      </div>
+      
         </TableRow>
         <TableRow>
           <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
@@ -139,6 +239,7 @@ const UserOrders = () => {
                     <TableCell>Booking ID</TableCell>
                     <TableCell align="right">Date</TableCell>
                     <TableCell align="right">Total Price</TableCell>
+                    <TableCell align="right">Actions</TableCell>
                 </TableRow>
                 </TableHead>
                 <TableBody>
