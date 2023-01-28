@@ -336,7 +336,9 @@ const Navbar = () => {
     <nav className='shadow-md w-full sticky top-0 left-0'>
         <div className='md:flex items-center justify-between bg-white py-4 md:px-10 px-7'>
             <div className='font-bold text-xl cursor-pointer flex items-center font-[Poppins] text-gray-800'>
-                   <p className='text-black' >Blackneb</p>
+              <Link to={'/'}>
+                <p className='text-black' >Blackneb</p>
+              </Link>
             </div>
             <div  onClick={()=>setOpen(!open)} className='text-xl absolute right-3 top-2 cursor-pointer md:hidden'>
                 {open? <img  className='h-5 mt-2'  src={close} alt=''/> : <img className='h-6 mt-2' src={menu} alt=''/>}
