@@ -1,5 +1,5 @@
 import { Ilaptop, Iphone,Itv, Iaccessories, Ibook, Iuserautorization, Notifications } from "../Models/Models";
-import { ADD_LAPTOP, ADD_PHONE, ADD_TV, ADD_ACCESSORIES, ADD_BOOK, ADD_USER_AUTORIZATION,ADD_ALL,ADD_TO_CART,CURRENT_ITEM,ADD_QUANTITY,DECREASE_QUANTITY,REMOVE_ITEM, NOTIFICATION,USER_NAMES } from "./ActionTypes";
+import { ADD_LAPTOP, ADD_PHONE, ADD_TV, ADD_ACCESSORIES, ADD_BOOK, ADD_USER_AUTORIZATION,ADD_ALL,ADD_TO_CART,CURRENT_ITEM,ADD_QUANTITY,DECREASE_QUANTITY,REMOVE_ITEM, NOTIFICATION,USER_NAMES, REMOVE_ALL_CART } from "./ActionTypes";
 
 export const addLaptop = (laptop: Ilaptop) => {
     return{
@@ -89,5 +89,11 @@ export const usernames = (username:any) => {
     return{
         type:USER_NAMES,
         payload:username,
+    }
+}
+export const removeallcart = (removeallcart:any) =>{
+    return{
+        type:REMOVE_ALL_CART ,
+        payload:removeallcart,
     }
 }
