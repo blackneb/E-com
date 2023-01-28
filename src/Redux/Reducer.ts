@@ -5,7 +5,7 @@ import { Iaccessories,IAccessoriesActionModel } from "../Models/Models";
 import { Ibook,IBookActionModel } from "../Models/Models";
 import { Iuserautorization,IUserAutorizationACtionModel } from "../Models/Models";
 import { Notifications } from "../Models/Models";
-import { ADD_LAPTOP,ADD_ACCESSORIES, ADD_BOOK, ADD_IMAGES, ADD_PHONE, ADD_TV, ADD_USER_AUTORIZATION, ADD_ALL, ADD_TO_CART, CURRENT_ITEM, ADD_QUANTITY,DECREASE_QUANTITY,REMOVE_ITEM,NOTIFICATION,USER_NAMES } from "./ActionTypes";
+import { ADD_LAPTOP,ADD_ACCESSORIES, ADD_BOOK, ADD_IMAGES, ADD_PHONE, ADD_TV, ADD_USER_AUTORIZATION, ADD_ALL, ADD_TO_CART, CURRENT_ITEM, ADD_QUANTITY,DECREASE_QUANTITY,REMOVE_ITEM,NOTIFICATION,USER_NAMES, REMOVE_ALL_CART } from "./ActionTypes";
 const initialState:Ilaptop[]=[];
 const initialStates:Iphone[]=[];
 const initialStatess:Itv[]=[];
@@ -151,5 +151,12 @@ export const usernames = (state=initialStateusernames,action:any) => {
             return payload;
         default:
             return state;
+    }
+}
+export const removeallcart = (state=initialStatecart,action:any) => {
+    const {type,payload} = action;
+    switch(type){
+        case REMOVE_ALL_CART:
+            return [];
     }
 }
