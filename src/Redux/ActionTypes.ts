@@ -16,6 +16,7 @@ export const DECREASE_QUANTITY = 'DECREASE_QUANTITY';
 export const REMOVE_ITEM = 'REMOVE_ITEM';
 export const NOTIFICATION = 'NOTIFICATION';
 export const USER_NAMES = "UESR_NAMES";
+export const REMOVE_ALL_CART = "REMOVE_ALL_CART";
 export const NOTIFICATION_TYPES = {
     ERROR : 'error',
     SUCCESS : 'success',
