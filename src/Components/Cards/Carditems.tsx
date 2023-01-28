@@ -24,7 +24,7 @@ export const Carditems = (props: Catagories) => {
         </div>
       </Link>
       <div>
-        <p className=''>{name}</p>
+        <p className=''>{name.slice(0,10) + "..."}</p>
       </div>
     </div>
   )
