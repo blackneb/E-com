@@ -120,6 +120,8 @@ export const addtocart = (state=initialStatecart,action:any) => {
         case REMOVE_ITEM:
             console.log("form payload: " + payload);
             return {items: [...state.items.filter((items:any) => items.id !== payload)]}
+        case REMOVE_ALL_CART:
+            return {items: []}
         default:
             return state;
     }
@@ -157,6 +159,6 @@ export const removeallcart = (state=initialStatecart,action:any) => {
     const {type,payload} = action;
     switch(type){
         case REMOVE_ALL_CART:
-            return [];
+            return {items: [...state.items.filter((items:any) => items.id === "remove")]}
     }
 }

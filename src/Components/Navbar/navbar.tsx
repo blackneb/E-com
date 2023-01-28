@@ -1,11 +1,11 @@
 import React,{useState, useEffect} from 'react'
 import {useNavigate, Link } from 'react-router-dom';
-import { adduserautorization } from '../../Redux/Actions';
+import { addtocart, adduserautorization,removeallcart } from '../../Redux/Actions';
 import Badge, { BadgeProps } from '@mui/material/Badge';
 import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import { Iuserautorization, Notifications } from '../../Models/Models';
-import { URL } from '../../Redux/ActionTypes'; 
+import { REMOVE_ALL_CART, URL } from '../../Redux/ActionTypes'; 
 import { notification } from '../../Redux/Actions';
 import {NOTIFICATION_TYPES} from '../../Redux/ActionTypes'
 import Notification from '../Cards/Notification';
@@ -219,6 +219,11 @@ const Navbar = () => {
           }
         })
       }
+      const stateRemove:any={
+        message:"remove all"
+      }
+      dispatch(removeallcart(stateRemove));
+      console.log("removing")
     }
 
     const handleCloseing = (event: Event | React.SyntheticEvent) => {
