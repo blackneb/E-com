@@ -68,7 +68,7 @@ const Phone = () => {
                         </div>
                       </div>
                     <div className='flex flex-row '>
-                      <div className='mx-16 flex justify-around flex-wrap pr-8 mt-2'>
+                      <div className='md:mx-16 flex flex-wrap justify-center align-center md:flex-wrap md:pr-8 mt-2'>
                         {
                           [...post].slice((page-1)*12,12*page).map(({id,brand,name,catagory,price,description,types,images}:phone) => (
                             <Carditems key={id} id={id} brand={brand} catagory={catagory} name={name} price={price} description={description} types={types} images={images}/>

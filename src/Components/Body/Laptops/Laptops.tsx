@@ -70,12 +70,12 @@ const Laptops = () => {
                   return(
                     <div className='flex flex-row'>
                       <div className='flex flex-col'>
-                        <div onClick={()=>setOpen(!open)} className='md:hidden mx-2 w-6 mb-2'>
+                        {/* <div onClick={()=>setOpen(!open)} className='md:hidden mx-2 w-6 mb-2'>
                           {open? <img  className='h-4 mt-2'  src={close}/> : <img className='h-4 mt-2' src={Menu}/>}
-                        </div>
+                        </div> */}
                       </div>
-                    <div className='flex flex-row h-[]'>
-                      <div className='mx-16 flex justify-around flex-wrap pr-8 mt-2'>
+                    <div className='flex flex-row justify-center h-[]'>
+                      <div className='md:mx-16 flex flex-wrap justify-center align-center md:flex-wrap md:pr-8 mt-2'>
                         {
                           [...post].slice((page-1)*12,12*page).map(({id,brand,name,catagory,price,description,types,images}:laptops) => (
                             <Carditems key={id} id={id} brand={brand} catagory={catagory} name={name} price={price} description={description} types={types} images={images}/>
