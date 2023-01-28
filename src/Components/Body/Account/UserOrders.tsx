@@ -120,16 +120,6 @@ function createData(
           </TableCell>
           <TableCell align="right">{row.date}</TableCell>
           <TableCell align="right">{row.totalPrice}</TableCell>
-          <IconButton
-        aria-label="more"
-        id="long-button"
-        aria-controls={open ? 'long-menu' : undefined}
-        aria-expanded={open ? 'true' : undefined}
-        aria-haspopup="true"
-        onClick={handleClick}
-      >
-        <MoreVertIcon />
-      </IconButton>
       <div>
         <Menu
           id="long-menu"
@@ -239,7 +229,6 @@ const UserOrders = () => {
                     <TableCell>Booking ID</TableCell>
                     <TableCell align="right">Date</TableCell>
                     <TableCell align="right">Total Price</TableCell>
-                    <TableCell align="right">Actions</TableCell>
                 </TableRow>
                 </TableHead>
                 <TableBody>
