@@ -130,9 +130,9 @@ const Detailed = () => {
             </div>
           </div>
         </div>
-      <div className='flex flex-wrap justify-start  pt-8'>
-        <div className='w-96 ml-20 '>
-          <div className='flex flex-wrap justify-center'>
+      <div className='flex flex-wrap justify-center  pt-8'>
+        <div className='md:w-96 md:ml-20 '>
+          <div className='flex flex-wrap justify-center '>
             <img className='h-64 shadow rounded-md' src={URLPHOTO + imageshown?.toLocaleLowerCase()} alt=''/>
           </div>
         </div>
@@ -160,13 +160,13 @@ const Detailed = () => {
           }
           })()}
           <div className='pt-4'>
-          <div className='flex flex-row my-2'>
+          <div className='md:flex md:flex-row my-2 grid pl-8'>
           <div className='flex flex-row'>
                 <img className='h-8' src={description} alt=''/>
                 <p className='ml-2'>Description:</p>
               </div>
             <div className=''>
-              <p className='ml-2 w-96 text-justify'>{more? short : post.description} </p>
+              <p className='ml-2 mr-8 md:w-96 text-justify'>{more? short : post.description} </p>
               <p onClick={()=>{setmore(!more)}} >{more? "show more" : "show less"}</p>
             </div>
           </div>
