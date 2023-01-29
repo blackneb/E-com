@@ -25,6 +25,7 @@ const Home = () => {
   const [itemsthere, setitemsthere] = useState(false);
   const [post,setpost] = useState<any[]>([]);
   const dispatch = useDispatch();
+  const [search, setSearch] = useState('');
   const allitems = useSelector((state:any) => state.allitems.allitems);
   const userinfo = useSelector((state:any) => state.user);
   async function getitems (){
@@ -55,18 +56,42 @@ const Home = () => {
         <div className='shadow border-b-2 border-gray-400 mx-4 md:mx-16 mt-8'>
           <h1>Shop every item You want</h1>
         </div>
+        <div className="relative flex items-center h-12 rounded-lg focus-within:shadow-lg bg-white overflow-hidden mx-4 md:mx-16 mt-2">
+              <div className="grid place-items-center h-full w-12 text-gray-300">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
+              </div>
+              <input
+              onChange={(e) => {
+                    setSearch(e.target.value.toLowerCase());
+                  }}
+              className="peer h-full outline-none text-sm text-gray-700 pr-2"
+              type="text"
+              id="search"
+              placeholder="Search products.." /> 
+          </div>
         {(()=>{
               if(itemsthere){
                   return(
                       <h1>we will add contents soon</h1>
                   )
               }
+              else if(shuffled.filter((items:any) => items.name.toLowerCase().includes(search) || items.brand.toLowerCase().includes(search)|| items.price.toLowerCase().includes(search)).length === 0 ){
+                return(
+                  <div className='h-96 flex justify-center align-center items-center'>
+                    <p>There is no product with name {search}</p>
+                  </div>
+                )
+              }
               else{
                   return(
                     <div className='flex flex-row'>
                       <div className='mx-10 w-full md:flex justify-around flex-wrap overflow-y-scroll scrollbar-thin scrollbar-thumb-gray-200 scrollbar-thumb-rounded-full scrollbar-track-rounded-full h-[28rem] pr-8 mt-2 grid grid-cols-2'>
                         {
-                          [...shuffled].slice(0,24).map(({id,brand,name,catagory,price,description,types,images}:any) => (
+                          [...shuffled].filter((item:any) => {
+                            return search.toLowerCase() === '' ? item : item.name.toLowerCase().includes(search) || item.brand.toLowerCase().includes(search) || item.price.toLowerCase().includes(search)
+                          }).slice(0,24).map(({id,brand,name,catagory,price,description,types,images}:any) => (
                             <Carditems key={id} id={id} brand={brand} catagory={catagory} name={name} price={price} description={description} types={types} images={images}/>
                             ))
                         }

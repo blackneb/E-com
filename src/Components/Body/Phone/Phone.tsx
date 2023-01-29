@@ -75,6 +75,13 @@ const Phone = () => {
                     </div>
                     )
               }
+              else if(post.filter((items:any) => items.name.toLowerCase().includes(search) || items.brand.toLowerCase().includes(search)|| items.price.toLowerCase().includes(search)).length === 0 ){
+                return(
+                  <div className='h-96 flex justify-center align-center items-center'>
+                    <p>There is no phone with name {search}</p>
+                  </div>
+                )
+              }
               else{
                   return(
                     <div className='flex flex-row'>
