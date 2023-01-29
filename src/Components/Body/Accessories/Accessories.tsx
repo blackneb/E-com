@@ -24,6 +24,7 @@ const Accessories = () => {
   const [page, SetPage] = useState(1);
   const [itemsthere, setitemsthere] = useState(false);
   const [post,setpost] = useState<any[]>([]);
+  
 
   const handleChange = (e:any, p:any) => {
     console.log(p);
