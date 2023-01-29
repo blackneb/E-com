@@ -79,9 +79,9 @@ const Phone = () => {
                   return(
                     <div className='flex flex-row'>
                       <div className='flex flex-col'>
-                        <div onClick={()=>setOpen(!open)} className='md:hidden mx-2 w-6 mb-2'>
+                        {/* <div onClick={()=>setOpen(!open)} className='md:hidden mx-2 w-6 mb-2'>
                           {open? <img  className='h-4 mt-2'  src={close}/> : <img className='h-4 mt-2' src={Menu}/>}
-                        </div>
+                        </div> */}
                       </div>
                     <div className='flex flex-row '>
                       <div className='md:mx-16 flex flex-wrap justify-center align-center md:flex-wrap md:pr-8 mt-2'>

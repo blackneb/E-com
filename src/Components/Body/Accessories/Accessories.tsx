@@ -61,7 +61,7 @@ const Accessories = () => {
               className="peer h-full outline-none text-sm text-gray-700 pr-2"
               type="text"
               id="search"
-              placeholder="Search tv.." /> 
+              placeholder="Search accessories.." /> 
           </div>
           {(()=>{
               if(itemsthere){
@@ -75,9 +75,9 @@ const Accessories = () => {
                   return(
                     <div className='flex flex-row'>
                       <div className='flex flex-col'>
-                        <div onClick={()=>setOpen(!open)} className='md:hidden mx-2 w-6 mb-2'>
+                        {/* <div onClick={()=>setOpen(!open)} className='md:hidden mx-2 w-6 mb-2'>
                           {open? <img  className='h-4 mt-2'  src={close}/> : <img className='h-4 mt-2' src={Menu}/>}
-                        </div>
+                        </div> */}
                       </div>
                     <div className='flex flex-row '>
                       <div className='mx-16 flex justify-around flex-wrap pr-8 mt-2'>
