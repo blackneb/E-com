@@ -5,6 +5,7 @@ import instagram from '../../Icons/instagram.png';
 import telegram from '../../Icons/telegram.png';
 import twitter from '../../Icons/twitter.png';
 import youtube from '../../Icons/youtube.png'
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -13,15 +14,27 @@ const Footer = () => {
           <div className='md:mx-8 md:mt-0 mt-2'>
             <p className='border-b-4 border-purple-600 w-24 text-lg'>Quick Links</p>
             <ul className='text-gray-500'>
-              <li className='hover:border-l-2 hover:pl-1 border-black text-left'><button>Home</button></li>
+              <Link to={'/'} className='hover:border-l-2 hover:pl-1 border-black text-left'>
+                <li className='hover:border-l-2 hover:pl-1 border-black text-left'><button>Home</button></li>
+              </Link>
+              <Link to={'/laptops'} className='hover:border-l-2 hover:pl-1 border-black text-left'>
               <li className='hover:border-l-2 hover:pl-1 border-black text-left'><button>Laptops</button></li>
+              </Link>
+              <Link to={'/gaming'} className='hover:border-l-2 hover:pl-1 border-black text-left'>
               <li className='hover:border-l-2 hover:pl-1 border-black text-left'><button>Gaming</button></li>
+              </Link>
+              <Link to={'/phone'} className='hover:border-l-2 hover:pl-1 border-black text-left'>
               <li className='hover:border-l-2 hover:pl-1 border-black text-left'><button>Phones</button></li>
+              </Link>
+              <Link to={'/accessories'} className='hover:border-l-2 hover:pl-1 border-black text-left'>
               <li className='hover:border-l-2 hover:pl-1 border-black text-left'><button>Accessories</button></li>
+              </Link>
+              <Link to={'/tv'} className='hover:border-l-2 hover:pl-1 border-black text-left'>
               <li className='hover:border-l-2 hover:pl-1 border-black text-left'><button>Tv</button></li>
-              <li className='hover:border-l-2 hover:pl-1 border-black text-left'><button>Ps</button></li>
+              </Link>
+              <Link to={'/contact'} className='hover:border-l-2 hover:pl-1 border-black text-left'>
               <li className='hover:border-l-2 hover:pl-1 border-black text-left'><button>Contact</button></li>
-              <li className='hover:border-l-2 hover:pl-1 border-black text-left'><button>About</button></li>
+              </Link>
             </ul>
           </div>
           <div className='md:mx-8 md:mt-0 mt-2'>

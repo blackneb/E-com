@@ -52,7 +52,7 @@ const Laptops = () => {
                           {open? <img  className='h-4 mt-2'  src={close}/> : <img className='h-4 mt-2' src={Menu}/>}
                         </div>
                       </div>
-                    <div className='flex flex-row h-[32rem]'>
+                    <div className='flex flex-row'>
                       <div className='md:mx-16 flex flex-wrap justify-center align-center md:flex-wrap md:pr-8 mt-2'>
                         {
                           [...gameitems].slice((page-1)*12,12*page).map(({id,brand,name,catagory,price,description,types,images}:any) => (
