@@ -174,7 +174,7 @@ const Detailed = () => {
       </div>
         <div className='pt-10'>
           <h2 className='border-b-2 border-gray-400 mx-32 md:mx-72'>you may also like</h2>
-            <div className='overflow-x-scroll mx-8 md:mx-16 my-8 h-64 md:h-72'>
+            <div className='overflow-x-scroll scrollbar-thin scrollbar-thumb-gray-200 scrollbar-thumb-rounded-full scrollbar-track-rounded-full mx-8 md:mx-16 my-8 h-64 md:h-72'>
               <div className='flex flex-row'>
             {
               [...similaritems].map(({id,brand,name,catagory,price,description,types,images}:any) => (
