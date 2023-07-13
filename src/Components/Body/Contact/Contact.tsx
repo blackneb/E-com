@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from '../../../Icons/Logo.jpg'
+import logo from '../../../Icons/Logo.png'
 import { useForm } from 'react-hook-form'
 import { Button } from 'antd';
 
